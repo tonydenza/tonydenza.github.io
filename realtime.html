@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"  />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+  <link rel="stylesheet" href="style.css" />
+  <title>Waveform Examples</title>
+</head>
+
+
+<body>
+  <h1><a href="./index.html">Waveform Examples</a></h1>
+
+  <div class="container" id="realtime-container">
+    <h2>Realtime Soundwave</h2>
+    <p>Click play.</p>
+    <canvas id="waveformCanvas"></canvas>
+    <div>
+      <button id="play" class="btn btn-primary" type="button"><i class="fas fa-play"></i></button>
+      <button id="pause" class="btn btn-primary" type="button"><i class="fas fa-stop"></i></button>
+    </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/wavesurfer.js"></script>
+  <script src="realtime.js"></script>
+</body>
+
+</html>
