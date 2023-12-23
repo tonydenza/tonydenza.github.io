@@ -1,0 +1,23 @@
+
+.container {
+  max-width: 100% !important;
+  text-align: center;
+  padding: 2em;
+}
+.btn {
+  border-radius: 50px !important;
+  padding: 10px 15px !important;
+}
+.btn-primary {
+  color: #007bff !important;
+  background-color: transparent !important;
+  border-color: #007bff;
+}
+i {
+  height: 15px;
+  width: 15px;
+}
+body {
+  padding: 2em 10em;
+  text-align: center;
+}
