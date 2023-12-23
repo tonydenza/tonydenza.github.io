@@ -2,28 +2,31 @@
 <html lang="en">
 
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"  />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
   <link rel="stylesheet" href="style.css" />
-  <title>Waveform Examples</title>
+  <title>Waveform Examples - Curvy Soundwave</title>
 </head>
 
 <body>
-  <h1>Waveform Examples</h1>
-  <div class="container" id="realtime-container">
-    <ul>  
-      <li><h2><a href="interaction.html">Interaction</a></h2></li>
-      <li><h2><a href="curvy.html">Curvy</a></h2></li>
-      <li><h2><a href="realtime.html">Realtime</a></h2></li>
-      <li><h2><a href="modulation.html">Modulation</a></h2></li>
-      <li><h2><a href="soundcloud.html">Soundcloud</a></h2></li>
-    </ul>
+  <h1><a href="./index.html">Waveform Examples</a></h1>
+
+  <div class="container" id="interactive-container">
+    <h2>Curvy Soundwave</h2>
+    <div id="time"></div>
+    <div id="duration"></div>
+    <div id="hover"></div>
+    <button id="play" class="btn btn-primary" type="button"><i class="fas fa-play"></i></button>
+    <div id="waveform"></div>
+    <div id="config" class="collapse"></div>
   </div>
+
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/wavesurfer.js"></script>
+  <script src="curvy.js"></script>
 </body>
 
 </html>

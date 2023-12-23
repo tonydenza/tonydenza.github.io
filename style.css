@@ -1,4 +1,6 @@
-
+#waveformCanvas {
+  width: 50vw;
+}
 .container {
   max-width: 100% !important;
   text-align: center;
@@ -20,4 +22,7 @@ i {
 body {
   padding: 2em 10em;
   text-align: center;
+}
+ul {
+  list-style: none;
 }
