@@ -12,6 +12,7 @@
             padding: 0;
             font-family: Arial, sans-serif;
             overflow-x: hidden; /* Prevent horizontal scrolling */
+            color: #E9A4EB;
         }
         body {
             display: flex;
@@ -52,25 +53,42 @@
             filter: blur(0); /* Remove blur for text elements */
         }
         h1 {
-            text-shadow: white 0px 0px 5px;
+            text-shadow: black 0px 0px 5px;
         }
-        h2 {
+        h3 {
             padding: 10px 10em;
             background-color: rgba(0,0,0,0.2);
-            text-shadow: white 0px 0px 5px;
+            text-shadow: black 0px 0px 5px;
+            text-align: center;
         }
         i {
             font-size: xx-large;
-            color: black !important;
-            text-shadow: white 0px 0px 5px;
+            color: #E9A4EB !important;
+            text-shadow: black 0px 0px 5px;
         }
-        iframe {
-            
+        section {
+            padding: 0 10em;
         }
+        i:hover {
+            color: #d37bd6 !important;
+        }
+
         @media (max-width: 600px) {
+            nav ul {
+                display: flex;
+                padding: 0 20px;
+            }
             nav ul li {
                 display: block;
                 margin-bottom: 5px;
+                margin: auto;
+                padding: 0 20px;
+            }
+            h3 {
+                padding: 20px;
+            }
+            section {
+                padding: 0 20px;
             }
         }
     </style>
@@ -100,7 +118,7 @@
             <li><a href="mailto:bassweight.prg@gmail.com"><i class="fas fa-envelope"></i></a></li>
         </ul>
     </nav>
-    <h2>Prague based group of DJs hosting events under the name Bass Weight. Enthusiasts of the UK club music continuum, digging through both archives and yet-to-be discovered crates for fresh mutations in bass music.</h2>
+    <h3>Prague based group of DJs hosting events under the name Bass Weight. Enthusiasts of the UK club music continuum, digging through both archives and yet-to-be discovered crates for fresh mutations in bass music.</h3>
     <section>
         <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1806254454&color=%23e9a4eb&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/bassweight-prague" title="BASS WEIGHT PRAGUE" target="_blank" style="color: #cccccc; text-decoration: none;">BASS WEIGHT PRAGUE</a> · <a href="https://soundcloud.com/bassweight-prague/dlktek-enter-the-bass-w8" title="DLKTek - Enter the Bass W8" target="_blank" style="color: #cccccc; text-decoration: none;">DLKTek - Enter the Bass W8</a></div>    </section>
 </body>
