@@ -24,16 +24,20 @@
             backdrop-filter: blur(2px);
             transition: background 0.5s ease-in-out;
         }
-        header, footer {
-            background-color: rgba(0,0,0,0.1); /* Light translucent background for header and footer */
+        header {
+            background-color: rgba(0,0,0,0.2);
             padding: 20px;
+            display: lex;
+            margin: 20px 0;
             text-align: center;
-            filter: blur(0); /* Remove blur for text elements */
+        }
+        footer {
+            padding: 20px 10em;
+            background-color: rgba(0,0,0,0.2);
         }
         nav {
             background-color: rgba(0,0,0,0.2);
             padding: 10px 0;
-            filter: blur(0); /* Remove blur for text elements */
         }
         nav ul {
             list-style-type: none;
@@ -54,6 +58,10 @@
         }
         h1 {
             text-shadow: black 0px 0px 5px;
+            line-height: 10px;
+            margin-left: 1em;
+            width: 100%;
+            text-align: center;
         }
         h3 {
             padding: 10px 10em;
@@ -67,7 +75,6 @@
             text-shadow: black 0px 0px 5px;
         }
         section {
-            padding: 0 10em;
         }
         i:hover {
             color: #d37bd6 !important;
@@ -87,7 +94,7 @@
             h3 {
                 padding: 20px;
             }
-            section {
+            footer {
                 padding: 0 20px;
             }
         }
@@ -106,8 +113,8 @@
 </head>
 <body onload="changeBackground()">
     <header>
-        <img src="logo_url.png" alt="Bass Weight Logo" style="max-height: 80px; border-radius: 50px;"> <!-- Resizing logo for better fit -->
-        <h1>BASS WEIGHT PRAGUE</h1>
+        <img src="logo_url.png" alt="Bass Weight Logo" style="max-height: 50px; border-radius: 50px;">
+                <h1>BASS WEIGHT PRAGUE</h1>
     </header>
     <nav>
         <ul>
@@ -119,7 +126,8 @@
         </ul>
     </nav>
     <h3>Prague based group of DJs hosting events under the name Bass Weight. Enthusiasts of the UK club music continuum, digging through both archives and yet-to-be discovered crates for fresh mutations in bass music.</h3>
-    <section>
-        <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1806254454&color=%23e9a4eb&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/bassweight-prague" title="BASS WEIGHT PRAGUE" target="_blank" style="color: #cccccc; text-decoration: none;">BASS WEIGHT PRAGUE</a> · <a href="https://soundcloud.com/bassweight-prague/dlktek-enter-the-bass-w8" title="DLKTek - Enter the Bass W8" target="_blank" style="color: #cccccc; text-decoration: none;">DLKTek - Enter the Bass W8</a></div>    </section>
+    <footer>
+        <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1806254454&color=%23e9a4eb&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/bassweight-prague" title="BASS WEIGHT PRAGUE" target="_blank" style="color: #cccccc; text-decoration: none;">BASS WEIGHT PRAGUE</a> · <a href="https://soundcloud.com/bassweight-prague/dlktek-enter-the-bass-w8" title="DLKTek - Enter the Bass W8" target="_blank" style="color: #cccccc; text-decoration: none;">DLKTek - Enter the Bass W8</a></div>
+    </footer>
 </body>
 </html>
