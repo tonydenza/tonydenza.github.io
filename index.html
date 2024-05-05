@@ -1,1 +1,77 @@
-<h1>BASS WEIGHT PRAGUE</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bass Weight Prague</title>
+    <style>
+        body {
+            background-size: cover;
+            background-position: center;
+            transition: background 0.5s ease-in-out;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        header {
+            text-align: center;
+            padding: 20px;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+        section {
+            padding: 20px;
+            text-align: center;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+        }
+        @media (max-width: 600px) {
+            nav ul li {
+                display: block;
+                margin: 5px 0;
+            }
+        }
+    </style>
+    <script>
+        function changeBackground() {
+            var backgrounds = [
+                "url('image1.png')", // Replace with actual URLs
+                "url('image2.png')",
+                "url('image3.png')"
+            ];
+            var randomIndex = Math.floor(Math.random() * backgrounds.length);
+            document.body.style.backgroundImage = backgrounds[randomIndex];
+        }
+    </script>
+</head>
+<body onload="changeBackground()">
+    <header>
+        <h1>Bass Weight Prague</h1>
+        <img src="logo_url.jpg" alt="Bass Weight Logo">
+    </header>
+    <nav>
+        <ul>
+            <li><a href="https://www.facebook.com/bassweightprg">Facebook</a></li>
+            <li><a href="https://www.instagram.com/bassweight_prg/">Instagram</a></li>
+            <li><a href="https://soundcloud.com/bassweight-prague">SoundCloud</a></li>
+            <li><a href="https://soundcloud.com/bassweight-prague/sets/guestmixes">Guest Mixes</a></li>
+            <li><a href="mailto:bassweight.prg@gmail.com">Email Us</a></li>
+        </ul>
+    </nav>
+    <section>
+        <h2>About Us</h2>
+        <p>Prague based group of DJs hosting events under the name Bass Weight. Enthusiasts of the UK club music continuum, digging through both archives and yet-to-be discovered crates for fresh mutations in bass music.</p>
+    </section>
+    <footer>
+        <p>Contact us at <a href="mailto:bassweight.prg@gmail.com">bassweight.prg@gmail.com</a></p>
+    </footer>
+</body>
+</html>
