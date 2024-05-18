@@ -3,6 +3,18 @@ body {
     padding: 1em 4em;
   }
 
+  .modal-content {
+    background: rgba(0, 0, 0, 0.237) !important;
+    color: white !important;
+  }
+
+  .modal-content div {
+    cursor: pointer;
+  }
+
+  .modal-content div:hover {
+font-weight: 800 !;  }
+
   #waveform {
     cursor: pointer;
     position: relative;
