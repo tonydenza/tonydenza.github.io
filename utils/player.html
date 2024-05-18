@@ -214,12 +214,7 @@
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4 && xhr.status == 200) {
           input = xhr.responseText;
-        }
-    }
-    xhr.open('GET', '../mixes/zeek_160/160.cue');
-    xhr.send();
-
-    const trackList = parseTracklist(input);
+          const trackList = parseTracklist(input);
 
     const iframeElement = document.querySelector('#soundcloud-player');
     const widget = SC.Widget(iframeElement);
@@ -232,6 +227,12 @@
     printTracklist(trackList, widget);
     document.getElementById("tracklist").hidden = true;
     document.getElementById("tlh").onclick = function () { document.getElementById("tracklist").hidden = false };
+        }
+    }
+    xhr.open('GET', '../mixes/zeek_160/160.cue');
+    xhr.send();
+
+    
 
 
   </script>
