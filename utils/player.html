@@ -389,6 +389,18 @@ FILE "01 160.wav" WAVE
 
   </script>
 
+<span id="placeholder"></span>
+<script>
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            document.getElementById('placeholder').innerHTML = xhr.responseText;
+        }
+    }
+    xhr.open('GET', '../mixes/zeek_160/160.cue');
+    xhr.send();
+</script>
+
 </body>
 
 </html>
