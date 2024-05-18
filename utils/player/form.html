@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form with SC URL and File Input</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Bootstrap Modal for Upload -->
+  <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="uploadModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="uploadModalLabel">Upload SC URL and File</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="uploadForm">
+            <div class="form-group">
+              <label for="scUrl">SC URL</label>
+              <input type="text" class="form-control" id="scUrl" placeholder="Enter SC URL" value="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1814701071%3Fsecret_token%3Ds-iDAXfk0J0RK&color=%23e9a4eb&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true"">
+            </div>
+            
+            <div class="form-group">
+              <label for="customFile">Upload File</label>
+              <input type="file" class="form-control-file" id="customFile">
+            </div>
+            <button type="button" id="submitButton" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap Modal for Tracklist -->
+  <div class="modal fade" id="tracklistModal" tabindex="-1" role="dialog" aria-labelledby="tracklistModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="tracklistModalLabel">Tracklist</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div id="modalTracklist"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="mainContent" style="display:none;">
+    <div id="heading">Zeek - 160</div>
+    <h3 id="tlh">Tracklist</h3>
+    <div id="tracklist" style="display:none"></div>
+    <div id="current">Currently playing track<br> <span id="playing">-</span></div>
+    <div>
+      <iframe id="soundcloud-player" width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay"></iframe>
+      <div id="tracklistDiv" style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"></div>
+    </div>
+
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/wavesurfer.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://w.soundcloud.com/player/api.js"></script>
+  <script src="player.js"></script>
+</body>
+</html>
