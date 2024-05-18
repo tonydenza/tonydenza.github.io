@@ -9,6 +9,11 @@
   <link rel="stylesheet" href="style.css" />
   <title>Waveform Examples - Soundcloud</title>
   <style>
+    body {
+      background-color: black;
+      padding: 1em 4em;
+    }
+
     #waveform {
       cursor: pointer;
       position: relative;
@@ -41,7 +46,7 @@
       transform: translateY(-50%);
       font-size: 11px;
       background: rgba(0, 0, 0, 0.75);
-      padding: 2px;
+      padding: 1px;
       color: #ddd;
     }
 
@@ -64,20 +69,59 @@
     }
 
     #tracklist {
-      margin-top: 20px;
+      font-size: smaller;
+    }
+
+    #current,
+    #tracklist,
+    #heading {
+      text-align: center;
+      background: black;
+      color: white;
+      padding: 2em;
+
+    }
+
+    #tracklist div {
+      font-size: large;
+      width: 100%;
+      cursor: pointer;
+    }
+
+    #heading {
+      font-size: xx-large;
+    }
+
+    #tlh {
+      text-align: center;
+      color: wheat;
     }
   </style>
 </head>
 
 <body>
-  <iframe id="soundcloud-player" width="80%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1814701071%3Fsecret_token%3Ds-iDAXfk0J0RK&color=%23e9a4eb&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true"></iframe>
-  <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;">
-    <a href="https://soundcloud.com/bassweight-prague" title="BASS WEIGHT PRAGUE" target="_blank" style="color: #cccccc; text-decoration: none;">BASS WEIGHT PRAGUE</a> · <a href="https://soundcloud.com/bassweight-prague/160a/s-iDAXfk0J0RK" title="160 (Zeek Private)" target="_blank" style="color: #cccccc; text-decoration: none;">160 (Zeek Private)</a>
+  <div id="heading">Zeek - 160</div>
+  <div id="current">Currently playing track<br> <span id="playing">-</span></div>
+  <div>
+    <div>
+      <iframe id="soundcloud-player" width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay"
+        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1814701071%3Fsecret_token%3Ds-iDAXfk0J0RK&color=%23e9a4eb&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true"></iframe>
+      <div
+        style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;">
+        <a href="https://soundcloud.com/bassweight-prague" title="BASS WEIGHT PRAGUE" target="_blank"
+          style="color: #cccccc; text-decoration: none;">BASS WEIGHT PRAGUE</a> · <a
+          href="https://soundcloud.com/bassweight-prague/160a/s-iDAXfk0J0RK" title="160 (Zeek Private)" target="_blank"
+          style="color: #cccccc; text-decoration: none;">160 (Zeek Private)</a>
+      </div>
+    </div>
+
+
+    <h3 id="tlh">Tracklist</h3>
+    <div id="tracklist"></div>
   </div>
 
-  <div>Currently playing track: <span id="playing"></span></div>
 
-  <div id="tracklist"></div>
+
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -86,11 +130,10 @@
   <script src="https://w.soundcloud.com/player/api.js"></script>
   <script>
     function parseTracklist(input) {
-      // Split the input into lines
       const lines = input.split('\n');
       const trackList = [];
+      const trackMap = new Map();
 
-      // Regular expressions to match the required data
       const trackRegex = /TRACK \d+ AUDIO/;
       const titleRegex = /\s+TITLE\s+"([^"]+)"/;
       const performerRegex = /\s+PERFORMER\s+"([^"]+)"/;
@@ -101,11 +144,11 @@
       for (let line of lines) {
         if (trackRegex.test(line)) {
           if (currentTrack.time && currentTrack.artist && currentTrack.title) {
-            trackList.push({
-              artist: currentTrack.artist,
-              title: currentTrack.title,
-              time: currentTrack.time
-            });
+            const trackKey = `${currentTrack.artist} - ${currentTrack.title}`;
+            if (!trackMap.has(trackKey)) {
+              trackMap.set(trackKey, currentTrack);
+              trackList.push(currentTrack);
+            }
           }
           currentTrack = {};
         }
@@ -122,13 +165,12 @@
         }
       }
 
-      // Add the last track
       if (currentTrack.time && currentTrack.artist && currentTrack.title) {
-        trackList.push({
-          artist: currentTrack.artist,
-          title: currentTrack.title,
-          time: currentTrack.time
-        });
+        const trackKey = `${currentTrack.artist} - ${currentTrack.title}`;
+        if (!trackMap.has(trackKey)) {
+          trackMap.set(trackKey, currentTrack);
+          trackList.push(currentTrack);
+        }
       }
 
       return trackList;
@@ -152,12 +194,20 @@
       document.querySelector('#playing').textContent = currentTrack;
     }
 
-    function printTracklist(trackList) {
+    function printTracklist(trackList, widget) {
       const tracklistDiv = document.querySelector('#tracklist');
-      tracklistDiv.innerHTML = "<h3>Tracklist</h3>";
-      trackList.forEach((track, index) => {
+      tracklistDiv.innerHTML = "";
+      trackList.forEach((track) => {
         const trackElement = document.createElement('div');
-        trackElement.textContent = `${index + 1}. ${track.artist} - ${track.title}`;
+        const artist = document.createElement('span');
+        artist.textContent = `${track.artist} - `;
+        const title = document.createElement('span');
+        title.textContent = `${track.title}`;
+        trackElement.addEventListener('click', () => {
+          widget.seekTo(convertTimeToSeconds(track.time) * 1000);
+        });
+        trackElement.appendChild(artist);
+        trackElement.appendChild(title);
         tracklistDiv.appendChild(trackElement);
       });
     }
@@ -330,12 +380,15 @@ FILE "01 160.wav" WAVE
     const iframeElement = document.querySelector('#soundcloud-player');
     const widget = SC.Widget(iframeElement);
 
-    widget.bind(SC.Widget.Events.PLAY_PROGRESS, function(event) {
+    widget.bind(SC.Widget.Events.PLAY_PROGRESS, function (event) {
       const currentTime = event.currentPosition / 1000;
       updatePlayingTrack(currentTime, trackList);
     });
 
-    printTracklist(trackList);
+    printTracklist(trackList, widget);
+    document.getElementById("tracklist").hidden = true;
+    document.getElementById("tlh").onclick = function () { document.getElementById("tracklist").hidden = false };
+
 
   </script>
 
