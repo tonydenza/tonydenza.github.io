@@ -132,6 +132,7 @@ $(document).ready(function () {
       }
     }
     document.querySelector("#playing").textContent = currentTrack;
+    document.querySelector("title").textContent = currentTrack;
   }
   
   function printTracklist(trackList, widget) {
