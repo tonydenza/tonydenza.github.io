@@ -1,0 +1,99 @@
+# Translation of Plugins - Disable Comments - Development (trunk) in Swedish
+# This file is distributed under the same license as the Plugins - Disable Comments - Development (trunk) package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Plugins - Disable Comments - Development (trunk)\n"
+"POT-Creation-Date: 2021-08-25 14:46+0200\n"
+"PO-Revision-Date: 2021-08-25 14:54+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: sv_SE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Poedit 3.0\n"
+
+#: class_rb_disable-comments.php:125 class_rb_disable-comments.php:155
+msgid "Comments are closed."
+msgstr "Kommentarer är stängda."
+
+#: class_rb_disable-comments.php:146
+#, php-format
+msgid ""
+"The <em>Disable Comments</em> plugin is active, but isn't configured to do "
+"anything yet. Visit the <a href=\"%s\">configuration page</a> to choose "
+"which post types to disable comments on."
+msgstr ""
+"Tillägget <em>Disable Comments</em> är aktivt men är inte konfigurerad att "
+"göra något än. Besök <a href=\"%s\">konfigurationssidan</a> för att välja på "
+"vilka inläggstyper kommentarer ska inaktiveras."
+
+#: class_rb_disable-comments.php:207
+msgid "Settings"
+msgstr "Inställningar"
+
+#: class_rb_disable-comments.php:216
+msgid "Rb Disable Comments"
+msgstr "Rb Disable Comments"
+
+#: information.php:86
+msgid "Create Free Gallery with Premium features with Robo Gallery"
+msgstr ""
+
+#: information.php:92
+msgid "Install Gallery"
+msgstr "Installera galleri"
+
+#: information.php:102
+msgid ""
+"Free website uptime and performance monitoring service for your WordPress"
+msgstr ""
+
+#: information.php:106
+msgid "Register Free Account"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+#: options.php:37
+msgid "Disable Comments RB"
+msgstr "Disable Comments RB"
+
+#: options.php:39
+msgid ""
+"Here you can configure your disabled comments tools. Section with all "
+"configuration settings of this tool."
+msgstr ""
+
+#: options.php:47
+msgid "Disable all comments"
+msgstr "Inaktivera alla kommentarer"
+
+#: options.php:55
+msgid "Enable all Comments (comments on entire site will be turned on)"
+msgstr ""
+
+#: options.php:62
+msgid "Save Changes"
+msgstr "Spara ändringar"
+
+#. Plugin URI of the plugin/theme
+#. Author URI of the plugin/theme
+msgid "https://robosoft.co/wordpress-plugins/disable-comments"
+msgstr "https://robosoft.co/wordpress-plugins/disable-comments"
+
+#. Description of the plugin/theme
+msgid ""
+"Easy tool to disable comments for your blog posts, pages. Admin can disable "
+"comments in just few clicks. Delete comments from blog post."
+msgstr ""
+"Lätt verktyg för att inaktivera kommentarer för dina blogginlägg och sidor. "
+"Admin kan inaktivera kommentarer med några få klick. Ta bort kommentarer "
+"från blogginlägg."
+
+#. Author of the plugin/theme
+msgid "rbPlugins"
+msgstr "rbPlugins"
+
+#~ msgid "Enable"
+#~ msgstr "Aktivera"

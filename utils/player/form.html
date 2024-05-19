@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Form with SC URL and File Input</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="style.css">
+  <script src="https://w.soundcloud.com/player/api.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <!-- Bootstrap Modal for Upload -->
@@ -22,7 +23,11 @@
           <form id="uploadForm">
             <div class="form-group">
               <label for="scUrl">SC URL</label>
-              <textarea class="form-control" id="scUrl" placeholder="Enter iframe code"><iframe width="100%" height="600" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1814701071%3Fsecret_token%3Ds-iDAXfk0J0RK&color=%234c245c&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/bassweight-prague" title="BASS WEIGHT PRAGUE" target="_blank" style="color: #cccccc; text-decoration: none;">BASS WEIGHT PRAGUE</a> · <a href="https://soundcloud.com/bassweight-prague/160a/s-iDAXfk0J0RK" title="160 (Zeek Private)" target="_blank" style="color: #cccccc; text-decoration: none;">160 (Zeek Private)</a></div></textarea>
+              <textarea class="form-control" id="scUrl" placeholder="Enter iframe code"><iframe id="framer" width="100%" height="600" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1814701071%3Fsecret_token%3Ds-iDAXfk0J0RK&color=%234c245c&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true"></iframe>
+                <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;">
+                  <a href="https://soundcloud.com/bassweight-prague" title="BASS WEIGHT PRAGUE" target="_blank" style="color: #cccccc; text-decoration: none;">BASS WEIGHT PRAGUE</a> · <a href="https://soundcloud.com/bassweight-prague/160a/s-iDAXfk0J0RK" title="160 (Zeek Private)" target="_blank" style="color: #cccccc; text-decoration: none;">160 (Zeek Private)</a>
+                </div>
+              </textarea>
             </div>
             
             <div class="form-group">
@@ -40,12 +45,6 @@
   <div class="modal fade" id="tracklistModal" tabindex="-1" role="dialog" aria-labelledby="tracklistModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="tracklistModalLabel">Tracklist</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
         <div class="modal-body">
           <div id="modalTracklist"></div>
         </div>
@@ -54,14 +53,12 @@
   </div>
 
   <div id="mainContent" style="display:none;">
-    <div id="heading">Zeek - 160 / <span id="tlh">Tracklist</span></div>
-    
+    <div id="heading"></div>
     <div id="tracklist" style="display:none"></div>
-    <div id="current">Currently playing track<br> <span id="playing">-</span></div>
-    <div id="iframeContainer">
-      <!-- The new iframe will be appended here -->
+    <div id="current">Currently playing track<br>
+      <span id="playing">-</span>
     </div>
-
+    <div id="iframeContainer"></div>
   </div>
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

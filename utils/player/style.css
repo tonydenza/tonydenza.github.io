@@ -4,7 +4,7 @@ body {
   }
 
   .modal-content {
-    background: rgba(0, 0, 0, 0.237) !important;
+    background: rgba(0, 0, 0, 0.688) !important;
     color: white !important;
   }
 
@@ -71,6 +71,18 @@ font-weight: 800 !;  }
 
   #tracklist {
     font-size: smaller;
+  }
+
+  #current {
+    background: #ffffffa8;
+  margin: auto;
+    margin-bottom: auto;
+  width: max-content;
+  margin-bottom: 1em;
+  color: black;
+  position: fixed;
+  top: 7em;
+  left: 44%;
   }
 
   #current,

@@ -1,0 +1,237 @@
+/*
+Theme Name: Metro Magazine
+
+Adding support for language written in a Right To Left (RTL) direction is easy -
+it's just a matter of overwriting all the horizontal positioning attributes
+of your CSS stylesheet in a separate stylesheet file named rtl.css.
+
+https://codex.wordpress.org/Right_to_Left_Language_Support
+
+*/
+
+body {
+    direction: rtl;
+    unicode-bidi: embed;
+}
+
+.secondary-menu,
+.secondary-menu ul li,
+.site-header .social-networks li,
+.site-branding {
+    float: right;
+}
+
+.site-header .social-networks,
+.header-b .advertise {
+    float: left;
+}
+
+.secondary-menu ul li {
+    margin-left: 0;
+    margin-right: 25px;
+}
+
+.secondary-menu ul li:first-child {
+    margin-right: 0;
+}
+
+.site-header .social-networks li {
+    margin-left: 0;
+    margin-right: 16px;
+}
+
+.header-b .advertise {
+    text-align: left;
+}
+
+.site-header form input[type="submit"] {
+    float: left;
+}
+
+.site-header form input[type="search"] {
+    float: right;
+}
+
+.main-navigation li,
+.main-navigation {
+    float: right;
+}
+
+.main-navigation li:first-child {
+    margin-right: 0;
+}
+
+.site-header .btn-search {
+    float: left;
+}
+
+.main-navigation ul ul::after {
+    left: auto;
+    right: 45px;
+}
+
+.main-navigation ul li:hover > ul {
+    left: auto;
+    right: 0;
+    display: block;
+}
+
+.main-navigation ul ul li:hover > ul {
+    left: auto;
+    right: 100%;
+    display: block;
+}
+
+.all-post ul li,
+.section-two .col {
+    float: right;
+}
+
+.all-post .post .category-holder,
+.section-two .post .category-holder,
+.section-five .post .category-holder {
+    left: auto;
+    right: 10px;
+}
+
+.section-three .post-thumbnail,
+.videos .col,
+.section-five .col {
+    float: right;
+}
+
+.section-four .img-holder::after {
+    left: auto;
+    right: 0;
+}
+
+.section-four .text-holder {
+    padding-left: 0;
+    padding-right: 6vw;
+}
+
+.section-four .img-holder {
+    float: right;
+}
+
+.footer-t .col,
+.site-info {
+    float: right;
+}
+
+.site-footer .footer-t .widget .widget-title,
+.site-footer .widget {
+    text-align: right;
+}
+
+.site-footer .widget.widget_metro_magazine_recent_post ul li .post-thumbnail,
+.site-footer .widget.widget_metro_magazine_popular_post ul li .post-thumbnail {
+    float: right;
+    margin-right: 0;
+    margin-left: 18px;
+}
+
+.site-footer .widget.widget_metro_magazine_social_links ul li{
+	float: right;
+	margin-right: 0;
+	margin-left: 20px;
+}
+
+#crumbs a{
+	display: inline-block;
+}
+
+#primary .post .post-thumbnail,
+.pagination a,
+.pagination .current, .pagination .dots{
+	float: right;
+}
+
+.pagination span{
+	display: inline-block;
+}
+
+#primary .post .entry-footer .btn-readmore .fa{
+	margin-right: 0;
+	margin-left: 5px;
+}
+
+.widget.widget_metro_magazine_social_links ul li{
+	float: right;
+	margin-left: 20px;
+	margin-right: 0;
+}
+
+.widget.widget_search .search-form input[type="search"],
+.widget.widget_search .search-form label,
+.widget.widget_categories ul li a{
+	float: right;
+}
+
+.widget.widget_search .search-form input[type="submit"]{
+	float: left;
+}
+
+.widget.widget_metro_magazine_recent_post ul li .post-thumbnail, .widget.widget_metro_magazine_popular_post ul li .post-thumbnail{
+	float: right;
+	margin-right: 0;
+	margin-left: 20px;
+}
+
+.single-post #primary .post .entry-header .entry-meta .comments-link, .single-post #primary .post .entry-header .entry-meta .category{
+	float: left;
+}
+
+.single-post #primary .post .entry-header span,
+.single-post #primary .post .entry-header span a{
+	display: inline-block;
+}
+
+#primary .post .entry-meta .byline{
+
+	margin-right: 0;
+	margin-left: 17px;
+}
+
+#primary .post .entry-meta .comments-link{
+	margin-left: 0;
+	margin-right: 25px;
+}
+
+#primary .post .entry-meta .category::before,
+#primary .post .entry-meta .comments-link a::before{
+	margin-right: 0;
+	margin-left: 5px;
+	display: inline-block;
+}
+
+.gallery-item,
+.comment-author{
+	float: right;
+}
+
+.comments-area .comment-body .avatar{
+	float: right;
+	margin-right: 0;
+	margin-left: 20px;
+}
+
+.comments-area .comment-body .comment-content{
+	margin-left: 0;
+	margin-right: 97px;
+}
+
+.comments-area .comment-body .comment-metadata{
+	float: right;
+}
+
+.comments-area .comment-body .fn{
+	margin-right: 0;
+	margin-left: 15px;
+}
+
+.comments-area .comment-list .children{
+
+	padding-left: 0;
+	padding-right: 97px;
+}

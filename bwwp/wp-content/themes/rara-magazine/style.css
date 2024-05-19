@@ -1,0 +1,426 @@
+/*!
+Theme Name: Rara Magazine
+Theme URI: https://rarathemes.com/wordpress-themes/rara-magazine/
+Author: Rara Theme
+Author URI: https://rarathemes.com/
+Description: Rara Magazine is a child theme of Metro magazine, modern responsive magazine WordPress theme. The theme is suitable for variety of news, newspaper, magazine, sports, technology, food, travel, blogs, publishing, business and any kind of sites. The theme is built on Customizer and it allows easy customization. Rara Magazine includes color scheme and color for categories, which you can use to change the look and feel of your website with a click. The theme is Speed and Search Engine Optimized (SEO) to help you easily climb the google rank. Other feature includes social media integration, custom widgets, author bio, breadcrumb, advertisement settings, custom CSS, translation ready and more. Check demo at https://rarathemes.com/previews/?theme=rara-magazine and documentation at https://docs.rarathemes.com/docs/rara-magazine/. Read theme details at https://rarathemes.com/wordpress-themes/rara-magazine/ and get free support at https://rarathemes.com/support-ticket/.
+Template: metro-magazine
+Version: 1.0.6
+Requires PHP: 5.6
+Tested up to: 5.5
+Requires at least: 4.7
+License: GNU General Public License v3 or later
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
+Text Domain: rara-magazine
+Tags: one-column, two-columns, right-sidebar, custom-background, custom-logo, custom-menu, featured-image-header, featured-images, flexible-header, post-formats, sticky-post, threaded-comments, translation-ready, theme-options, footer-widgets, blog, full-width-template, news, entertainment, custom-colors
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+Rara Magazine is based on Underscores http://underscores.me/, (C) 2012-2016 Automattic, Inc.
+Underscores is distributed under the terms of the GNU GPL v2 or later.
+*/
+
+html{
+    -ms-overflow-x: hidden;
+    overflow-x: hidden;
+}
+.site-header .header-t .scrolling-news .breaking-news-link{
+	background: #f4f4f4;
+	color: #202020;
+	position: relative;
+	font-size: 16px;
+	line-height: 18px;
+	text-transform: uppercase;
+	float: left;
+	padding: 7px 18px;
+	display: inline-block;
+	margin-right: 0;
+	font-weight: 500;
+}
+
+.site-header .header-t .scrolling-news .breaking-news-link:after{
+	width: 0;
+	height: 0;
+	border-bottom: 32px solid #f4f4f4;
+	border-right: 13px solid transparent;
+	content: '';
+	position: absolute;
+	top: 0;
+	right: -13px;
+}
+
+.site-header .header-t .scrolling-news{
+	float: left;
+	width: 60%;
+	padding: 0;
+}
+
+.ticker {
+	float: left;
+	display: block;
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+}
+
+.left .ticker-controls, 
+.left .ticker-content, 
+.left .ticker-title, 
+.left .ticker {
+	float: left;
+}
+
+.ticker-content {
+	font-weight: 500;
+	line-height: 30px;
+	font-size: 16px;
+	padding-top: 0;
+	left: 0 !important;
+	margin-bottom: 0;
+}
+
+.site-header .ticker-content a {
+	color: #fff;
+	text-decoration: none;
+}
+
+.site-header .ticker-content a:hover, 
+.site-header .ticker-content a:focus {
+	color: #ccc;
+}
+
+.site-header .header-t .scrolling-news img{
+	vertical-align: top;
+}
+
+.ticker-swipe {
+	width: 100%;
+	height: 100%;
+	background: #386FA7;
+	padding-top: 9px;
+	position: absolute;
+	top: 0;
+	display: block;
+}
+
+.site-header .header-t .right{
+	float: right;
+}
+
+.site-header .header-t .right .social-networks{
+	font-size: 14px;
+	line-height: 22px;
+	margin-top: 5px;
+}
+
+.site-header .ticker-wrapper.has-js{
+	width: 59%;
+	float: left;
+	margin: 0;
+	padding: 0 0 0 15px;
+	border-radius: 0;
+	font-size: 14px;
+}
+
+.site-header .header-t .right .social-networks a{
+	color: #000;
+	width: 22px;
+	height: 22px;
+	text-align: center;
+	border-radius: 5px;
+	background: #fff;
+	display: block;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+.site-header .header-t .right .social-networks a:hover,
+.site-header .header-t .right .social-networks a:focus{
+	-webkit-border-radius: 100px;
+	border-radius: 50%;
+}
+
+.site-header .advertise {
+    width: auto;
+    margin: 0;
+}
+
+.top-news-slide{
+ 	margin-bottom: 25px;
+ 	margin-top: 25px;
+ }
+
+ ul::after {
+ 	content: '';
+ 	display: block;
+ 	clear: both;
+ }
+
+ .top-news-slide .post{
+ 	position: relative;
+ 	line-height: 20px;
+ 	font-size: 15px;
+ }
+
+ .top-news-slide .post .post-thumbnail{
+ 	display: block;
+ 	position: relative;
+ }
+
+ .top-news-slide .post a:after{
+ 	background: rgba(15, 180, 210, 0.5);
+ 	content: '';
+ 	position: absolute;
+ 	top: 0;
+ 	left: 0;
+ 	width: 100%;
+ 	height: 100%;
+ 	opacity: 0;
+ 	-webkit-transition: all 0.2s;
+ 	-moz-transition: all 0.2s;
+ 	transition: all 0.2s;
+ }
+
+ .top-news-slide .post a:hover:after{
+ 	opacity: 1
+ }
+
+ .top-news-slide .post .entry-header{
+ 	position: absolute;
+ 	top: 15px;
+ 	left: 0;
+ 	right: 0;
+ 	padding: 0 10px;
+ 	/*width: 100%;*/
+ 	color: #fff;
+ 	z-index: 2;
+ 	opacity: 0;
+ 	word-break: break-all;
+ 	-webkit-transition: all 0.2s;
+ 	-moz-transition: all 0.2s;
+ 	transition: all 0.2s;
+ 	pointer-events: none;
+ 	text-align: center;
+ }
+
+ .top-news-slide .post:hover .entry-header{opacity: 1;}
+
+ .top-news-slide .post img{
+ 	vertical-align: top;
+ 	width: 100%;
+ }
+
+ ul.owl-carousel {
+ 	margin-left: 0;
+ 	padding: 0;
+ 	list-style: none;
+ }
+
+ .top-news-slide.owl-carousel .owl-item:last-child {
+ 	margin-right: 0 !important;
+ }
+
+ .top-news-slide .owl-nav [class*="owl-"] {
+ 	position: absolute;
+ 	top: 50%;
+ 	left: 0;
+ 	overflow: hidden;
+ 	text-indent: 60px;
+ 	-webkit-transform: translateY(-50%);
+ 	-moz-transform: translateY(-50%);
+ 	transform: translateY(-50%);
+ }
+
+ .top-news-slide.owl-carousel .owl-nav .owl-prev{
+ 	background: url(images/arrow-prev.png) no-repeat;
+ 	width: 53px;
+ 	height: 39px;
+ }
+
+ .top-news-slide.owl-carousel .owl-nav .owl-next{
+ 	background: url(images/arrow-next.png) no-repeat;
+ 	width: 53px;
+ 	height: 39px;
+ 	right: 0;
+ 	left: auto;
+ }
+
+ .home-content {
+ 	padding-top: 0;
+ }
+
+ .all-post {
+ 	margin-bottom: 0;
+ }
+
+ .all-post.layout-2 ul li.large {
+    width: 50%;
+}
+
+.all-post ul li {
+    margin-bottom: 0;
+}
+
+.all-post.layout-2 ul li .post {
+    background: #000;
+    margin-bottom: 4px;
+}
+
+.all-post.layout-2 ul li .post:last-child {
+    margin-bottom: 0;
+}
+
+.all-post .post .category a {
+    border-radius: 5px;
+    display: inline-block;
+    padding: 7px 15px 8px;
+    color: #fff;
+    margin-right: 3px;
+    margin-bottom: 3px;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+.all-post .post .category a:hover, 
+.all-post .post .category a:focus {
+    text-decoration: none;
+    opacity: 0.8;
+    border-radius: 20px;
+}
+
+.section-three {
+	margin-bottom: 0;
+}
+
+.section-five .row {
+    display: flex;
+    flex: 1;
+}
+
+/*.section-five .col {
+	display: flex;
+	flex: 1;
+}*/
+
+.all-post.layout-1 ul {
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+}
+
+.all-post.layout-1 ul li {
+    display: flex;
+    flex: auto;
+    flex-direction: column;
+}
+
+.all-post.layout-1 ul li.large, .all-post.layout-1 ul li.medium {
+    padding-bottom: 4px;
+}
+
+.all-post.layout-1 ul li article {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.all-post.layout-1 ul li img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.all-post.layout-1 ul li a.post-thumbnail {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+@media screen and (max-width: 991px) {
+	.site-header .nav-holder .nav-content {
+	    display: flex;
+	    flex: 1;
+	}
+
+	.slicknav_menu {
+	    float: left;
+	    width: 50%;
+	}
+
+	.header-b .slicknav_btn {
+	    float: left;
+	}
+
+	.header-b .search-content {
+	    float: left;
+	    width: 50%;
+	    background: #4c4c4c;
+	}
+
+	.site-header .btn-search {
+	    float: right;
+	    margin-top: 15px;
+	    margin-right: 20px;
+	    color: #fff;
+	}
+
+	.all-post ul li.large .post .entry-title, 
+	.all-post ul li.medium .post .entry-title {
+		font-size: 20px;
+		line-height: 24px;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.scrolling-news .container {
+	    padding: 0;
+	}
+
+	.site-header .header-t .scrolling-news {
+	    float: none;
+	    width: 100%;
+	}
+
+	.site-header .header-t .social-networks {
+		margin-top: 20px;
+		text-align: left;
+	}
+
+	.all-post.layout-2 ul li.large {
+		width: 100%;
+	}
+
+	.section-five .row {
+		flex-direction: column;
+	}
+	.section-five .col {
+		display: block;
+	}
+
+}
+
+@media screen and (max-width: 540px) {
+	.site-header .ticker-wrapper.has-js {
+		float: none;
+		width: 100%;
+		padding-left: 0;
+	}
+}
+
+/* Custom Css */
+
+#wpadminbar .quicklinks{
+	display: -webkit-box;
+	display: -moz-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+    -moz-box-align: center;
+	-ms-flex-align: center;
+	justify-content: space-between;
+}

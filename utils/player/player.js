@@ -6,13 +6,23 @@ $(document).ready(function () {
     const div = document.createElement("div");
     div.innerHTML = input;
     const iframe = div.querySelector("iframe");
+    var widget = SC.Widget(iframe);
+    widget.bind(SC.Widget.Events.READY, function() {
+        widget.getCurrentSound(function(track) {
+            var description = track.description || 'No description available';
+            document.getElementById('description').innerHTML = description;
+        });
+    });
     if (iframe && iframe.src) {
       return iframe.src;
     } else {
       alert("Invalid input. Please make sure it contains a valid iframe.");
       return '';
     }
+
   }
+
+
   
   document.getElementById("submitButton").addEventListener("click", function (event) {
     event.preventDefault();  // Prevent form submission from reloading the page
@@ -38,6 +48,7 @@ $(document).ready(function () {
         scIframe.scrolling = "no";
         scIframe.frameBorder = "no";
         scIframe.allow = "autoplay";
+        scIframe.id = "framer";
         scIframe.src = extractedUrl;  // Set the extracted URL to the iframe
   
         // Replace the existing iframe in the main content
@@ -58,10 +69,16 @@ $(document).ready(function () {
           const currentTime = event.currentPosition / 1000;
           updatePlayingTrack(currentTime, trackList);
         });
+
+        widget.bind(SC.Widget.Events.READY, function() {
+            widget.getCurrentSound(function(track) {
+                var tit = track.title;
+                document.getElementById("heading").innerText = tit;
+            });
+        });
   
         printTracklist(trackList, widget);
-        document.getElementById("tlh").onclick = function () {
-          // Show tracklist in the modal
+        document.getElementById("current").onclick = function () {
           $("#tracklistModal").modal("show");
         };
       };
@@ -170,4 +187,3 @@ $(document).ready(function () {
     });
     trackListElement.value = "";
   }
-  
