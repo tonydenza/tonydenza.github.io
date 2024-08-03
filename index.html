@@ -20,6 +20,7 @@
 
         body h1 {
             scrollbar-width: none !important;
+            line-height: 30px;
         }
 
         body {
@@ -134,40 +135,13 @@
 
         @keyframes rotate2 {
             0% {
-                transform: rotateX(0deg) rotateY(0deg) translateY(500px);
+                transform: rotateZ(0deg);
 
             }
 
             100% {
-                transform: rotateX(0deg) rotateY(360deg) translateY(-500px);
+                transform: rotateZ(360deg);
 
-            }
-        }
-
-        @media (max-width: 600px) {
-            nav ul {
-                display: flex;
-                padding: 0 20px;
-            }
-
-            nav ul li {
-                display: block;
-                margin-bottom: 5px;
-                margin: auto;
-                padding: 0 20px;
-            }
-
-            h3 {
-                padding: 20px;
-            }
-
-            footer {
-                padding: 0 20px;
-            }
-
-            .sketchfab-embed-wrapper iframe {
-
-                left: -20px;
             }
         }
 
@@ -188,7 +162,7 @@
             color: #E9A4EB;
             text-shadow: 0px 0px 5px black;
             font-size: 3em;
-            animation: rotate2 6.5s;
+            animation: rotate2 5s;
         }
 
         #sc {
@@ -196,6 +170,55 @@
             bottom: 0;
             width: 60vw;
             margin: 2em 20em;
+        }
+
+        @media (max-width: 600px) {
+h1 {
+    line-height: 40px;
+    margin-top: 5px;
+}
+
+h2 {
+    font-size: large;
+}
+
+i {
+    font-size: 1.5em;
+}
+
+nav {
+    margin: 0 5px;
+
+}
+
+#sc {
+    width: 100vw;
+            margin: 0;
+}
+
+            nav ul {
+                display: flex;
+                padding: 0;
+            }
+
+            nav ul li {
+                display: block;
+                margin-bottom: 5px;
+                margin: auto;
+                padding: 0 20px;
+            }
+
+            h2 {
+                padding: 20px;
+            }
+
+            footer {
+                padding: 0 20px;
+            }
+
+            .sketchfab-embed-wrapper iframe {
+                left: -20px;
+            }
         }
     </style>
     <script>
