@@ -1,83 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>Bass Weight Prague</title>
     <style>
-        html, body {
-            height: 100%; /* Ensure the html and body cover the full height of the viewport */
+        html,
+        body {
+            height: 100%;
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-            overflow-x: hidden; /* Prevent horizontal scrolling */
+            overflow-x: hidden;
             color: #E9A4EB;
         }
+
+        body h1 {
+            scrollbar-width: none !important;
+        }
+
         body {
             display: flex;
             flex-direction: column;
-            background-size: cover; /* Cover the entire body */
-            background-position: center; /* Center the background image */
-            background-repeat: no-repeat; /* No repeating the background */
-            background-attachment: fixed; /* Fixed background on scrolling */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
             backdrop-filter: blur(2px);
             transition: background 0.5s ease-in-out;
+            scrollbar-width: none !important;
         }
+
+        body iframe, body div {
+            margin: 0 auto;
+            width: 80vw;
+        }
+
         header {
-            background-color: rgba(0,0,0,0.2);
             padding: 20px;
-            display: lex;
-            margin: 20px 0;
+            display: flex;
             text-align: center;
         }
+
         footer {
             padding: 20px 10em;
-            background-color: rgba(0,0,0,0.2);
         }
+
         nav {
-            background-color: rgba(0,0,0,0.2);
             padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            margin-bottom: 2em;
         }
+
         nav ul {
             list-style-type: none;
             padding: 0;
             margin: 0;
             text-align: center;
         }
+
         nav ul li {
             display: inline;
             margin: 0 10px;
         }
+
         section {
-            flex-grow: 1; /* Allows this section to grow and fill available space */
+            flex-grow: 1;
             text-align: center;
             padding: 20px;
-            overflow: auto; /* Adds scroll if content is too long */
-            filter: blur(0); /* Remove blur for text elements */
+            overflow: auto;
+            filter: blur(0);
         }
+
         h1 {
             text-shadow: black 0px 0px 5px;
             line-height: 10px;
-            margin-left: 1em;
             width: 100%;
             text-align: center;
         }
+
         h3 {
             padding: 10px 10em;
-            background-color: rgba(0,0,0,0.2);
             text-shadow: black 0px 0px 5px;
             text-align: center;
         }
+
         i {
             font-size: xx-large;
             color: #E9A4EB !important;
             text-shadow: black 0px 0px 5px;
         }
-        section {
-        }
+
+        section {}
+
         i:hover {
             color: #d37bd6 !important;
+        }
+
+        .sketchfab-embed-wrapper {
+            position: absolute;
+            top: -42px;
+            z-index: -1000;
+        }
+
+        .sketchfab-embed-wrapper iframe {
+            min-width: 100vw;
+            position: absolute;
+            left: -160px;
+            min-height: 120vh;
+        }
+
+        .g-background-default {
+            background-color: #f5f5f585 !important;
+        }
+
+        .rotating-text {
+            font-size: 3em;
+            animation: rotate 5s linear;
+            transform-style: preserve-3d;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotateX(0deg) rotateY(0deg);
+            }
+
+            100% {
+                transform: rotateX(0deg) rotateY(360deg);
+            }
+        }
+
+        @keyframes rotate2 {
+            0% {
+                transform: rotateX(0deg) rotateY(0deg);
+
+            }
+
+            100% {
+                transform: rotateX(0deg) rotateY(360deg) translateY(-500px);
+
+            }
         }
 
         @media (max-width: 600px) {
@@ -85,19 +151,52 @@
                 display: flex;
                 padding: 0 20px;
             }
+
             nav ul li {
                 display: block;
                 margin-bottom: 5px;
                 margin: auto;
                 padding: 0 20px;
             }
+
             h3 {
                 padding: 20px;
             }
+
             footer {
                 padding: 0 20px;
             }
+            .sketchfab-embed-wrapper iframe {
+
+            left: -20px;
         }
+        }
+
+        /* Loading Screen Styles */
+        #loading-screen {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 1s ease;
+        }
+
+        #loading-screen h1 {
+        color: #E9A4EB;
+        text-shadow: 0px 0px 5px black;
+        font-size: 3em;
+        animation: rotate2 6.5s ;
+    }
+
+   
+
+
+
+        
     </style>
     <script>
         function changeBackground() {
@@ -109,25 +208,55 @@
             var randomIndex = Math.floor(Math.random() * backgrounds.length);
             document.body.style.backgroundImage = backgrounds[randomIndex];
         }
+
+        function hideLoadingScreen() {
+            const loadingScreen = document.getElementById('loading-screen');
+            loadingScreen.style.opacity = 0;
+            setTimeout(() => {
+                loadingScreen.style.display = 'none';
+            }, 1000); // Match with CSS transition duration
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            changeBackground();
+            setTimeout(hideLoadingScreen, 2500);
+        });
     </script>
 </head>
-<body onload="changeBackground()">
+
+<body>
+    <div id="loading-screen">
+        <h1 class="rotating-text">BASS WEIGHT PRAGUE</h1>
+    </div>
+
     <header>
-        <img src="images/logo_url.png" alt="Bass Weight Logo" style="max-height: 50px; border-radius: 50px;">
-                <h1>BASS WEIGHT PRAGUE</h1>
+        <h1>BASS WEIGHT PRAGUE</h1>
     </header>
+
+    <h3>Prague based group of DJs hosting events under the name Bass Weight. Enthusiasts of the UK club music continuum, digging through both archives and yet-to-be discovered crates for fresh mutations in bass music.</h3>
+
+    
+
     <nav>
         <ul>
             <li><a href="https://www.facebook.com/bassweightprg"><i class="fab fa-facebook-f"></i></a></li>
             <li><a href="https://www.instagram.com/bassweight_prg/"><i class="fab fa-instagram"></i></a></li>
             <li><a href="https://soundcloud.com/bassweight-prague"><i class="fab fa-soundcloud"></i></a></li>
-            <li><a href="https://soundcloud.com/bassweight-prague/sets/guestmixes"><i class="fas fa-headphones-alt"></i></a></li>
+            <li><a href="https://soundcloud.com/bassweight-prague/sets/guestmixes"><i
+                    class="fas fa-headphones-alt"></i></a></li>
             <li><a href="mailto:bassweight.prg@gmail.com"><i class="fas fa-envelope"></i></a></li>
         </ul>
     </nav>
-    <h3>Prague based group of DJs hosting events under the name Bass Weight. Enthusiasts of the UK club music continuum, digging through both archives and yet-to-be discovered crates for fresh mutations in bass music.</h3>
+
     <footer>
-        <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1806254454&color=%23e9a4eb&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/bassweight-prague" title="BASS WEIGHT PRAGUE" target="_blank" style="color: #cccccc; text-decoration: none;">BASS WEIGHT PRAGUE</a> · <a href="https://soundcloud.com/bassweight-prague/dlktek-enter-the-bass-w8" title="DLKTek - Enter the Bass W8" target="_blank" style="color: #cccccc; text-decoration: none;">DLKTek - Enter the Bass W8</a></div>
+        <div class="sketchfab-embed-wrapper">
+            <iframe title="Largemouth bass" frameborder="0" allowfullscreen
+                    mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking"
+                    xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share
+                    src="https://sketchfab.com/models/e60b9e34a4554b3f9819ffb991707f02/embed?autospin=1&autostart=1&camera=0&preload=1&ui_hint=0&ui_theme=dark">
+            </iframe>
+        </div>
     </footer>
 </body>
+
 </html>
