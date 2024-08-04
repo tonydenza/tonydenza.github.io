@@ -6,12 +6,7 @@ body {
   padding: 0;
   font-family: Arial, sans-serif;
   overflow-x: hidden;
-  color: #e9a4eb;
-}
-
-body h1 {
-  scrollbar-width: none !important;
-  line-height: 30px;
+  color: #e37de7;
 }
 
 body {
@@ -23,22 +18,45 @@ body {
   background-attachment: fixed;
   backdrop-filter: blur(2px);
   transition: background 0.5s ease-in-out;
-  scrollbar-width: none !important;
 }
 
-body iframe,
 body div {
   margin: 0 auto;
   width: 80vw;
 }
 
-header {
-  padding: 20px;
+h1 {
+  text-shadow: black 0px 0px 5px;
+  line-height: 10px;
+  width: 100%;
+  text-align: center;
+  font-size: 5em;
+  scrollbar-width: none !important;
+  line-height: 30px;
+}
+
+h2 {
+  padding: 30px 2em;
+  text-shadow: black 0px 0px 5px;
   text-align: center;
 }
 
-footer {
-  padding: 20px 10em;
+i {
+  font-size: 2.5em;
+  color: #e9a4eb !important;
+  text-shadow: black 0px 0px 5px;
+  background: transparent;
+}
+
+i:hover {
+  color: #d37bd6 !important;
+  animation: rotate 2s infinite;
+
+}
+
+header {
+  padding: 20px;
+  text-align: center;
 }
 
 nav {
@@ -56,55 +74,30 @@ nav ul {
 
 nav ul li {
   display: inline;
-  margin: 0 50px;
+  margin: 0 40px 0 0;
 }
 
-section {
-  flex-grow: 1;
-  text-align: center;
-  padding: 20px;
-  overflow: auto;
-  filter: blur(0);
+footer {
+  padding: 20px 0em;
 }
 
-h1 {
-  text-shadow: black 0px 0px 5px;
-  line-height: 10px;
-  width: 100%;
-  text-align: center;
-  font-size: 5em;
+footer iframe {
+  position: absolute;
+  bottom: 0;
+  width: 80vw;
+  margin: 2em 60px;
 }
 
-h2 {
-  padding: 30px 10em;
-  text-shadow: black 0px 0px 5px;
-  text-align: center;
-}
-
-i {
-  font-size: 2.5em;
-  color: #e9a4eb !important;
-  text-shadow: black 0px 0px 5px;
-}
-
-i:hover {
-  color: #d37bd6 !important;
-}
-
-.sketchfab-embed-wrapper {
+.spinnin-bass {
   position: absolute;
   top: -45px;
   z-index: -1000;
 }
 
-.sketchfab-embed-wrapper iframe {
+.spinnin-bass iframe {
   min-width: 100vw;
   position: absolute;
   min-height: 120vh;
-}
-
-.g-background-default {
-  background-color: #f5f5f585 !important;
 }
 
 .rotating-text {
@@ -112,6 +105,27 @@ i:hover {
   animation: rotate 5s linear;
   transform-style: preserve-3d;
 }
+
+#loading-screen {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  transition: opacity 1s ease;
+}
+
+#loading-screen h1 {
+  color: #e9a4eb;
+  text-shadow: 0px 0px 5px black;
+  font-size: 3em;
+  animation: rotate2 5s;
+}
+
+/* ANIMACE */
 
 @keyframes rotate {
   0% {
@@ -133,32 +147,7 @@ i:hover {
   }
 }
 
-/* Loading Screen Styles */
-#loading-screen {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: #ffffff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  transition: opacity 1s ease;
-}
-
-#loading-screen h1 {
-  color: #e9a4eb;
-  text-shadow: 0px 0px 5px black;
-  font-size: 3em;
-  animation: rotate2 5s;
-}
-
-#sc {
-  position: absolute;
-  bottom: 0;
-  width: 80vw;
-  margin: 2em 0em;
-}
+/* MEDIAQUERY */
 
 @media (max-width: 600px) {
   h1 {
@@ -179,11 +168,7 @@ i:hover {
 
   nav {
     margin: 0 5px;
-  }
-
-  #sc {
-    width: 90vw;
-    margin: -30px 0;
+    padding: 20px;
   }
 
   nav ul {
@@ -198,15 +183,17 @@ i:hover {
     padding: 0 20px;
   }
 
-  h2 {
-    padding: 20px;
-  }
-
   footer {
     padding: 0 20px;
   }
 
-  .sketchfab-embed-wrapper iframe {
+  footer iframe {
+    width: 90vw;
+    margin: -30px 0;
+  }
+
+  .spinnin-bass iframe {
     left: 0px;
   }
 }
+
