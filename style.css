@@ -6,7 +6,7 @@ body {
   padding: 0;
   font-family: Arial, sans-serif;
   overflow-x: hidden;
-  color: #e37de7;
+  color: #de77e2e8;
 }
 
 body {
@@ -27,18 +27,19 @@ body div {
 
 h1 {
   text-shadow: black 0px 0px 5px;
-  line-height: 10px;
   width: 100%;
   text-align: center;
   font-size: 5em;
   scrollbar-width: none !important;
-  line-height: 30px;
+  line-height: 50px;
+  margin-bottom: 30px;
 }
 
 h2 {
-  padding: 30px 2em;
+  padding: 20px 15%;
   text-shadow: black 0px 0px 5px;
   text-align: center;
+  margin-bottom: 30px;
 }
 
 i {
@@ -62,7 +63,7 @@ header {
 nav {
   padding: 10px 0;
   width: 100%;
-  margin: 3em 0;
+  margin: 10px 0 10px 0;
 }
 
 nav ul {
@@ -82,10 +83,9 @@ footer {
 }
 
 footer iframe {
-  position: absolute;
-  bottom: 0;
-  width: 80vw;
-  margin: 2em 60px;
+  width: 50%;
+  text-align: center;
+  padding: 0 25%;
 }
 
 .spinnin-bass {
@@ -129,21 +129,21 @@ footer iframe {
 
 @keyframes rotate {
   0% {
-    transform: rotateX(0deg) rotateY(0deg);
+    transform: rotateY(0deg);
   }
 
   100% {
-    transform: rotateX(0deg) rotateY(360deg);
+    transform: rotateY(360deg);
   }
 }
 
 @keyframes rotate2 {
   0% {
-    transform: rotateZ(0deg);
+    transform: rotateY(0deg);
   }
 
   100% {
-    transform: rotateZ(360deg);
+    transform: rotateY(360deg);
   }
 }
 
@@ -152,23 +152,23 @@ footer iframe {
 @media (max-width: 600px) {
   h1 {
     line-height: 40px;
-    margin-top: 5px;
+    margin-top: 20px;
   }
 
   h2 {
     font-size: large;
     line-height: 17px;
-    padding: 0 20px 15px 0;
+    padding: 10px;
     margin: 0;
   }
 
   i {
-    font-size: 1.5em;
+    font-size: 2em;
   }
 
   nav {
-    margin: 0 5px;
-    padding: 20px;
+    margin: 0 0px 0px 0px;
+    padding: 40px 20px 0px 20px;
   }
 
   nav ul {
@@ -178,18 +178,16 @@ footer iframe {
 
   nav ul li {
     display: block;
-    margin-bottom: 5px;
-    margin: auto;
-    padding: 0 20px;
+    margin: 0 5% 0 5%;
   }
 
   footer {
-    padding: 0 20px;
+    padding: 10% 2em;
   }
 
   footer iframe {
-    width: 90vw;
-    margin: -30px 0;
+    width: 100%;
+    padding: 0;
   }
 
   .spinnin-bass iframe {
