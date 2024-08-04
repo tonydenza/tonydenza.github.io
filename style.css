@@ -82,7 +82,17 @@ footer {
   padding: 20px 0em;
 }
 
-footer iframe {
+footer div {
+  margin-top: 0;
+  color: white;
+  background-color: black;
+  font-weight: 400;
+  padding: 5px 8px !important;
+  width: max-content !important;
+}
+
+footer iframe,
+footer div {
   width: 50%;
   text-align: center;
   padding: 0 25%;
