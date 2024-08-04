@@ -5,236 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
     <title>Bass Weight Prague</title>
-    <style>
-        html,
-        body {
-            overflow: hidden;
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            overflow-x: hidden;
-            color: #E9A4EB;
-        }
+</head>
 
-        body h1 {
-            scrollbar-width: none !important;
-            line-height: 30px;
-        }
-
-        body {
-            display: flex;
-            flex-direction: column;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            backdrop-filter: blur(2px);
-            transition: background 0.5s ease-in-out;
-            scrollbar-width: none !important;
-        }
-
-        body iframe,
-        body div {
-            margin: 0 auto;
-            width: 80vw;
-        }
-
-        header {
-            padding: 20px;
-            text-align: center;
-        }
-
-        footer {
-            padding: 20px 10em;
-        }
-
-        nav {
-            padding: 10px 0;
-            width: 100%;
-            margin: 3em 0;
-        }
-
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-            text-align: center;
-        }
-
-        nav ul li {
-            display: inline;
-            margin: 0 50px;
-        }
-
-        section {
-            flex-grow: 1;
-            text-align: center;
-            padding: 20px;
-            overflow: auto;
-            filter: blur(0);
-        }
-
-        h1 {
-            text-shadow: black 0px 0px 5px;
-            line-height: 10px;
-            width: 100%;
-            text-align: center;
-            font-size: 5em;
-        }
-
-        h2 {
-            padding: 30px 10em;
-            text-shadow: black 0px 0px 5px;
-            text-align: center;
-        }
-
-        i {
-            font-size: 2.5em;
-            color: #E9A4EB !important;
-            text-shadow: black 0px 0px 5px;
-        }
-
-        i:hover {
-            color: #d37bd6 !important;
-        }
-
-        .sketchfab-embed-wrapper {
-            position: absolute;
-            top: -45px;
-            z-index: -1000;
-        }
-
-        .sketchfab-embed-wrapper iframe {
-            min-width: 100vw;
-            position: absolute;
-            left: -160px;
-            min-height: 120vh;
-        }
-
-        .g-background-default {
-            background-color: #f5f5f585 !important;
-        }
-
-        .rotating-text {
-            font-size: 3em;
-            animation: rotate 5s linear;
-            transform-style: preserve-3d;
-        }
-
-        @keyframes rotate {
-            0% {
-                transform: rotateX(0deg) rotateY(0deg);
-            }
-
-            100% {
-                transform: rotateX(0deg) rotateY(360deg);
-            }
-        }
-
-        @keyframes rotate2 {
-            0% {
-                transform: rotateZ(0deg);
-
-            }
-
-            100% {
-                transform: rotateZ(360deg);
-
-            }
-        }
-
-        /* Loading Screen Styles */
-        #loading-screen {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            background: #ffffff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            transition: opacity 1s ease;
-        }
-
-        #loading-screen h1 {
-            color: #E9A4EB;
-            text-shadow: 0px 0px 5px black;
-            font-size: 3em;
-            animation: rotate2 5s;
-        }
-
-        #sc {
-            position: absolute;
-            bottom: 0;
-            width: 60vw;
-            margin: 2em 20em;
-        }
-
-        @media (max-width: 600px) {
-h1 {
-    line-height: 40px;
-    margin-top: 5px;
-}
-
-h2 {
-    font-size: large;
-    line-height: 17px;
-    padding: 0 20px 15px 0;
-    margin: 0;
-}
-
-i {
-    font-size: 1.5em;
-}
-
-nav {
-    margin: 0 5px;
-
-}
-
-#sc {
-    width: 100vw;
-            margin: 0;
-}
-
-            nav ul {
-                display: flex;
-                padding: 0;
-            }
-
-            nav ul li {
-                display: block;
-                margin-bottom: 5px;
-                margin: auto;
-                padding: 0 20px;
-            }
-
-            h2 {
-                padding: 20px;
-            }
-
-            footer {
-                padding: 0 20px;
-            }
-
-            .sketchfab-embed-wrapper iframe {
-                left: -20px;
-            }
-        }
-    </style>
+<body>
     <script>
-        function changeBackground() {
-            var backgrounds = [
-                "url('images/image1.png')", // Replace with actual URLs
-                "url('images/image2.png')",
-                "url('images/image3.png')"
-            ];
-            var randomIndex = Math.floor(Math.random() * backgrounds.length);
-            document.body.style.backgroundImage = backgrounds[randomIndex];
-        }
-
         function hideLoadingScreen() {
             const loadingScreen = document.getElementById('loading-screen');
             loadingScreen.style.opacity = 0;
@@ -244,13 +20,10 @@ nav {
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            changeBackground();
             setTimeout(hideLoadingScreen, 3000);
         });
     </script>
-</head>
 
-<body>
     <div id="loading-screen">
         <h1 class="rotating-text">BASS<br>WEIGHT<br>PRAGUE</h1>
     </div>
@@ -271,18 +44,17 @@ nav {
 
     </header>
 
+    <div class="sketchfab-embed-wrapper">
+        <iframe id="ryby" title="Spinnin bass" allowfullscreen mozallowfullscreen="true"
+            webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking
+            execution-while-out-of-viewport execution-while-not-rendered web-share
+            src="https://sketchfab.com/models/e60b9e34a4554b3f9819ffb991707f02/embed?autospin=1&autostart=1&camera=0&preload=1&ui_hint=0&ui_theme=dark">
+        </iframe>
+    </div>
 
     <footer>
-        <div class="sketchfab-embed-wrapper">
-            <iframe id="ryby" title="Spinnin bass" allowfullscreen mozallowfullscreen="true"
-                webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking
-                execution-while-out-of-viewport execution-while-not-rendered web-share
-                src="https://sketchfab.com/models/e60b9e34a4554b3f9819ffb991707f02/embed?autospin=1&autostart=1&camera=0&preload=1&ui_hint=0&ui_theme=dark">
-            </iframe>
-        </div>
+        <iframe id="sc" width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1806254454&color=%23e9a4eb&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"></iframe>
     </footer>
-
-    <iframe id="sc" width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1806254454&color=%23e9a4eb&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"></iframe>
 </body>
 
 </html>
