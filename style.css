@@ -38,7 +38,7 @@ h1 {
 }
 
 h2 {
-  padding: 0 25% 150px;
+  padding: 20px 25% 150px;
   text-shadow: black 0px 0px 5px;
   text-align: center;
   margin-bottom: 30px;
@@ -81,7 +81,7 @@ nav ul {
 
 nav ul li {
   display: inline;
-  margin: 0 40px 0 0;
+  margin: 20px;
 }
 
 footer {
@@ -149,7 +149,14 @@ footer div {
 #cue {display: none;}
 
 #current {
-  background-color: #5f9ea0;
+  margin-top: -35px;
+  background-color: transparent;
+}
+
+#playing {
+  text-shadow: black 0px 0px 5px;
+  padding: 5px;
+  background-color: transparent;
 }
 
 /* ANIMACE */

@@ -211,28 +211,28 @@
 
     var input = '';
     var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-          input = xhr.responseText;
-          const trackList = parseTracklist(input);
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState == 4 && xhr.status == 200) {
+        input = xhr.responseText;
+        const trackList = parseTracklist(input);
 
-    const iframeElement = document.querySelector('#soundcloud-player');
-    const widget = SC.Widget(iframeElement);
+        const iframeElement = document.querySelector('#soundcloud-player');
+        const widget = SC.Widget(iframeElement);
 
-    widget.bind(SC.Widget.Events.PLAY_PROGRESS, function (event) {
-      const currentTime = event.currentPosition / 1000;
-      updatePlayingTrack(currentTime, trackList);
-    });
+        widget.bind(SC.Widget.Events.PLAY_PROGRESS, function (event) {
+          const currentTime = event.currentPosition / 1000;
+          updatePlayingTrack(currentTime, trackList);
+        });
 
-    printTracklist(trackList, widget);
-    document.getElementById("tracklist").hidden = true;
-    document.getElementById("tlh").onclick = function () { document.getElementById("tracklist").hidden = false };
-        }
+        printTracklist(trackList, widget);
+        document.getElementById("tracklist").hidden = true;
+        document.getElementById("tlh").onclick = function () { document.getElementById("tracklist").hidden = false };
+      }
     }
     xhr.open('GET', '../mixes/zeek_160/160.cue');
     xhr.send();
 
-    
+
 
 
   </script>
