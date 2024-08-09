@@ -149,7 +149,8 @@ footer div {
 #cue {display: none;}
 
 #current {
-  background-color: #5f9ea0;;
+  background-color: transparent;
+  color: #c6cab6;
 }
 
 #playing {
