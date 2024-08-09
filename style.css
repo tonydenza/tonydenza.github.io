@@ -87,7 +87,6 @@ nav ul li {
 footer {
   padding: 30px 0em;
   background-color: rgba(95, 158, 160, 0.386);
-
 }
 
 footer div {
@@ -115,6 +114,7 @@ footer div {
 .spinnin-bass iframe {
   min-height: 120vh;
   min-width: 100vw;
+  filter: blur(3px);
 }
 
 .rotating-text {
@@ -144,6 +144,12 @@ footer div {
   animation: rotate2 5s;
   line-height: 50px;
   width: 30px;
+}
+
+#cue {display: none;}
+
+#current {
+  background-color: #5f9ea0;
 }
 
 /* ANIMACE */
