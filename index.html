@@ -19,15 +19,12 @@
 
 <body>
     <div id="loading-screen">
-        <h1 class="rotating-text"><i class="fa-solid fa-compact-disc rotating-text"></i><br>BASS<br>WEIGHT<br>PRAGUE
-        </h1>
+        <h1 class="rotating-text">BASS WEIGHT PRAGUE</h1>
     </div>
 
     <header>
-        <h1>BASS<br>WEIGHT<br>PRAGUE</h1>
-        <h2>Prague based group of DJs hosting events under the name Bass Weight. Enthusiasts of the UK club music
-            continuum, digging through both archives and yet-to-be discovered crates for fresh mutations in bass music.
-            </h2>
+        <h1 id="bwp" onclick="toggleSpinninBass()">BASS<br>WEIGHT<br>PRAGUE</h1>
+
         <nav>
             <ul>
                 <li><a target="_blank" href="https://www.facebook.com/bassweightprg"><i
@@ -50,12 +47,26 @@
             execution-while-not-rendered web-share
             src="https://sketchfab.com/models/e60b9e34a4554b3f9819ffb991707f02/embed?autospin=1&autostart=1&camera=0&preload=1&ui_hint=0&ui_theme=dark">
         </iframe>
+        <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay"
+            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1806254454&color=%235f9ea0&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true"></iframe>
+
     </div>
 
     <footer>
-        <iframe width="100%" height="150" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1806254454&color=%234c245c&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true"></iframe>
-        <div style="display: none;">Artist - Track</div>
+        <iframe width="100%" height="150" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1806254454&color=%235f9ea0&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true"></iframe>
     </footer>
+
+    <h2>Prague based group of DJs hosting events under the name Bass Weight. Enthusiasts of the UK club music
+        continuum, digging through both archives and yet-to-be discovered crates for fresh mutations in bass music.
+    </h2>
+
+    <script>
+        function toggleSpinninBass() {
+            const spinninBass = document.querySelector('.spinnin-bass');
+            const currentZIndex = window.getComputedStyle(spinninBass).zIndex;
+            spinninBass.style.zIndex = currentZIndex == '0' ? '-1000' : '0';
+        }
+    </script>
 </body>
 
 </html>
