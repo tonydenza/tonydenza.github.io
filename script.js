@@ -67,7 +67,7 @@ function convertTimeToSeconds(time) {
 }
 
 function updatePlayingTrack(currentTime, trackList) {
-    let currentTrack = "Nothing playing";
+    let currentTrack = "DLKTek - Enter the Bassw8t";
     for (let i = 0; i < trackList.length; i++) {
         const trackTime = convertTimeToSeconds(trackList[i].time);
         const nextTrackTime = i < trackList.length - 1 ? convertTimeToSeconds(trackList[i + 1].time) : Infinity;
