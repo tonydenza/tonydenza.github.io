@@ -14,6 +14,19 @@
     <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
     <title>BASS WEIGHT PRAGUE</title>
+    <style>
+        model-viewer {
+            width: 100%;
+  height: 500px;
+  position: fixed;
+        }
+        .tx {
+            transform: translateX(-200px);
+        }
+        .txx {
+            transform: translateX(200px);
+        }
+    </style>
 </head>
 
 <body>
@@ -34,8 +47,12 @@
         </nav>
     </header>
 
-    <div class="spinnin-bass">
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 
+    <div class="spinnin-bass">
+        <model-viewer src="./scene.gltf" alt="A 3D model" auto-rotate shadow-intensity="1" ar ar-modes="scene-viewer webxr quick-look"></model-viewer>
+        <model-viewer class="tx" src="./scene.gltf" alt="A 3D model" auto-rotate shadow-intensity="1" ar ar-modes="scene-viewer webxr quick-look"></model-viewer>
+        <model-viewer class="txx" src="./scene.gltf" alt="A 3D model" auto-rotate shadow-intensity="1" ar ar-modes="scene-viewer webxr quick-look"></model-viewer>        
     </div>
 
     <footer>
