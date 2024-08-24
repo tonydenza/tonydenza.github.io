@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CUE File to Tracklist Converter</title>
+    <style>
+        .container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        textarea {
+            width: 500px;
+            height: 500px;
+        }
+
+        button {
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>CUE File to Tracklist Converter</h1>
+    <p>Select a CUE file or paste the CUE file content in the text area below:</p>
+    <input type="file" id="cueFile" accept=".cue"><br><br>
+    <div class="container">
+        <textarea id="cueText" placeholder="Paste CUE file content here..."></textarea>
+        <button onclick="convertToTracklist()">Convert to tracklist</button>
+        <textarea id="output" placeholder="Tracklist will appear here..."></textarea>
+    </div>
+
+    <script>
+        function convertToTracklist() {
+            const fileInput = document.getElementById('cueFile');
+            const cueText = document.getElementById('cueText');
+            const output = document.getElementById('output');
+
+            if (fileInput.files.length === 0 && cueText.value.trim() === '') {
+                alert('Please select a file or paste CUE file content.');
+                return;
+            }
+
+            if (cueText.value.trim() !== '') {
+                processCueContent(cueText.value.trim());
+            } else {
+                const reader = new FileReader();
+                reader.onload = function (event) {
+                    const fileContent = event.target.result;
+                    cueText.value = fileContent;  // Put the file content into the first textarea
+                    processCueContent(fileContent);
+                };
+                reader.readAsText(fileInput.files[0]);
+            }
+        }
+
+        function processCueContent(content) {
+            const lines = content.split('\n');
+            let result = [];
+            let artist = '';
+            let title = '';
+
+            for (let i = 0; i < lines.length; i++) {
+                const line = lines[i].trim();
+                if (line.startsWith('TITLE')) {
+                    const parts = line.split('"');
+                    if (parts.length > 1) {
+                        title = parts[1];
+                    }
+                } else if (line.startsWith('PERFORMER')) {
+                    const parts = line.split('"');
+                    if (parts.length > 1) {
+                        artist = parts[1];
+                    }
+
+                    // Combine title and artist in the correct order
+                    const fullEntry = `${artist} - ${title}`;
+                    if (!result.includes(fullEntry) && fullEntry !== ' - ') {
+                        result.push(fullEntry);
+                    }
+
+                    // Reset title and artist for next iteration
+                    title = '';
+                    artist = '';
+                }
+            }
+
+            // Format the output with the first line as heading and the rest numbered
+            if (result.length > 0) {
+                const heading = result[0]; // First line as heading
+                const numberedLines = result.slice(1).map((line, index) => `${index + 1}. ${line}`);
+                output.value = `${heading}\n${numberedLines.join('\n')}`;
+            } else {
+                output.value = '';
+            }
+        }
+    </script>
+</body>
+
+</html>
