@@ -1,10 +1,10 @@
-function hideLoadingScreen() {
+/*function hideLoadingScreen() {
     const loadingScreen = document.getElementById('loading-screen');
     loadingScreen.style.opacity = 0;
     setTimeout(() => {
         loadingScreen.style.display = 'none';
     }, 1000);
-}
+}*/
 
 function toggleSpinninBass() {
     const spinninBass = document.querySelector('.spinnin-bass');
@@ -108,6 +108,6 @@ const currentTime = event.currentPosition / 1000;
 updatePlayingTrack(currentTime, trackList);
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-    setTimeout(hideLoadingScreen, 3000);
-});
+//document.addEventListener('DOMContentLoaded', () => {
+//    setTimeout(hideLoadingScreen, 3000);
+//});
