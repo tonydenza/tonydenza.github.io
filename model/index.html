@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Viewer</title>
+    <style>
+        body { margin: 0; }
+        model-viewer {
+            width: 100vw;
+            height: 100vh;
+            background-color: #EEE;
+            position: absolute;
+            opacity: 60%;
+        }
+        .tx {
+            transform: translateX(-200px);
+        }
+        .txx {
+            transform: translateX(200px);
+        }
+    </style>
+</head>
+<body>
+
+<!-- Include the model-viewer library -->
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+<!-- Model Viewer Component -->
+<model-viewer src="./scene.gltf" alt="A 3D model" auto-rotate camera-controls shadow-intensity="1" ar ar-modes="scene-viewer webxr quick-look"></model-viewer>
+<model-viewer class="tx" src="./scene.gltf" alt="A 3D model" auto-rotate camera-controls shadow-intensity="1" ar ar-modes="scene-viewer webxr quick-look"></model-viewer>
+<model-viewer class="txx" src="./scene.gltf" alt="A 3D model" auto-rotate camera-controls shadow-intensity="1" ar ar-modes="scene-viewer webxr quick-look"></model-viewer>
+
+</body>
+</html>
