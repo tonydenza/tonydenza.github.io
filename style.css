@@ -44,13 +44,14 @@ h1:hover {
 }
 
 h2 {
-  padding: 20px 25% 150px;
+  padding: 30px 25% 150px;
   text-shadow: black 0px 0px 5px;
   text-align: center;
   margin-bottom: 30px;
   background-color: rgba(95, 158, 160, 0.386);
   margin-top: 0;
   font-size: unset;
+  color: #f6ffd2;
 }
 
 i {
@@ -109,7 +110,7 @@ nav ul li {
 }
 
 footer {
-  padding: 30px 0em;
+  padding: 0;
   background-color: rgba(95, 158, 160, 0.386);
 }
 
@@ -153,7 +154,8 @@ footer div {
 
 #current {
   background-color: transparent;
-  color: #c6cab6;
+  margin-top: -2em;
+  color: ghostwhite;
 }
 
 #playing {
