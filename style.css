@@ -44,10 +44,9 @@ h1:hover {
 }
 
 h2 {
-  padding: 30px 25% 150px;
+  padding: 30px 25% 200px;
   text-shadow: black 0px 0px 5px;
   text-align: center;
-  margin-bottom: 30px;
   background-color: rgba(95, 158, 160, 0.386);
   margin-top: 0;
   font-size: unset;
@@ -296,6 +295,12 @@ opacity: 75%;
   }
   .txx {
     transform: translateX(100px);
+  }
+
+  #current {
+    margin-top: 0;
+    color: white;
+    text-shadow: white 0px 0px 0px !important;
   }
 }
 
