@@ -111,15 +111,20 @@ nav ul li {
 footer {
   padding: 0;
   background-color: rgba(95, 158, 160, 0.386);
+  display: flex;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  min-height: 160px;
+  scrollbar-width: none;
+
 }
 
 footer div {
   margin-top: 0;
   color: white;
-  background-color: black;
   font-weight: 400;
   padding: 5px 8px !important;
-  width: max-content !important;
+  min-width: 100vw !important;
 }
 
 footer iframe,
