@@ -1,10 +1,4 @@
-/*function hideLoadingScreen() {
-    const loadingScreen = document.getElementById('loading-screen');
-    loadingScreen.style.opacity = 0;
-    setTimeout(() => {
-        loadingScreen.style.display = 'none';
-    }, 1000);
-}*/
+
 
 function toggleSpinninBass() {
     const spinninBass = document.querySelector('.spinnin-bass');
@@ -67,7 +61,7 @@ function convertTimeToSeconds(time) {
 }
 
 function updatePlayingTrack(currentTime, trackList) {
-    let currentTrack = "DLKTek - Enter the Bassw8tHardware - I Got 140 Problems But a Bass Ain't One";
+    let currentTrack = "";
     for (let i = 0; i < trackList.length; i++) {
         const trackTime = convertTimeToSeconds(trackList[i].time);
         const nextTrackTime = i < trackList.length - 1 ? convertTimeToSeconds(trackList[i + 1].time) : Infinity;
@@ -99,7 +93,6 @@ function printTracklist(trackList, widget) {
 
 var input = document.getElementById('cue').textContent;
 const trackList = parseTracklist(input);
-
 const iframeElement = document.querySelector('#soundcloud-player');
 const widget = SC.Widget(iframeElement);
 
@@ -107,6 +100,8 @@ widget.bind(SC.Widget.Events.PLAY_PROGRESS, function (event) {
 const currentTime = event.currentPosition / 1000;
 updatePlayingTrack(currentTime, trackList);
 });
+
+document.getElementById("bwp").addEventListener("click", toggleSpinninBass);
 
 //document.addEventListener('DOMContentLoaded', () => {
 //    setTimeout(hideLoadingScreen, 3000);
