@@ -107,7 +107,7 @@ nav ul li {
   margin: 20px;
 }
 
-footer {
+content {
   padding: 0;
   background-color: rgba(95, 158, 160, 0.386);
   display: flex;
@@ -117,24 +117,24 @@ footer {
   scrollbar-width: none;
 }
 
-footer div {
+content div {
   margin-top: 0;
   color: white;
   font-weight: 400;
   padding: 5px 8px !important;
-  min-width: 100vw !important;
+  min-width: 75vw !important;
 }
 
-footer iframe,
-footer div {
-  width: 50%;
+content iframe,
+content div {
+  width: 80%;
   text-align: center;
   padding: 0 25%;
 }
 
 model-viewer {
   width: 100vw;
-  height: 40vh;
+  height: 50vh;
   position: absolute;
   opacity: 75%;
 }
@@ -264,7 +264,7 @@ model-viewer {
 
   nav {
     margin: 0 0px 0px 0px;
-    padding: 40px 20px 0px 20px;
+    padding: 40px 20px 0px 0px;
   }
 
   nav ul {
@@ -277,11 +277,11 @@ model-viewer {
     margin: 0 5% 0 5%;
   }
 
-  footer {
+  content {
     padding: 10% 2em;
   }
 
-  footer iframe {
+  content iframe {
     width: 100%;
     padding: 0;
   }
@@ -293,7 +293,7 @@ model-viewer {
   .tx {
     transform: translateX(-100px);
   }
-  
+
   .txx {
     transform: translateX(100px);
   }

@@ -101,7 +101,7 @@ const currentTime = event.currentPosition / 1000;
 updatePlayingTrack(currentTime, trackList);
 });
 
-document.getElementById("bwp").addEventListener("click", toggleSpinninBass);
+//document.getElementById("bwp").addEventListener("click", toggleSpinninBass);
 
 //document.addEventListener('DOMContentLoaded', () => {
 //    setTimeout(hideLoadingScreen, 3000);
