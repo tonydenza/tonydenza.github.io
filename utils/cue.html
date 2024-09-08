@@ -25,10 +25,20 @@
 <body>
     <h1>CUE File to Tracklist Converter</h1>
     <p>Select a CUE file or paste the CUE file content in the text area below:</p>
-    <input type="file" id="cueFile" accept=".cue"><br><br>
     <div class="container">
         <textarea id="cueText" placeholder="Paste CUE file content here..."></textarea>
-        <button onclick="convertToTracklist()">Convert to tracklist</button>
+        <div>
+            <input type="file" id="cueFile" accept=".cue"><br><br>
+            <select>   
+                <option value="numbered">Numbered</option>
+                <option value="timestamps">Timestamps</option>
+
+            </select>
+            <br><br>
+            <button onclick="convertToTracklist()">Convert to tracklist</button>
+        </div>
+
+
         <textarea id="output" placeholder="Tracklist will appear here..."></textarea>
     </div>
 
