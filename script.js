@@ -13,6 +13,15 @@ window.onclick = function (event) {
   }
 };
 
+var eventModal = document.getElementById("eventModal");
+
+    // Function to hide modal if clicked outside
+    window.onclick = function(event) {
+        if (event.target == eventModal) {
+            eventModal.style.display = "none";
+        }
+    }
+
 function toggleSpinninBass() {
   const spinninBass = document.querySelector(".spinnin-bass");
   const currentZIndex = window.getComputedStyle(spinninBass).zIndex;
