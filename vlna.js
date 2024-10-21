@@ -5,11 +5,11 @@ const imgInput = document.querySelector("#image-selector-input");
 const devicePixelRatio = Math.min(window.devicePixelRatio, 2);
 
 const params = {
-    blueish: .6,
-    scale: 7,
+    blueish: .2,
+    scale: 12,
     illumination: .15,
-    surfaceDistortion: .07,
-    waterDistortion: .03,
+    surfaceDistortion: .02,
+    waterDistortion: .015,
     loadMyImage: () => {
         imgInput.click();
     }
@@ -30,7 +30,7 @@ imgInput.onchange = () => {
 let image, uniforms;
 const gl = initShader();
 updateUniforms();
-loadImage("./funkstation.png");
+loadImage("./vlna.jpg");
 createControls();
 render();
 window.addEventListener("resize", resizeCanvas);
