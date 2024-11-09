@@ -390,3 +390,81 @@ model-viewer {
       button {
           padding: 10px 20px;
       }
+
+
+      body, html {
+        margin: 0;
+        padding: 0;
+    }
+    
+    canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: -1000;
+        overflow: hidden;
+        scrollbar-width: 0;
+    }
+    
+    .lil-gui {
+        --width: 400px;
+        --widget-height: 20px;
+        font-size: 15px;
+        --input-font-size: 15px;
+        --padding: 10px;
+        --spacing: 10px;
+        --slider-knob-width: 5px;
+        --background-color: rgba(5, 0, 15, .9);
+        --widget-color: rgba(255, 255, 255, .3);
+        --focus-color: rgba(255, 255, 255, .4);
+        --hover-color: rgba(255, 255, 255, .5);
+        --font-family: monospace;
+        z-index: 1;
+    }
+    
+    #image-selector-input {
+        display:none;
+    }
+    
+    
+    
+    @media (max-width: 600px) {
+      canvas {
+        position: fixed;
+        top: -50em;
+        left: 0;
+        width: 158%;
+        z-index: -1000;
+        height: 380%;
+      }
+      .spinning-bass {
+        top: 75px;
+      }
+      header {
+        padding: 10px 0;
+      }
+      h1 {
+        font-size: 4em;
+        margin-bottom: 5px;
+      }
+      h2 {
+        font-size: small;
+    padding: 10px 4% 150px;
+      }
+      nav ul {
+        padding: 0 10px;
+      }
+    }
+    
+    @media (min-width: 601px) and (max-width: 1200px) {
+      canvas {
+        position: fixed;
+        top: -47em;
+        left: 0;
+        width: 200%;
+        z-index: -1000;
+        height: 300%;
+      }
+    }
+    
