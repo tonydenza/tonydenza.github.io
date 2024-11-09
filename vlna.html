@@ -39,6 +39,31 @@ canvas {
 #image-selector-input {
     display:none;
 }
+
+
+
+@media (max-width: 600px) {
+  canvas {
+    position: fixed;
+    top: -60em;
+    left: 0;
+    width: 158%;
+    z-index: -1000;
+    height: 380%;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1200px) {
+  canvas {
+    position: fixed;
+    top: -47em;
+    left: 0;
+    width: 200%;
+    z-index: -1000;
+    height: 300%;
+  }
+}
+
     </style>
 </head>
 <body>
@@ -230,5 +255,6 @@ canvas {
         <script src="https://w.soundcloud.com/player/api.js" async></script>
         <script src="script.js"></script>
     </footer>
+
 </body>
 </html>
