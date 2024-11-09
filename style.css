@@ -329,6 +329,14 @@ model-viewer {
   .modal-content img {
     height: 60vh !important;
   }
+
+  .playing {
+    padding: 0;
+  }
+
+  content div {
+    text-align: left;
+  }
 }
 
 .modal {

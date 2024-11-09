@@ -83,7 +83,7 @@ function convertTimeToSeconds(time) {
   return parseInt(parts[0], 10) * 3600 + parseInt(parts[1], 10) * 60 + parseInt(parts[2], 10);
 }
 
-function updatePlayingTrack(currentTime, trackList) {
+function updatePlayingTrack(currentTime, trackList, element) {
   let currentTrack = "";
   for (let i = 0; i < trackList.length; i++) {
     const trackTime = convertTimeToSeconds(trackList[i].time);
@@ -93,7 +93,7 @@ function updatePlayingTrack(currentTime, trackList) {
       break;
     }
   }
-  document.querySelector("#playing").textContent = currentTrack;
+  document.getElementById(element).textContent = currentTrack;
 }
 
 function printTracklist(trackList, widget) {
@@ -114,15 +114,39 @@ function printTracklist(trackList, widget) {
   });
 }
 
-var input = document.getElementById("cue").textContent;
-const trackList = parseTracklist(input);
-const iframeElement = document.querySelector(".soundcloud-player");
-const widget = SC.Widget(iframeElement);
+///// PLAYERS
+var input1 = document.getElementById("cue1").textContent;
+var input2 = document.getElementById("cue2").textContent;
+var input3 = document.getElementById("cue3").textContent;
 
-widget.bind(SC.Widget.Events.PLAY_PROGRESS, function (event) {
+const trackList1 = parseTracklist(input1);
+const trackList2 = parseTracklist(input2);
+const trackList3 = parseTracklist(input3);
+
+const iframeElement1 = document.getElementById("soundcloud-player-1");
+const iframeElement2 = document.getElementById("soundcloud-player-2");
+const iframeElement3 = document.getElementById("soundcloud-player-3");
+
+const widget1 = SC.Widget(iframeElement1);
+const widget2 = SC.Widget(iframeElement2);
+const widget3 = SC.Widget(iframeElement3);
+
+widget1.bind(SC.Widget.Events.PLAY_PROGRESS, function (event) {
   const currentTime = event.currentPosition / 1000;
-  updatePlayingTrack(currentTime, trackList);
+  updatePlayingTrack(currentTime, trackList1, "playing-1");
 });
+
+widget2.bind(SC.Widget.Events.PLAY_PROGRESS, function (event) {
+  const currentTime = event.currentPosition / 1000;
+  updatePlayingTrack(currentTime, trackList2, "playing-2");
+});
+
+widget3.bind(SC.Widget.Events.PLAY_PROGRESS, function (event) {
+  const currentTime = event.currentPosition / 1000;
+  updatePlayingTrack(currentTime, trackList3, "playing-3");
+});
+
+//////////
 
 function convertToTracklist() {
   const cueText = document.getElementById("cueText");
