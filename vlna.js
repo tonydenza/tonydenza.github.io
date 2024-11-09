@@ -31,7 +31,7 @@ let image, uniforms;
 const gl = initShader();
 updateUniforms();
 loadImage("./vlna.jpg");
-createControls();
+//createControls();
 render();
 window.addEventListener("resize", resizeCanvas);
 
