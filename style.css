@@ -283,7 +283,7 @@ model-viewer {
   }
 
   content {
-    padding: 10% 2em;
+    padding: 7% 2em 10% 2em;
   }
 
   content iframe {
@@ -437,6 +437,7 @@ model-viewer {
         width: 158%;
         z-index: -1000;
         height: 380%;
+        scrollbar-width: 0;
       }
       .spinning-bass {
         top: 75px;
@@ -465,6 +466,7 @@ model-viewer {
         width: 200%;
         z-index: -1000;
         height: 300%;
+        scrollbar-width: 0;
       }
     }
     
