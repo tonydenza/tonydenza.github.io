@@ -89,7 +89,7 @@ i.fa-toolbox:hover {
 }
 
 header {
-  padding: 20px;
+  padding: 35px 0;
   text-align: center;
   background-color: #5f9ea062;
 }
@@ -146,7 +146,7 @@ model-viewer {
 
 .spinnin-bass {
   position: absolute;
-  top: -45px;
+  top: 5em;
   z-index: -1000;
 }
 
