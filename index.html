@@ -35,9 +35,9 @@
     </header>
 
     <div class="spinnin-bass" id="ryby">
-        <model-viewer loading="lazy" src="https://bassweightprague.com/model/scene.gltf" alt="A 3D model" auto-rotate shadow-intensity="1"></model-viewer>
-        <model-viewer class="tx" src="https://bassweightprague.com/model/scene.gltf" alt="A 3D model" auto-rotate shadow-intensity="1"></model-viewer>
-        <model-viewer class="txx" src="https://bassweightprague.com/model/scene.gltf" alt="A 3D model" auto-rotate shadow-intensity="1"></model-viewer>
+        <model-viewer loading="lazy" src="https://bassweightprague.com/scene.gltf" alt="A 3D model" auto-rotate shadow-intensity="1"></model-viewer>
+        <model-viewer class="tx" src="https://bassweightprague.com/scene.gltf" alt="A 3D model" auto-rotate shadow-intensity="1"></model-viewer>
+        <model-viewer class="txx" src="https://bassweightprague.com/scene.gltf" alt="A 3D model" auto-rotate shadow-intensity="1"></model-viewer>
     </div>
     
 
@@ -62,21 +62,93 @@
     <div id="utilsModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h3>CUE Formatter</h3>
-
             <div class="container">
-                <textarea id="cueText" placeholder="Insert cue file..."></textarea>
-                <div>
-                    <select name="format" id="format">
-                        <option value="numbered">numbered</option>
-                        <option value="timestamps">timestamps</option>
+                <textarea id="cueText" placeholder="Paste CUE file content here..."></textarea>
+                <div style="text-align: center;">
+                    <input type="file" id="cueFile" accept=".cue"><br><br>
+                    <select id="formatType">   
+                        <option value="numbered">Numbered</option>
+                        <option value="timestamps">Timestamps</option>
+                    </select><br><br>
+                    <select id="formatType">   
+                        <option value="text">text</option>
+                        <option value="csv">csv</option>
+                        <option value="m3u">m3u</option>
                     </select>
                     <br><br>
                     <button onclick="convertToTracklist()">Convert to tracklist</button>
-
                 </div>
                 <textarea id="output" placeholder="Tracklist will appear here..."></textarea>
             </div>
+        
+            <script>
+                function convertToTracklist() {
+            const cueText = document.getElementById('cueText');
+            const output = document.getElementById('output');
+            const formatOption = document.querySelector('select').value; // Get the selected format
+        
+            if (cueText.value.trim() !== '') {
+                processCueContent(cueText.value.trim(), formatOption);
+            }
+        }
+        
+        function processCueContent(content, formatOption) {
+            const lines = content.split('\n');
+            let result = [];
+            let seenTracks = new Set(); // Set to keep track of already added tracks
+            let currentTimestamp = '';
+            let currentTitle = '';
+            let currentPerformer = '';
+        
+            for (let i = 0; i < lines.length; i++) {
+                const line = lines[i].trim();
+        
+                if (line.startsWith('TITLE') && !line.startsWith('REM')) {
+                    const parts = line.split('"');
+                    if (parts.length > 1) {
+                        currentTitle = parts[1];
+                    }
+                } else if (line.startsWith('PERFORMER')) {
+                    const parts = line.split('"');
+                    if (parts.length > 1) {
+                        currentPerformer = parts[1];
+                    }
+                } else if (line.startsWith('INDEX 01')) {
+                    const timeParts = line.split(' ')[2].split(':');
+                    const minutes = parseInt(timeParts[0], 10);
+                    const seconds = parseInt(timeParts[1], 10);
+                    const frames = parseInt(timeParts[2], 10);
+                    const totalSeconds = minutes * 60 + seconds + frames / 75;
+                    currentTimestamp = formatTime(totalSeconds);
+        
+                    const trackKey = `${currentPerformer} - ${currentTitle}`; // Unique key for each track
+        
+                    if (currentPerformer && currentTitle) {
+                        if (formatOption === 'timestamps') {
+                            result.push(`${currentTimestamp} ${currentPerformer} - ${currentTitle}`);
+                        } else if (formatOption === 'numbered') {
+                            // Only add if this track has not been added before
+                            if (!seenTracks.has(trackKey)) {
+                                result.push(`${result.length + 1}. ${currentPerformer} - ${currentTitle}`);
+                                seenTracks.add(trackKey); // Mark this track as seen
+                            }
+                        }
+                    }
+        
+                    currentTitle = '';
+                    currentPerformer = '';
+                }
+            }
+        
+            output.value = result.join('\n');
+        }
+        
+        function formatTime(totalSeconds) {
+            const minutes = Math.floor(totalSeconds / 60);
+            const seconds = Math.floor(totalSeconds % 60);
+            return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}:00`;
+        }
+            </script>
 
         </div>
     </div>
