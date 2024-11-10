@@ -1,10 +1,23 @@
+.underwater h1{
+	font-size: 2.5rem;
+	color: #2c3e5010;
+	background-image: url('https://w7.pngwing.com/pngs/183/509/png-transparent-under-water-scenery-sunlight-underwater-ray-star-ocean-atmosphere-cloud-computer-wallpaper.png');
+	-webkit-background-clip:text;
+	animation: waterEffect 10s infinite;
+}
+
+@keyframes waterEffect {
+	0% { background-position: left 0 top 0; }
+	100% { background-position: left 100% top 0; }
+}
+
+
 * {
   scrollbar-width: none !important;
 }
 
 html,
 body {
-  overflow: hidden;
   height: 100%;
   margin: 0;
   padding: 0;
@@ -39,11 +52,24 @@ h1 {
   line-height: 50px;
   margin-bottom: 30px;
   z-index: 100;
+  animation: pondColors 5s infinite alternate ease-in-out;
 }
-
-h1:hover {
-  animation: rotate 0.2s forwards;
-  cursor: pointer;
+@keyframes pondColors {
+  0% {
+    color: #507d72; /* muted green-blue */
+  }
+  25% {
+    color: #688d84; /* soft pond blue-green */
+  }
+  50% {
+    color: #78a097; /* lighter shade of blue-green */
+  }
+  75% {
+    color: #82b3a5; /* light aquamarine */
+  }
+  100% {
+    color: #6a9d8e; /* back to a muted pond green-blue */
+  }
 }
 
 h2 {
