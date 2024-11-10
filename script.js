@@ -408,3 +408,26 @@ function formatTime(totalSeconds) {
   return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}:00`;
 }
 
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    const spinningBass = document.getElementById('ryby');
+    if (spinningBass) {
+        let op = parseFloat(spinningBass.getAttribute("opacity")); // Parse opacity as a number
+        document.getElementById("ryby").style.opacity = "0.5";
+    }
+}, 3000); // Wait for 1 second (1000 milliseconds)
+setTimeout(() => {
+  const spinningBass = document.getElementById('ryby');
+  if (spinningBass) {
+      let op = parseFloat(spinningBass.getAttribute("opacity")); // Parse opacity as a number
+      document.getElementById("ryby").style.opacity = "0.7";
+  }
+}, 4000); // Wait for 1 second (1000 milliseconds)
+setTimeout(() => {
+  const spinningBass = document.getElementById('ryby');
+  if (spinningBass) {
+      let op = parseFloat(spinningBass.getAttribute("opacity")); // Parse opacity as a number
+      document.getElementById("ryby").style.opacity = "1";
+  }
+}, 5000); // Wait for 1 second (1000 milliseconds)
+});

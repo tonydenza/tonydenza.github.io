@@ -24,6 +24,7 @@ body {
   font-family: Arial, sans-serif;
   overflow-x: hidden;
   color: #c6cab6;
+  overflow: hidden;
 }
 
 body {
@@ -183,6 +184,7 @@ model-viewer {
   position: absolute;
   top: 5em;
   z-index: -1000;
+  opacity: 0;
 }
 
 .spinnin-bass iframe {
