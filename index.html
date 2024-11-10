@@ -18,16 +18,19 @@
 
 <body>
     <input id="image-selector-input" style="visibility:hidden;" type="file">
-    
+
     <canvas></canvas>
 
     <header>
         <h1 id="bwp">BASS<br>WEIGHT<br>PRAGUE</h1>
         <nav>
             <ul>
-                <li><a target="_blank" href="https://www.facebook.com/bassweightprg"><i class="fab fa-facebook-f"></i></a></li>
-                <li><a target="_blank" href="https://www.instagram.com/bassweight_prg/"><i class="fab fa-instagram"></i></a></li>
-                <li><a target="_blank" href="https://soundcloud.com/bassweight-prague"><i class="fab fa-soundcloud"></i></a></li>
+                <li><a target="_blank" href="https://www.facebook.com/bassweightprg"><i
+                            class="fab fa-facebook-f"></i></a></li>
+                <li><a target="_blank" href="https://www.instagram.com/bassweight_prg/"><i
+                            class="fab fa-instagram"></i></a></li>
+                <li><a target="_blank" href="https://soundcloud.com/bassweight-prague"><i
+                            class="fab fa-soundcloud"></i></a></li>
                 <li><a target="_blank" href="mailto:bassweight.prg@gmail.com"><i class="fas fa-envelope"></i></a></li>
                 <li><a id="utilsModalBtn" target="_blank"><i class="fas fa-toolbox hidden"></i></a></li>
             </ul>
@@ -35,24 +38,35 @@
     </header>
 
     <div class="spinnin-bass" id="ryby">
-        <model-viewer loading="lazy" src="https://bassweightprague.com/scene.gltf" alt="A 3D model" auto-rotate shadow-intensity="1"></model-viewer>
-        <model-viewer class="tx" src="https://bassweightprague.com/scene.gltf" alt="A 3D model" auto-rotate shadow-intensity="1"></model-viewer>
-        <model-viewer class="txx" src="https://bassweightprague.com/scene.gltf" alt="A 3D model" auto-rotate shadow-intensity="1"></model-viewer>
+        <model-viewer loading="lazy" src="https://bassweightprague.com/scene.gltf" alt="A 3D model" auto-rotate
+            shadow-intensity="1"></model-viewer>
+        <model-viewer class="tx" src="https://bassweightprague.com/scene.gltf" alt="A 3D model" auto-rotate
+            shadow-intensity="1"></model-viewer>
+        <model-viewer class="txx" src="https://bassweightprague.com/scene.gltf" alt="A 3D model" auto-rotate
+            shadow-intensity="1"></model-viewer>
     </div>
-    
+
 
     <content>
 
         <div class="player">
-            <iframe loading="lazy" id="soundcloud-player-2" width="100%" height="150" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1894778460&color=%235f9ea0&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true"></iframe>
-            <div class="current"><div class="playing" id="playing-2">Hardware - I Got 140 Problems But a Bass Ain't One</div></div>
+            <iframe loading="lazy" id="soundcloud-player-2" width="100%" height="150" scrolling="no" frameborder="no"
+                allow="autoplay"
+                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1894778460&color=%235f9ea0&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true"></iframe>
+            <div class="current">
+                <div class="playing" id="playing-2">Hardware - I Got 140 Problems But a Bass Ain't One</div>
+            </div>
         </div>
         <pre class="cue" id="cue2">
-          
+
         </pre>
         <div class="player">
-            <iframe loading="lazy" id="soundcloud-player-1" width="100%" height="150" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1806254454&color=%235f9ea0&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true"></iframe>
-            <div class="current"><div class="playing" id="playing-1">DLKTek - Enter the Bass W8</div></div>
+            <iframe loading="lazy" id="soundcloud-player-1" width="100%" height="150" scrolling="no" frameborder="no"
+                allow="autoplay"
+                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1806254454&color=%235f9ea0&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true"></iframe>
+            <div class="current">
+                <div class="playing" id="playing-1">DLKTek - Enter the Bass W8</div>
+            </div>
         </div>
         <pre class="cue" id="cue1">
 
@@ -65,97 +79,153 @@
             <div class="container">
                 <textarea id="cueText" placeholder="Paste CUE file content here..."></textarea>
                 <div style="text-align: center;">
+                    <h3>Cue to tracklist convertor</h3>
                     <input type="file" id="cueFile" accept=".cue"><br><br>
-                    <select id="formatType">   
+                    <select id="formatType">
                         <option value="numbered">Numbered</option>
                         <option value="timestamps">Timestamps</option>
-                    </select><br><br>
-                    <select id="formatType">   
-                        <option value="text">text</option>
-                        <option value="csv">csv</option>
-                        <option value="m3u">m3u</option>
                     </select>
                     <br><br>
                     <button onclick="convertToTracklist()">Convert to tracklist</button>
                 </div>
                 <textarea id="output" placeholder="Tracklist will appear here..."></textarea>
             </div>
-        
-            <script>
-                function convertToTracklist() {
-            const cueText = document.getElementById('cueText');
-            const output = document.getElementById('output');
-            const formatOption = document.querySelector('select').value; // Get the selected format
-        
-            if (cueText.value.trim() !== '') {
-                processCueContent(cueText.value.trim(), formatOption);
-            }
-        }
-        
-        function processCueContent(content, formatOption) {
-            const lines = content.split('\n');
-            let result = [];
-            let seenTracks = new Set(); // Set to keep track of already added tracks
-            let currentTimestamp = '';
-            let currentTitle = '';
-            let currentPerformer = '';
-        
-            for (let i = 0; i < lines.length; i++) {
-                const line = lines[i].trim();
-        
-                if (line.startsWith('TITLE') && !line.startsWith('REM')) {
-                    const parts = line.split('"');
-                    if (parts.length > 1) {
-                        currentTitle = parts[1];
+
+            <script>// Get DOM elements once the document is loaded
+                document.addEventListener('DOMContentLoaded', function() {
+                    // Get all necessary elements
+                    const modal = document.getElementById('utilsModal');
+                    const modalBtn = document.getElementById('utilsModalBtn');
+                    const closeBtn = document.querySelector('.close');
+                    const cueFile = document.getElementById('cueFile');
+                    const cueText = document.getElementById('cueText');
+                    const output = document.getElementById('output');
+                    const convertBtn = document.querySelector('button');
+                    const formatSelect = document.getElementById('formatType');
+                
+                    // File input handler
+                    cueFile.addEventListener('change', function(e) {
+                        const file = this.files[0];
+                        if (file) {
+                            const reader = new FileReader();
+                            reader.onload = function(e) {
+                                cueText.value = e.target.result;
+                            };
+                            reader.readAsText(file);
+                        }
+                    });
+                
+                    // Convert button handler
+                    convertBtn.addEventListener('click', function() {
+                        const content = cueText.value.trim();
+                        if (content) {
+                            const format = formatSelect.value;
+                            convertToTracklist(content, format);
+                        } else {
+                            output.value = 'Please select a .cue file or paste content first';
+                        }
+                    });
+                
+                    // Modal handlers
+                    modalBtn.onclick = function() {
+                        modal.style.display = "block";
+                        // Clear previous content
+                        cueText.value = '';
+                        output.value = '';
                     }
-                } else if (line.startsWith('PERFORMER')) {
-                    const parts = line.split('"');
-                    if (parts.length > 1) {
-                        currentPerformer = parts[1];
+                
+                    closeBtn.onclick = function() {
+                        modal.style.display = "none";
                     }
-                } else if (line.startsWith('INDEX 01')) {
-                    const timeParts = line.split(' ')[2].split(':');
-                    const minutes = parseInt(timeParts[0], 10);
-                    const seconds = parseInt(timeParts[1], 10);
-                    const frames = parseInt(timeParts[2], 10);
-                    const totalSeconds = minutes * 60 + seconds + frames / 75;
-                    currentTimestamp = formatTime(totalSeconds);
-        
-                    const trackKey = `${currentPerformer} - ${currentTitle}`; // Unique key for each track
-        
-                    if (currentPerformer && currentTitle) {
-                        if (formatOption === 'timestamps') {
-                            result.push(`${currentTimestamp} ${currentPerformer} - ${currentTitle}`);
-                        } else if (formatOption === 'numbered') {
-                            // Only add if this track has not been added before
-                            if (!seenTracks.has(trackKey)) {
-                                result.push(`${result.length + 1}. ${currentPerformer} - ${currentTitle}`);
-                                seenTracks.add(trackKey); // Mark this track as seen
-                            }
+                
+                    window.onclick = function(event) {
+                        if (event.target == modal) {
+                            modal.style.display = "none";
                         }
                     }
-        
-                    currentTitle = '';
-                    currentPerformer = '';
-                }
-            }
-        
-            output.value = result.join('\n');
-        }
-        
-        function formatTime(totalSeconds) {
-            const minutes = Math.floor(totalSeconds / 60);
-            const seconds = Math.floor(totalSeconds % 60);
-            return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}:00`;
-        }
-            </script>
+                
+                    function convertToTracklist(content, format) {
+                        const lines = content.split('\n');
+                        const tracks = [];
+                        let currentTrack = {};
+                        
+                        try {
+                            lines.forEach(line => {
+                                line = line.trim();
+                                
+                                // Extract title
+                                if (line.startsWith('TITLE') && !line.startsWith('REM')) {
+                                    const titleMatch = line.match(/TITLE "([^"]+)"/);
+                                    if (titleMatch) {
+                                        currentTrack.title = titleMatch[1];
+                                    }
+                                }
+                                
+                                // Extract performer
+                                if (line.startsWith('PERFORMER')) {
+                                    const performerMatch = line.match(/PERFORMER "([^"]+)"/);
+                                    if (performerMatch) {
+                                        currentTrack.performer = performerMatch[1];
+                                    }
+                                }
+                                
+                                // Extract time
+                                if (line.startsWith('INDEX 01')) {
+                                    const timeValues = line.split(' ')[2].split(':');
+                                    const minutes = parseInt(timeValues[0]);
+                                    const seconds = parseInt(timeValues[1]);
+                                    
+                                    if (currentTrack.performer && currentTrack.title) {
+                                        tracks.push({
+                                            performer: currentTrack.performer,
+                                            title: currentTrack.title,
+                                            time: `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
+                                        });
+                                        
+                                        // Reset current track
+                                        currentTrack = {};
+                                    }
+                                }
+                            });
+                
+                            // Format output based on selected format
+                            let formattedOutput = '';
+                            if (format === 'timestamps') {
+                                formattedOutput = tracks.map(track => 
+                                    `${track.time}:00 ${track.performer} - ${track.title}`
+                                ).join('\n');
+                            } else {
+                                formattedOutput = tracks.map((track, index) => 
+                                    `${index + 1}. ${track.performer} - ${track.title}`
+                                ).join('\n');
+                            }
+                
+                            // Show result
+                            output.value = formattedOutput;
+                            
+                            // Visual feedback
+                            output.style.borderColor = '#4CAF50';
+                            setTimeout(() => {
+                                output.style.borderColor = '';
+                            }, 1000);
+                
+                        } catch (error) {
+                            output.value = 'Error processing the file. Please check if it\'s a valid .cue file.';
+                            output.style.borderColor = '#f44336';
+                            setTimeout(() => {
+                                output.style.borderColor = '';
+                            }, 1000);
+                        }
+                    }
+                });</script>
 
         </div>
     </div>
 
     <footer>
-        <h2>Prague based enthusiasts of the UK club music continuum, digging through both archives and yet-to-bediscovered crates for fresh mutations in bass music.</h2>
-    
+        <h2>Prague based enthusiasts of the UK club music continuum, digging through both archives and
+            yet-to-bediscovered crates for fresh mutations in bass music.</h2>
+
         <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js" async></script>
         <script src="https://w.soundcloud.com/player/api.js" defer></script>
         <script type="module" src="script.js" defer></script>
@@ -284,4 +354,5 @@
     </footer>
 
 </body>
+
 </html>
