@@ -91,7 +91,8 @@
                 <textarea id="output" placeholder="Tracklist will appear here..."></textarea>
             </div>
 
-            <script>// Get DOM elements once the document is loaded
+            <script>// Replace the existing convertToTracklist function and event listeners with this code:
+
                 document.addEventListener('DOMContentLoaded', function() {
                     // Get all necessary elements
                     const modal = document.getElementById('utilsModal');
@@ -119,8 +120,7 @@
                     convertBtn.addEventListener('click', function() {
                         const content = cueText.value.trim();
                         if (content) {
-                            const format = formatSelect.value;
-                            convertToTracklist(content, format);
+                            processCueContent(content, formatSelect.value);
                         } else {
                             output.value = 'Please select a .cue file or paste content first';
                         }
@@ -143,81 +143,65 @@
                             modal.style.display = "none";
                         }
                     }
+                });
                 
-                    function convertToTracklist(content, format) {
-                        const lines = content.split('\n');
-                        const tracks = [];
-                        let currentTrack = {};
-                        
-                        try {
-                            lines.forEach(line => {
-                                line = line.trim();
+                function processCueContent(content, formatOption) {
+                    const lines = content.split("\n");
+                    let result = [];
+                    let seenTracks = new Set(); // Set to keep track of already added tracks
+                    let currentTimestamp = "";
+                    let currentTitle = "";
+                    let currentPerformer = "";
+                
+                    for (let i = 0; i < lines.length; i++) {
+                        const line = lines[i].trim();
+                
+                        if (line.startsWith("TITLE") && !line.startsWith("REM")) {
+                            const parts = line.split('"');
+                            if (parts.length > 1) {
+                                currentTitle = parts[1];
+                            }
+                        } else if (line.startsWith("PERFORMER")) {
+                            const parts = line.split('"');
+                            if (parts.length > 1) {
+                                currentPerformer = parts[1];
+                            }
+                        } else if (line.startsWith("INDEX 01")) {
+                            const timeParts = line.split(" ")[2].split(":");
+                            const minutes = parseInt(timeParts[0], 10);
+                            const seconds = parseInt(timeParts[1], 10);
+                            const frames = parseInt(timeParts[2], 10);
+                            const totalSeconds = minutes * 60 + seconds + frames / 75;
+                            currentTimestamp = formatTime(totalSeconds);
+                
+                            if (currentPerformer && currentTitle) {
+                                const trackKey = `${currentPerformer} - ${currentTitle}`;
                                 
-                                // Extract title
-                                if (line.startsWith('TITLE') && !line.startsWith('REM')) {
-                                    const titleMatch = line.match(/TITLE "([^"]+)"/);
-                                    if (titleMatch) {
-                                        currentTrack.title = titleMatch[1];
+                                // Only add if this track hasn't been seen before
+                                if (!seenTracks.has(trackKey)) {
+                                    if (formatOption === "timestamps") {
+                                        result.push(`${currentTimestamp} ${trackKey}`);
+                                    } else if (formatOption === "numbered") {
+                                        result.push(`${result.length + 1}. ${trackKey}`);
+                                        seenTracks.add(trackKey);
                                     }
-                                }
-                                
-                                // Extract performer
-                                if (line.startsWith('PERFORMER')) {
-                                    const performerMatch = line.match(/PERFORMER "([^"]+)"/);
-                                    if (performerMatch) {
-                                        currentTrack.performer = performerMatch[1];
-                                    }
-                                }
-                                
-                                // Extract time
-                                if (line.startsWith('INDEX 01')) {
-                                    const timeValues = line.split(' ')[2].split(':');
-                                    const minutes = parseInt(timeValues[0]);
-                                    const seconds = parseInt(timeValues[1]);
                                     
-                                    if (currentTrack.performer && currentTrack.title) {
-                                        tracks.push({
-                                            performer: currentTrack.performer,
-                                            title: currentTrack.title,
-                                            time: `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
-                                        });
-                                        
-                                        // Reset current track
-                                        currentTrack = {};
-                                    }
                                 }
-                            });
-                
-                            // Format output based on selected format
-                            let formattedOutput = '';
-                            if (format === 'timestamps') {
-                                formattedOutput = tracks.map(track => 
-                                    `${track.time}:00 ${track.performer} - ${track.title}`
-                                ).join('\n');
-                            } else {
-                                formattedOutput = tracks.map((track, index) => 
-                                    `${index + 1}. ${track.performer} - ${track.title}`
-                                ).join('\n');
                             }
                 
-                            // Show result
-                            output.value = formattedOutput;
-                            
-                            // Visual feedback
-                            output.style.borderColor = '#4CAF50';
-                            setTimeout(() => {
-                                output.style.borderColor = '';
-                            }, 1000);
-                
-                        } catch (error) {
-                            output.value = 'Error processing the file. Please check if it\'s a valid .cue file.';
-                            output.style.borderColor = '#f44336';
-                            setTimeout(() => {
-                                output.style.borderColor = '';
-                            }, 1000);
+                            currentTitle = "";
+                            currentPerformer = "";
                         }
                     }
-                });</script>
+                
+                    document.getElementById('output').value = result.join("\n");
+                }
+                
+                function formatTime(totalSeconds) {
+                    const minutes = Math.floor(totalSeconds / 60);
+                    const seconds = Math.floor(totalSeconds % 60);
+                    return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}:00`;
+                }</script>
 
         </div>
     </div>
