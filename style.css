@@ -138,10 +138,10 @@ content div {
 }
 
 model-viewer {
-  width: 100vw;
-  height: 50vh;
+  width: 109vw;
+  height: 100vh;
   position: absolute;
-  opacity: 75%;
+  opacity: 1;
 }
 
 .spinnin-bass {
@@ -433,6 +433,7 @@ model-viewer {
     
     #image-selector-input {
         display:none;
+        overflow: hidden;
     }
     
     
