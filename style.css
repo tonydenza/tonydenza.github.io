@@ -142,6 +142,11 @@ model-viewer {
   height: 100vh;
   position: absolute;
   opacity: 1;
+  scrollbar-width: none;
+}
+
+#ryby {
+  scrollbar-width: none;
 }
 
 .spinnin-bass {
@@ -434,6 +439,7 @@ model-viewer {
     #image-selector-input {
         display:none;
         overflow: hidden;
+        scrollbar-width: none;
     }
     
     
