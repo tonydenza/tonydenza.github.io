@@ -91,32 +91,73 @@ i {
   font-size: 2.5em;
   text-shadow: black 0px 0px 5px;
   background: transparent;
-  color: #c6cab6;
+  color: #f6ffd2;
+}
+
+@keyframes bassVibration {
+  0% { transform: translate(0, 0);     color: #507d72 !important;  }
+  25% { transform: translate(6px, 3px); color: #688d84;}
+  50% { transform: translate(-6px, -3px); color: #78a097;}
+  75% { transform: translate(6px, -3px); color: #82b3a5;}
+  100% { transform: translate(0, 0); color: #6a9d8e;}
+}
+
+.bass-text {
+  display: inline-block;
+  cursor: pointer;
+  color: #3cb4bd;
+  transition: transform 0.2s ease;
+  will-change: transform;
+}
+
+.bass-text.vibrating {
+  animation: bassVibration 0.36s infinite;
+}
+
+/* Different intensity classes */
+.bass-text.intensity-2 {
+  animation-duration: 0.18s;
+  animation-timing-function: linear;
+}
+
+.bass-text.intensity-3 {
+  animation-duration: 0.09s;
+  animation-timing-function: linear;
+}
+
+.bass-text.intensity-4 {
+  animation-duration: 0.06s;
+  animation-timing-function: linear;
+}
+
+.bass-text.intensity-max {
+  animation-duration: 0.03s;
+  animation-timing-function: linear;
 }
 
 i:hover {
-  animation: colorChange 2s forwards;
+  animation: bassVibration 2s forwards;
 }
 
 i.fa-facebook-f:hover {
-  animation: facebook 2s forwards;
+  animation: bassVibration 2s forwards;
 }
 
 i.fa-soundcloud:hover {
-  animation: soundcloud 2s forwards;
+  animation: bassVibration 2s forwards;
 }
 
 i.fa-instagram:hover {
-  animation: instagram 2s forwards;
+  animation: bassVibration 2s forwards;
 }
 
 i.fa-envelope:hover {
-  animation: envelope 2s forwards;
+  animation: bassVibration 2s forwards;
 }
 
 i.fa-headphones-alt:hover,
 i.fa-toolbox:hover {
-  animation: headphones 2s forwards;
+  animation: bassVibration 2s forwards;
 }
 
 header {
@@ -390,7 +431,7 @@ model-viewer {
 /* Modal Content */
 .modal-content {
   background-color: rgb(0, 0, 0, 0.4);
-  margin: 12% auto; /* 15% from the top and centered */
+  margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
   width: 80%; /* Could be more or less, depending on screen size */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -398,6 +439,11 @@ model-viewer {
 
 .modal-content img {
   height: 80vh;
+}
+
+.bass-text:hover {
+  animation: bassVibration 0.15s infinite linear;
+  /* This preserves any existing animations while adding the bass shake */
 }
 
 /* Close Button */
@@ -588,7 +634,19 @@ select {
 /* Modal title */
 .modal-content h3 {
   color: #c6cab6;
-  margin-bottom: 30px;
+  margin: 0;
+}
+
+.util-card p {
+  color: black;
+}
+
+.utils-grid {
+  margin: 0rem 0 3em 0;
+}
+
+.util-header h3 {
+  margin: auto !important;
 }
 
 /* Responsive design */
