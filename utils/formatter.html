@@ -121,76 +121,98 @@
     </div>
 
     <script>
-        document.getElementById('fileInput').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    document.getElementById('input').value = e.target.result;
-                };
-                reader.readAsText(file);
-            }
-        });
+       // Convert the cue file data into timestamp format
+function formatCueToTimestamps(input) {
+    const tracks = [];
+    const lines = input.split('\n');
+    let currentTrack = {};
 
-        function formatTracklist(format) {
-            const input = document.getElementById('input').value;
-            const tracks = parseTracklist(input);
+    for (const line of lines) {
+        if (line.includes('TRACK')) {
+            currentTrack = {};
+        } else if (line.includes('TITLE') && !line.includes('REM')) {
+            currentTrack.title = line.split('"')[1];
+        } else if (line.includes('PERFORMER') && !line.includes('REM')) {
+            currentTrack.performer = line.split('"')[1];
+        } else if (line.includes('INDEX 01')) {
+            currentTrack.time = line.split('INDEX 01')[1].trim();
+            if (currentTrack.title && currentTrack.performer) {
+                tracks.push(`${currentTrack.time} ${currentTrack.performer} - ${currentTrack.title}`);
+            }
+        }
+    }
+
+    return tracks.join('\n');
+}
+
+// Function to update the pre content
+function updatePreContent(cueContent, preElement) {
+    const formattedContent = formatCueToTimestamps(cueContent);
+    preElement.textContent = formattedContent;
+}
+
+// Track display logic
+function findCurrentTrack(currentTime, tracks) {
+    const tracksList = tracks.split('\n')
+        .map(line => {
+            const [time, ...trackParts] = line.trim().split(' ');
+            return {
+                time: timeToSeconds(time),
+                track: trackParts.join(' ')
+            };
+        })
+        .filter(track => track.time !== undefined);
+
+    let currentTrack = '';
+    
+    for (let i = 0; i < tracksList.length; i++) {
+        const nextTime = i < tracksList.length - 1 ? 
+            tracksList[i + 1].time : Infinity;
             
-            let output = '';
-            if (format === 'numbered') {
-                output = formatNumbered(tracks);
-            } else {
-                output = formatTimestamps(tracks);
-            }
-            
-            document.getElementById('output').value = output;
+        if (currentTime >= tracksList[i].time && currentTime < nextTime) {
+            currentTrack = tracksList[i].track;
+            break;
         }
+    }
+    
+    return currentTrack;
+}
 
-        function parseTracklist(input) {
-            const tracks = [];
-            const lines = input.split('\n');
-            let currentTrack = {};
+function timeToSeconds(timeStr) {
+    const [hours, minutes, seconds] = timeStr.split(':').map(Number);
+    return hours * 3600 + minutes * 60 + seconds;
+}
 
-            for (const line of lines) {
-                if (line.includes('TRACK')) {
-                    currentTrack = {};
-                } else if (line.includes('TITLE') && !line.includes('REM')) {
-                    currentTrack.title = line.split('"')[1];
-                } else if (line.includes('PERFORMER') && !line.includes('REM')) {
-                    currentTrack.performer = line.split('"')[1];
-                } else if (line.includes('INDEX 01')) {
-                    currentTrack.time = line.split('INDEX 01')[1].trim();
-                    if (currentTrack.title && currentTrack.performer) {
-                        tracks.push({...currentTrack});
-                    }
-                }
-            }
+// Initialize everything
+document.addEventListener('DOMContentLoaded', () => {
+    // Update pre elements format
+    const cue1 = document.getElementById('cue1');
+    const cue2 = document.getElementById('cue2');
+    
+    if (cue1.textContent.trim()) {
+        updatePreContent(cue1.textContent, cue1);
+    }
+    if (cue2.textContent.trim()) {
+        updatePreContent(cue2.textContent, cue2);
+    }
 
-            return tracks;
-        }
+    // Initialize SoundCloud widgets
+    const widget1 = SC.Widget('soundcloud-player-1');
+    const widget2 = SC.Widget('soundcloud-player-2');
 
-        function formatNumbered(tracks) {
-            const seen = new Set();
-            let number = 1;
-            let output = '';
+    // Set up track display updates
+    widget1.bind(SC.Widget.Events.PLAY_PROGRESS, function(e) {
+        const currentTime = Math.floor(e.currentPosition / 1000);
+        const currentTrack = findCurrentTrack(currentTime, cue1.textContent);
+        document.getElementById('playing-1').textContent = currentTrack;
+    });
 
-            tracks.forEach(track => {
-                const trackString = `${track.performer} - ${track.title}`;
-                if (!seen.has(trackString)) {
-                    output += `${number}. ${trackString}\n`;
-                    seen.add(trackString);
-                    number++;
-                }
-            });
-
-            return output;
-        }
-
-        function formatTimestamps(tracks) {
-            return tracks.map(track => 
-                `${track.time} ${track.performer} - ${track.title}`
-            ).join('\n');
-        }
+    widget2.bind(SC.Widget.Events.PLAY_PROGRESS, function(e) {
+        const currentTime = Math.floor(e.currentPosition / 1000);
+        const currentTrack = findCurrentTrack(currentTime, cue2.textContent);
+        document.getElementById('playing-2').textContent = currentTrack;
+    });
+});
     </script>
 </body>
 </html>

@@ -122,7 +122,7 @@
     display: flex;
     overflow-x: scroll;
     overflow-y: hidden;
-    min-height: 160px;
+    min-height: 200px;
     scrollbar-width: none;
   }
   

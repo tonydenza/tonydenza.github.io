@@ -48,14 +48,68 @@
         <div class="playing" id="playing-2"></div>
       </div>
     </div>
-    <pre class="cue" id="cue2"></pre>
+    <pre class="cue" id="cue2">
+00:00:00 INGI - PPI
+00:00:00 Kellen303 - Neon Breaks
+00:00:00 Destrata - Clubmoss
+00:00:00 Circuit 900 - Andara
+00:00:00 Mercy System - Four Winters
+00:00:00 Dyslecta - Eating Woodlice
+00:00:00 Laksa - Enjoyment
+00:00:00 Stenny - Wipe Out
+00:00:00 9TRANE - GONE4AMIN
+00:00:00 Air Max 97 - Eat the Rich
+00:00:00 Ido Plumes - Been Here
+00:00:00 Mosca - Look After the Dead
+00:00:00 SPE:C - Sludge
+00:00:00 Alan Johnson - Ten Year Tonnage
+00:00:00 Low End Activist - Dry Chat, Wet Rag
+00:00:00 Dogpatrol - Creepin ft. NKK
+00:00:00 Paradox - Breakbeater
+00:00:00 Mantra - Ala
+00:00:00 Pearson Sound - PLSN
+00:00:00 WZ - Funk On the Spot
+00:00:00 Henzo - Be That As It May (Unhinged Mix)
+00:00:00 Hojo - 16 O's feat. Novelist
+00:00:00 Francesco Skip - Oceans Explorer
+00:00:00 Addison Groove - Elevator
+00:00:00 Ploy - Ninety One
+00:00:00 Rhyw - Engine Track
+00:00:00 re:ni - BURSTTRAP
+00:00:00 Mumdance - Artificial Intelligence
+    </pre>
     <div class="player">
       <iframe loading="lazy" id="soundcloud-player-1" width="100%" height="150" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1806254454&color=%235f9ea0&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true"></iframe>
       <div class="current">
         <div class="playing" id="playing-1"></div>
       </div>
     </div>
-    <pre class="cue" id="cue1"></pre>
+    <pre class="cue" id="cue1">
+00:00:00 Escha - An Outward Visible Sign Of An Inward Invisible Hell
+00:00:00 C+C Music Factory - Everybody Dance Now (808gong x REFILLED REMIX)
+00:00:00 Wasted Fates X Future X E65 - Life’s Good '65 (Blue Bootleg)
+00:00:00 Dj Deeon - Freak U Rite
+00:00:00 Supraman - Misdemeanor Ha
+00:00:00 Dj Babatr - All Right​.​.​. Teque Teque (Nick Le​ó​n Remix)
+00:00:00 Shygirl - Want More
+00:00:00 Bapari x Underworld - Born Slippy Edit
+00:00:00 Black Rave Culture - Sub Poppin
+00:00:00 Europa - Protection
+00:00:00 Pangaea - Game
+00:00:00 Dj Tray - I Wanna Be With You
+00:00:00 Stingray313 - 2.4 GHz ISM
+00:00:00 DJ Stoner Dad - No Rules
+00:00:00 Turk Turkelton - 803
+00:00:00 Dej Loaf - Try Me (Nick Catchdubs Jersey Gardens Mix)
+00:00:00 Koffee - Toast (DjTray Remix)
+00:00:00 Cloudsteppers - Trigger Happy
+00:00:00 Dean Lyon - Only You (DJ Swisha Bootleg)
+00:00:00 Black Rave Culture - Long Distance Dilemma (Practice)
+00:00:00 LSDXOXO - Baby
+00:00:00 Zomby - Float
+00:00:00 LSDXOXO - Smoke of the Skunk
+00:00:00 Kelela, Agazero, & Bbymutha - Raven (Agazero Remix feat. Bbymutha)
+    </pre>
   </content>
 
   <div id="utilsModal" class="modal">
@@ -74,7 +128,7 @@
             </div>
             <div class="util-card">
               <div class="util-header">
-                <h3>Tracklist Formatter</h3>
+                <h3>Cue Formatter</h3>
               </div>
               <p>Convert Rekordbox .cue files and other sources into properly formatted tracklists with timestamps.</p>
               <p>Try it <a target="_blank" href="./utils/formatter.html">here</a></p>
@@ -90,6 +144,66 @@
     <script src="https://w.soundcloud.com/player/api.js"></script>
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     <script type="module" src="./js/script.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', () => {
+      // Initialize SoundCloud widgets and bind events after they're ready
+      const widget1 = SC.Widget('soundcloud-player-1');
+      const widget2 = SC.Widget('soundcloud-player-2');
+  
+      // Wait for widgets to be ready
+      widget1.bind(SC.Widget.Events.READY, function() {
+          widget1.bind(SC.Widget.Events.PLAY_PROGRESS, function(e) {
+              updateTrackDisplay(e.currentPosition, 'cue1', 'playing-1');
+          });
+      });
+  
+      widget2.bind(SC.Widget.Events.READY, function() {
+          widget2.bind(SC.Widget.Events.PLAY_PROGRESS, function(e) {
+              updateTrackDisplay(e.currentPosition, 'cue2', 'playing-2');
+          });
+      });
+  
+      function updateTrackDisplay(position, cueId, displayId) {
+          const currentTime = Math.floor(position / 1000);
+          const tracklist = document.getElementById(cueId).innerText;
+          const currentTrack = findCurrentTrack(currentTime, tracklist);
+          
+          const displayElement = document.getElementById(displayId);
+          if (displayElement && currentTrack) {
+              displayElement.innerText = currentTrack;
+          }
+      }
+  
+      function findCurrentTrack(currentTime, tracklist) {
+          // Parse the tracklist and find current track
+          const tracks = tracklist
+              .split('\n')
+              .map(line => line.trim())
+              .filter(line => line.match(/^\d{2}:\d{2}:\d{2}/))
+              .map(line => {
+                  const timeStr = line.substring(0, 8);
+                  const trackName = line.substring(9).trim();
+                  return {
+                      time: timeToSeconds(timeStr),
+                      track: trackName
+                  };
+              });
+  
+          // Find the current track based on time
+          for (let i = 0; i < tracks.length; i++) {
+              const nextTime = i < tracks.length - 1 ? tracks[i + 1].time : Infinity;
+              if (currentTime >= tracks[i].time && currentTime < nextTime) {
+                  return tracks[i].track;
+              }
+          }
+          
+          return '';
+      }
+  
+      function timeToSeconds(timeStr) {
+          const [hours, minutes, seconds] = timeStr.split(':').map(Number);
+          return (hours * 3600) + (minutes * 60) + seconds;
+      }
+  });</script>
   </footer>
 </body>
 
