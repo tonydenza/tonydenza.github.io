@@ -3487,7 +3487,7 @@
   "buffers": [
     {
       "byteLength": 899616,
-      "uri": "scene.bin"
+      "uri": "/assets/models/scene.bin"
     }
   ],
   "extensionsUsed": [

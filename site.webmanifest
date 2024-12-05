@@ -3,12 +3,12 @@
   "short_name": "BassWeight",
   "icons": [
     {
-      "src": "/favicon/android-chrome-192x192.png",
+      "src": "/assets/favicon/android-chrome-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/favicon/favicon-192x192.png",
+      "src": "/assets/favicon/favicon-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
     }
