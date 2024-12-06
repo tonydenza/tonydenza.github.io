@@ -391,7 +391,7 @@
     h2 {
       font-size: small;
       line-height: 17px;
-      padding: 10px 4% 150px;
+      padding: 10px 35% 300px;
       margin: 0;
     }
   
@@ -439,17 +439,17 @@
     }
   
     canvas {
-      top: -80em;
-      width: 158%;
-      height: 380%;
+      transform: scale(4);
+    }
+
+    .fish-one {
+      transform: translateX(-25vw) translateY(41vh) !important;
     }
   }
   
   @media (min-width: 601px) and (max-width: 1200px) {
     canvas {
-      top: -47em;
-      width: 200%;
-      height: 300%;
+      transform: scale(3);
     }
   }
   
