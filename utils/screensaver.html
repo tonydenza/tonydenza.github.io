@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>3D Fish Tubes</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: #001220;
+        }
+        .scene {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            transform-style: preserve-3d;
+            perspective: 1200px;
+        }
+        .fish-segment {
+            position: absolute;
+            font-size: 48px; /* Bigger fish! */
+            transform-style: preserve-3d;
+            transition: transform 0.3s linear;
+            pointer-events: none;
+        }
+        .fish-segment span {
+            display: inline-block;
+            animation: swim 1s infinite ease-in-out;
+        }
+        @keyframes swim {
+            0%, 100% { transform: translateX(-2px) rotate(-5deg); }
+            50% { transform: translateX(2px) rotate(5deg); }
+        }
+        .controls {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            border-radius: 5px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <button onclick="togglePause()">Pause/Resume</button>
+        <button onclick="addTube()">Add Fish Tube</button>
+        Active Tubes: <span id="tubeCount">0</span>
+    </div>
+    <div class="scene" id="scene"></div>
+
+    <script>
+        const FISHES = ['🐟', '🐠', '🐡', '🦈', '🐳', '🐋', '🐬'];
+        const GRID_SIZE = 80;  // Increased grid size for bigger fish
+        const SEGMENTS_PER_RING = 8;  // Number of fish in each ring
+        const RINGS_COUNT = 5;  // Number of rings in the tube
+        const TUBE_RADIUS = 60;  // Radius of the fish tube
+        const MAX_TUBES = 10;
+        
+        let isPaused = false;
+        const scene = document.getElementById('scene');
+        const tubeCountElement = document.getElementById('tubeCount');
+        const tubes = new Set();
+
+        class FishSegment {
+            constructor(parent, emoji) {
+                this.element = document.createElement('div');
+                this.element.className = 'fish-segment';
+                const span = document.createElement('span');
+                span.textContent = emoji;
+                this.element.appendChild(span);
+                parent.appendChild(this.element);
+            }
+
+            updatePosition(x, y, z, direction, angle) {
+                // Calculate position in the ring
+                const ringX = x + Math.cos(angle) * TUBE_RADIUS;
+                const ringY = y + Math.sin(angle) * TUBE_RADIUS;
+                const ringZ = z;
+
+                const transform = `translate3d(${ringX}px, ${ringY}px, ${ringZ}px)`;
+                
+                // Rotate fish based on direction and position in ring
+                let rotation = '';
+                if (direction.x !== 0) {
+                    rotation = `rotateY(${direction.x > 0 ? 0 : 180}deg) rotateZ(${angle * (180/Math.PI)}deg)`;
+                } else if (direction.z !== 0) {
+                    rotation = `rotateY(${direction.z > 0 ? 90 : -90}deg) rotateX(${angle * (180/Math.PI)}deg)`;
+                } else if (direction.y !== 0) {
+                    rotation = `rotateX(${direction.y > 0 ? -90 : 90}deg) rotateZ(${angle * (180/Math.PI)}deg)`;
+                }
+                
+                this.element.style.transform = `${transform} ${rotation}`;
+            }
+        }
+
+        class FishTube {
+            constructor() {
+                this.segments = [];
+                this.positions = [];
+                this.direction = {
+                    x: Math.random() < 0.5 ? -1 : 1,
+                    y: 0,
+                    z: 0
+                };
+                
+                // Create fish segments arranged in rings
+                const emoji = FISHES[Math.floor(Math.random() * FISHES.length)];
+                for (let ring = 0; ring < RINGS_COUNT; ring++) {
+                    for (let i = 0; i < SEGMENTS_PER_RING; i++) {
+                        this.segments.push(new FishSegment(scene, emoji));
+                        this.positions.push({
+                            x: 0,
+                            y: 0,
+                            z: ring * (GRID_SIZE/RINGS_COUNT)
+                        });
+                    }
+                }
+                
+                this.move();
+            }
+
+            changeDirection() {
+                const axes = ['x', 'y', 'z'];
+                const randomAxis = axes[Math.floor(Math.random() * axes.length)];
+                
+                const newDirection = {x: 0, y: 0, z: 0};
+                newDirection[randomAxis] = Math.random() < 0.5 ? -1 : 1;
+                this.direction = newDirection;
+            }
+
+            move() {
+                if (isPaused) {
+                    setTimeout(() => this.move(), 1000);
+                    return;
+                }
+
+                // Randomly change direction
+                if (Math.random() < 0.2) {
+                    this.changeDirection();
+                }
+
+                // Update lead position
+                const newPos = {
+                    x: this.positions[0].x + this.direction.x * GRID_SIZE,
+                    y: this.positions[0].y + this.direction.y * GRID_SIZE,
+                    z: this.positions[0].z + this.direction.z * GRID_SIZE
+                };
+
+                // Check bounds
+                const bounds = 500;
+                if (Math.abs(newPos.x) > bounds || 
+                    Math.abs(newPos.y) > bounds || 
+                    Math.abs(newPos.z) > bounds) {
+                    // Reset to center
+                    newPos.x = 0;
+                    newPos.y = 0;
+                    newPos.z = 0;
+                    this.changeDirection();
+                }
+
+                // Update all positions
+                this.positions.pop();
+                this.positions.unshift(newPos);
+
+                // Update all fish segments
+                let ringIndex = 0;
+                for (let ring = 0; ring < RINGS_COUNT; ring++) {
+                    const ringPos = this.positions[ring];
+                    for (let i = 0; i < SEGMENTS_PER_RING; i++) {
+                        const angle = (i / SEGMENTS_PER_RING) * Math.PI * 2;
+                        this.segments[ringIndex].updatePosition(
+                            ringPos.x, 
+                            ringPos.y, 
+                            ringPos.z, 
+                            this.direction,
+                            angle
+                        );
+                        ringIndex++;
+                    }
+                }
+
+                setTimeout(() => this.move(), 1000);
+            }
+
+            destroy() {
+                this.segments.forEach(segment => {
+                    segment.element.remove();
+                });
+                tubes.delete(this);
+                tubeCountElement.textContent = tubes.size;
+            }
+        }
+
+        function addTube() {
+            if (tubes.size < MAX_TUBES) {
+                const tube = new FishTube();
+                tubes.add(tube);
+                tubeCountElement.textContent = tubes.size;
+            }
+        }
+
+        function togglePause() {
+            isPaused = !isPaused;
+        }
+
+        // Mouse/touch control for scene rotation
+        let isMouseDown = false;
+        let startX = 0;
+        let startY = 0;
+        let rotationX = 0;
+        let rotationY = 0;
+
+        function handleStart(e) {
+            isMouseDown = true;
+            startX = e.pageX || e.touches[0].pageX;
+            startY = e.pageY || e.touches[0].pageY;
+        }
+
+        function handleMove(e) {
+            if (!isMouseDown) return;
+            
+            const x = e.pageX || e.touches[0].pageX;
+            const y = e.pageY || e.touches[0].pageY;
+            
+            rotationY += (x - startX) * 0.5;
+            rotationX += (y - startY) * 0.5;
+            
+            scene.style.transform = `rotateX(${-rotationX}deg) rotateY(${-rotationY}deg)`;
+            
+            startX = x;
+            startY = y;
+        }
+
+        function handleEnd() {
+            isMouseDown = false;
+        }
+
+        // Event listeners
+        scene.addEventListener('mousedown', handleStart);
+        document.addEventListener('mousemove', handleMove);
+        document.addEventListener('mouseup', handleEnd);
+        scene.addEventListener('touchstart', handleStart);
+        document.addEventListener('touchmove', handleMove);
+        document.addEventListener('touchend', handleEnd);
+
+        // Auto-rotate scene when not being controlled
+        let autoRotate = true;
+        setInterval(() => {
+            if (!isMouseDown && autoRotate) {
+                rotationY += 0.5;
+                scene.style.transform = `rotateX(${-rotationX}deg) rotateY(${-rotationY}deg)`;
+            }
+        }, 50);
+
+        // Start with some initial tubes
+        for (let i = 0; i < 3; i++) {
+            addTube();
+        }
+    </script>
+</body>
+</html>
