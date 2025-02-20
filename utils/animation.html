@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .scene {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            perspective: 1000px;
+        }
+
+        .coin {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform-style: preserve-3d;
+            animation: spinCoin 8s linear infinite;
+        }
+
+        .coin img {
+            width: 150px;
+            height: 150px;
+            position: absolute;
+            transform: translate(-50%, -50%);
+        }
+
+        .text {
+            position: absolute;
+            color: #6495ED;
+            font-size: 28px;
+            font-family: Arial, sans-serif;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .word-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+        }
+
+        @keyframes spinCoin {
+            from { transform: rotateY(0deg); }
+            to { transform: rotateY(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="scene">
+        <div class="coin">
+            <img src="./mince.png" alt="Coin">
+        </div>
+    </div>
+
+    <script>
+        const scene = document.querySelector('.scene');
+        const words = [
+            { text: 'BASSWEIGHT', delay: 0 },
+            { text: 'SAPYENS', delay: 2 } // Second word appears 2 seconds later
+        ];
+        const radius = 120;
+
+        words.forEach((word, wordIndex) => {
+            const container = document.createElement('div');
+            container.className = 'word-container';
+            
+            // Rotate second word container 90 degrees to create cross effect
+            if (wordIndex === 1) {
+                container.style.transform = 'rotate(90deg)';
+            }
+
+            const letters = word.text.split('');
+            const letterSpacing = 40; // Reduced spacing between letters
+            const totalWidth = letters.length * letterSpacing;
+            const startX = -totalWidth / 2 + letterSpacing / 2;
+
+            letters.forEach((letter, index) => {
+                const element = document.createElement('div');
+                element.className = 'text';
+                element.textContent = letter;
+                
+                // Position letters in a more compact line
+                const x = startX + (index * letterSpacing);
+                element.style.left = `${150 + x}px`;
+                element.style.top = '150px';
+                
+                // Create unique animation name for each word
+                const animationName = `moveLetter${wordIndex}`;
+                
+                // Add animation with delay
+                element.style.animation = `${animationName} 4s linear infinite`;
+                element.style.animationDelay = `${word.delay + index * 0.1}s`;
+                
+                container.appendChild(element);
+            });
+
+            scene.appendChild(container);
+        });
+
+        // Add keyframes dynamically for both words
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes moveLetter0 {
+                0% {
+                    transform: translate(-50%, -50%) rotate(0deg) translateY(${-radius}px) rotate(0deg);
+                }
+                100% {
+                    transform: translate(-50%, -50%) rotate(360deg) translateY(${-radius}px) rotate(-360deg);
+                }
+            }
+            @keyframes moveLetter1 {
+                0% {
+                    transform: translate(-50%, -50%) rotate(0deg) translateY(${-radius}px) rotate(0deg);
+                }
+                100% {
+                    transform: translate(-50%, -50%) rotate(360deg) translateY(${-radius}px) rotate(-360deg);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>/Users/zeek/Downloads/anezka-mince.png
