@@ -54,12 +54,13 @@
 
         .text3 {
             position: absolute;
-            color: #4CAF50;
+            color: #6495ED;
             font-size: 28px;
             font-family: Arial, sans-serif;
             text-transform: uppercase;
             white-space: nowrap;
             font-weight: 900;
+            top: 300px !important;
         }
 
         .word-container {
@@ -87,7 +88,7 @@
         const words = [
             { text: 'BASSWEIGHT', delay: 1 },
             { text: 'SAPYENS', delay: 3 },
-            { text: '22.3.', delay: 5 }
+            { text: '22/3', delay: 5 }
         ];
         const radius = 120;
 
@@ -99,7 +100,7 @@
             if (wordIndex === 1) {
                 container.style.transform = 'rotate(90deg)';
             } else if (wordIndex === 2) {
-                container.style.transform = 'rotate(45deg)';
+                container.style.transform = '';
             }
 
             const letters = word.text.split('');
