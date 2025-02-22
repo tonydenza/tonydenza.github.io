@@ -59,6 +59,7 @@
             font-family: Arial, sans-serif;
             text-transform: uppercase;
             white-space: nowrap;
+            font-weight: 900;
         }
 
         .word-container {
@@ -86,7 +87,7 @@
         const words = [
             { text: 'BASSWEIGHT', delay: 1 },
             { text: 'SAPYENS', delay: 3 },
-            { text: '22.03.2025', delay: 5 }
+            { text: '22.3.', delay: 5 }
         ];
         const radius = 120;
 
@@ -123,6 +124,7 @@
                 element.style.animation = `${animationName} 6s linear 1s`;
                 element.style.animationDelay = `${word.delay + index * 0.1}s`;
                 
+                
                 container.appendChild(element);
             });
 
@@ -147,14 +149,7 @@
                     transform: translate(-50%, -50%) rotate(360deg) translateY(${-radius}px) rotate(-360deg);
                 }
             }
-            @keyframes moveLetter2 {
-                0% {
-                    transform: translate(-50%, -50%) rotate(0deg) translateY(${-radius}px) rotate(0deg);
-                }
-                100% {
-                    transform: translate(-50%, -50%) rotate(360deg) translateY(${-radius}px) rotate(-360deg);
-                }
-            }
+
         `;
         document.head.appendChild(style);
     </script>
