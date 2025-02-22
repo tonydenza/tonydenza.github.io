@@ -28,8 +28,8 @@
         }
 
         .coin img {
-            width: 150px;
-            height: 150px;
+            width: 250px;
+            height: 250px;
             position: absolute;
             transform: translate(-50%, -50%);
         }
@@ -46,6 +46,15 @@
         .text2 {
             position: absolute;
             color: #b73499;
+            font-size: 28px;
+            font-family: Arial, sans-serif;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .text3 {
+            position: absolute;
+            color: #4CAF50;
             font-size: 28px;
             font-family: Arial, sans-serif;
             text-transform: uppercase;
@@ -76,7 +85,8 @@
         const scene = document.querySelector('.scene');
         const words = [
             { text: 'BASSWEIGHT', delay: 1 },
-            { text: 'SAPYENS', delay: 3 }
+            { text: 'SAPYENS', delay: 3 },
+            { text: '22.03.2025', delay: 5 }
         ];
         const radius = 120;
 
@@ -84,8 +94,11 @@
             const container = document.createElement('div');
             container.className = 'word-container';
             
+            // Adjust rotation for each word container
             if (wordIndex === 1) {
                 container.style.transform = 'rotate(90deg)';
+            } else if (wordIndex === 2) {
+                container.style.transform = 'rotate(45deg)';
             }
 
             const letters = word.text.split('');
@@ -96,7 +109,10 @@
             letters.forEach((letter, index) => {
                 const element = document.createElement('div');
                 // Apply different class based on word index
-                element.className = wordIndex === 0 ? 'text' : 'text2';
+                if (wordIndex === 0) element.className = 'text';
+                else if (wordIndex === 1) element.className = 'text2';
+                else element.className = 'text3';
+                
                 element.textContent = letter;
                 
                 const x = startX + (index * letterSpacing);
@@ -124,6 +140,14 @@
                 }
             }
             @keyframes moveLetter1 {
+                0% {
+                    transform: translate(-50%, -50%) rotate(0deg) translateY(${-radius}px) rotate(0deg);
+                }
+                100% {
+                    transform: translate(-50%, -50%) rotate(360deg) translateY(${-radius}px) rotate(-360deg);
+                }
+            }
+            @keyframes moveLetter2 {
                 0% {
                     transform: translate(-50%, -50%) rotate(0deg) translateY(${-radius}px) rotate(0deg);
                 }
