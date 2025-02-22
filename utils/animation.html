@@ -43,6 +43,15 @@
             white-space: nowrap;
         }
 
+        .text2 {
+            position: absolute;
+            color: #b73499;
+            font-size: 28px;
+            font-family: Arial, sans-serif;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
         .word-container {
             position: absolute;
             width: 100%;
@@ -66,8 +75,8 @@
     <script>
         const scene = document.querySelector('.scene');
         const words = [
-            { text: 'BASSWEIGHT', delay: 0 },
-            { text: 'SAPYENS', delay: 2 } // Second word appears 2 seconds later
+            { text: 'BASSWEIGHT', delay: 1 },
+            { text: 'SAPYENS', delay: 3 }
         ];
         const radius = 120;
 
@@ -75,31 +84,27 @@
             const container = document.createElement('div');
             container.className = 'word-container';
             
-            // Rotate second word container 90 degrees to create cross effect
             if (wordIndex === 1) {
                 container.style.transform = 'rotate(90deg)';
             }
 
             const letters = word.text.split('');
-            const letterSpacing = 40; // Reduced spacing between letters
+            const letterSpacing = 40;
             const totalWidth = letters.length * letterSpacing;
             const startX = -totalWidth / 2 + letterSpacing / 2;
 
             letters.forEach((letter, index) => {
                 const element = document.createElement('div');
-                element.className = 'text';
+                // Apply different class based on word index
+                element.className = wordIndex === 0 ? 'text' : 'text2';
                 element.textContent = letter;
                 
-                // Position letters in a more compact line
                 const x = startX + (index * letterSpacing);
                 element.style.left = `${150 + x}px`;
                 element.style.top = '150px';
                 
-                // Create unique animation name for each word
                 const animationName = `moveLetter${wordIndex}`;
-                
-                // Add animation with delay
-                element.style.animation = `${animationName} 4s linear infinite`;
+                element.style.animation = `${animationName} 6s linear 1s`;
                 element.style.animationDelay = `${word.delay + index * 0.1}s`;
                 
                 container.appendChild(element);
@@ -108,7 +113,6 @@
             scene.appendChild(container);
         });
 
-        // Add keyframes dynamically for both words
         const style = document.createElement('style');
         style.textContent = `
             @keyframes moveLetter0 {
@@ -131,4 +135,4 @@
         document.head.appendChild(style);
     </script>
 </body>
-</html>/Users/zeek/Downloads/anezka-mince.png
+</html>
