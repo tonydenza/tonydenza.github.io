@@ -1,28 +1,42 @@
-import { BassEffect } from './bass.js';
-import './wave.js';
+import { BassEffect } from "./bass.js";
+import "./wave.js";
 
-document.addEventListener('DOMContentLoaded', () => {
-  const bassText = document.querySelector('.bass-text');
-    if (bassText) {
-        new BassEffect(bassText);
+document.addEventListener("DOMContentLoaded", () => {
+  const bassText = document.querySelector(".bass-text");
+  if (bassText) {
+    new BassEffect(bassText);
+  }
+
+    // Get all modals
+    const utilsModal = document.getElementById("utilsModal");
+    const anezkaModal = document.getElementById("anezkaModal");
+
+    anezkaModal.style.display = "block";
+    
+    // Get all close buttons
+    const closeButtons = document.getElementsByClassName("close");
+    
+    // Set up the button to open utilsModal
+    document.getElementById("utilsModalBtn").onclick = () => utilsModal.style.display = "block";
+    
+    // Set up all close buttons to close their parent modal
+    for (let i = 0; i < closeButtons.length; i++) {
+      closeButtons[i].onclick = function() {
+        // Find the parent modal of this close button
+        let modal = this.closest('.modal');
+        if (modal) {
+          modal.style.display = "none";
+        }
+      };
     }
+    
+    // When user clicks anywhere outside of the modal content, close it
+    window.onclick = (event) => {
+      if (event.target.classList.contains('modal')) {
+        event.target.style.display = "none";
+      }
+    };
 
-  // Modal handling - combine both modal handlers
-  const modals = {
-    utils: document.getElementById("utilsModal"),
-    event: document.getElementById("eventModal"),
-    closeBtn: document.getElementsByClassName("close")[0]
-  };
-
-  document.getElementById("utilsModalBtn").onclick = () => modals.utils.style.display = "block";
-  modals.closeBtn.onclick = () => modals.utils.style.display = "none";
-
-  // Single window click handler for both modals
-  window.onclick = (event) => {
-    if (event.target === modals.utils || event.target === modals.event) {
-      event.target.style.display = "none";
-    }
-  };
 
   // SoundCloud player initialization
   const initializePlayers = () => {
@@ -30,21 +44,21 @@ document.addEventListener('DOMContentLoaded', () => {
       player1: {
         cue: document.getElementById("cue1").textContent,
         iframe: document.getElementById("soundcloud-player-1"),
-        playingId: "playing-1"
+        playingId: "playing-1",
       },
       player2: {
         cue: document.getElementById("cue2").textContent,
         iframe: document.getElementById("soundcloud-player-2"),
-        playingId: "playing-2"
-      }
+        playingId: "playing-2",
+      },
     };
 
     // Initialize each player
-    Object.values(players).forEach(player => {
+    Object.values(players).forEach((player) => {
       if (player.cue && player.iframe) {
         const trackList = parseTracklist(player.cue);
         const widget = SC.Widget(player.iframe);
-        
+
         widget.bind(SC.Widget.Events.PLAY_PROGRESS, (event) => {
           const currentTime = event.currentPosition / 1000;
           updatePlayingTrack(currentTime, trackList, player.playingId);
