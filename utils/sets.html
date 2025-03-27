@@ -72,7 +72,7 @@
 
         .pagination {
             margin-left: 5em;
-  margin-right: 5em;
+            margin-right: 5em;
         }
 
         .filter-label {
@@ -81,7 +81,8 @@
         }
 
         .form-select,
-        .form-control, .page-link {
+        .form-control,
+        .page-link {
             background-color: #3a3a3a;
             color: white;
             border-color: #4a4a4a;
@@ -91,7 +92,7 @@
             color: white !important;
         }
 
-        .active > .page-link {
+        .active>.page-link {
             background-color: #9b0771 !important;
             border-color: #9b0771 !important;
             color: white;
@@ -857,7 +858,7 @@
             const genreFilter = document.getElementById('genreFilter');
 
             // Get unique artists, years, and genres
-            const artists = [...new Set(mixes.flatMap(mix => mix.artist))];
+            const artists = [...new Set(mixes.flatMap(mix => mix.artist))].sort((a, b) => a.localeCompare(b));
             const years = [...new Set(mixes.map(mix => mix.year))];
             const genres = [...new Set(mixes.flatMap(mix => mix.genres))];
 
