@@ -96,28 +96,40 @@
             <div class="col-12 col-md-10 col-lg-8">
                 <div class="filter-section">
                     <div class="row g-3 align-items-center">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <select id="artistFilter" class="form-select">
                                 <option value="">All Artists</option>
                             </select>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <select id="yearFilter" class="form-select">
                                 <option value="">All Years</option>
                             </select>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <select id="genreFilter" class="form-select">
                                 <option value="">All Genres</option>
                             </select>
                         </div>
+                        <div class="col-md-3">
+                            <select id="sortSelect" class="form-select">
+                                <option value="oldest">Oldest First</option>
+                                <option value="newest">Newest First</option>
+                                <option value="artist">By Artist</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
 
         <div id="mixContainer" class="row justify-content-center">
             <!-- Mixes will be dynamically inserted here -->
+        </div>
+
+        <div id="paginationContainer" class="row justify-content-center mt-3">
+            <!-- Pagination buttons will be dynamically inserted here -->
         </div>
 
         <div class="row justify-content-center mt-2">
@@ -129,114 +141,195 @@
 
     <script>
         const mixes = [
-{
-        "artist": ["Epoché", "Zeek"],
-        "title": "After Varg [OP]",
-        "date": "August 16, 2020",
-        "year": 2020,
-        "url": "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2064112580%3Fsecret_token%3Ds-xbmJu8yfcP3&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true",
-        "trackLink": "https://soundcloud.com/bassweight-prague/epoche-zeek-after-varg-op-1/s-xbmJu8yfcP3",
-        "genres": []
-    },
-    {
-        "artist": ["Epoché", "Zeek"],
-        "title": "Hypnotic madness [OP]",
-        "date": "August 16, 2020",
-        "year": 2020,
-        "url": "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2064112584%3Fsecret_token%3Ds-U1eD39m7b3I&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true",
-        "trackLink": "https://soundcloud.com/bassweight-prague/epoche-zeek-hypnotic-madness-op-8/s-U1eD39m7b3I",
-        "genres": []
-    },
-    {
-        "artist": ["Epoché", "Zeek"],
-        "title": "After transform b [OP]",
-        "date": "June 28, 2020",
-        "year": 2020,
-        "url": "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2064096608%3Fsecret_token%3Ds-TcGJpmFewh8&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true",
-        "trackLink": "https://soundcloud.com/bassweight-prague/epoche-zeek-after-transform-b-op-3/s-TcGJpmFewh8",
-        "genres": []
-    },
-    {
-        "artist": ["Epoché", "Zeek"],
-        "title": "After transform a [OP]",
-        "date": "June 28, 2020",
-        "year": 2020,
-        "url": "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2064096616%3Fsecret_token%3Ds-p5IUdJOqK3t&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true",
-        "trackLink": "https://soundcloud.com/bassweight-prague/epoche-zeek-after-transform-a-op-2/s-p5IUdJOqK3t",
-        "genres": []
-    },
-    {
-        "artist": ["Epoché", "Zeek"],
-        "title": "130+protobordel [OP]",
-        "date": "December 22, 2020",
-        "year": 2020,
-        "url": "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2064096620%3Fsecret_token%3Ds-Nm9dg7aHCfb&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true",
-        "trackLink": "https://soundcloud.com/bassweight-prague/epoche-zeek-130protobordel-op-1/s-Nm9dg7aHCfb",
-        "genres": []
-    },
-    {
-        "artist": ["Epoché", "Zeek"],
-        "title": "After transform c [OP]",
-        "date": "June 28, 2020",
-        "year": 2020,
-        "url": "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2064096612%3Fsecret_token%3Ds-9URU0XH4nHM&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true",
-        "trackLink": "https://soundcloud.com/bassweight-prague/epoche-zeek-after-transform-c-op-4/s-9URU0XH4nHM",
-        "genres": []
-    },
-        {
-        "artist": ["Epoché", "Zeek"],
-        "title": "Extinct style [OP]",
-        "date": "February 25, 2019",
-        "year": 2019,
-        "url": "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2064112572%3Fsecret_token%3Ds-22DicjbTFCQ&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true",
-        "trackLink": "https://soundcloud.com/bassweight-prague/epoche-zeek-extinct-style-op-7/s-22DicjbTFCQ",
-        "genres": []
-    },
-    {
-        "artist": ["Epoché", "Zeek"],
-        "title": "Deviant trenink [OP]",
-        "date": "June 28, 2020",
-        "year": 2020,
-        "url": "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2064112560%3Fsecret_token%3Ds-VgUTU5bDvPG&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true",
-        "trackLink": "https://soundcloud.com/bassweight-prague/epoche-zeek-deviant-trenink-op-6/s-VgUTU5bDvPG",
-        "genres": []
-    },
-    {
-        "artist": ["Epoché", "Zeek"],
-        "title": "Hi there [OP]",
-        "date": "June 20, 2020",
-        "year": 2020,
-        "url": "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2064112564%3Fsecret_token%3Ds-Kh3IPrO7Kri&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true",
-        "trackLink": "https://soundcloud.com/bassweight-prague/epoche-zeek-hi-there-op-5/s-Kh3IPrO7Kri",
-        "genres": []
-    },
-    {
-        "artist": ["Epoché", "Zeek"],
-        "title": "Deaviant random shit (unaveny epochyny a mimozni zyka) [OP]",
-        "date": "May 31, 2020",
-        "year": 2020,
-        "url": "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2064112568%3Fsecret_token%3Ds-jjXR0i6qyNT&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true",
-        "trackLink": "https://soundcloud.com/bassweight-prague/epoche-zeek-deaviant-random-shit-op-4/s-jjXR0i6qyNT",
-        "genres": []
-    },
-    {
-        "artist": ["Epoché", "Zeek"],
-        "title": "Deephousos 2019-12-12 [OP]",
-        "date": "December 12, 2019",
-        "year": 2019,
-        "url": "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2064112588%3Fsecret_token%3Ds-AQ5UM0VkcyI&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true",
-        "trackLink": "https://soundcloud.com/bassweight-prague/epoche-zeek-deephousos-2019-12-12-op-3/s-AQ5UM0VkcyI",
-        "genres": []
-    },
-    {
-        "artist": ["Epoché", "Zeek"],
-        "title": "Bubinkyeverywhere [OP]",
-        "date": "January 18, 2020",
-        "year": 2020,
-        "url": "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2064112576%3Fsecret_token%3Ds-VUvctOlK1r4&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true",
-        "trackLink": "https://soundcloud.com/bassweight-prague/epoche-zeek-bubinkyeverywhere-op-2/s-VUvctOlK1r4",
-        "genres": []
-    },
+            {
+                "artist": ["Epoché", "Zeek"],
+                "title": "Asi docela cool deeeeeep vec mastered",
+                "date": "November 1, 2024",
+                "year": 2024,
+                "url": "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2064125576%3Fsecret_token%3Ds-bd7ppIgPhQw&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true",
+                "trackLink": "https://soundcloud.com/bassweight-prague/epoche-zeek-asi-docela-cool-deeeeeep-vec-mastered-5/s-bd7ppIgPhQw",
+                "genres": ["Deep House", "Electronic", "Experimental"]
+            },
+            {
+                "artist": ["Epoché", "Zeek"],
+                "title": "Novy techno songy",
+                "date": "November 1, 2024",
+                "year": 2024,
+                "url": "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2064125592%3Fsecret_token%3Ds-FprE8BRnWGo&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true",
+                "trackLink": "https://soundcloud.com/bassweight-prague/epoche-zeek-novy-techno-songy-6/s-FprE8BRnWGo",
+                "genres": ["Techno", "Electronic", "Experimental"]
+            },
+            {
+                "artist": ["Epoché", "Zeek"],
+                "title": "Plevel Sessions part !",
+                "date": "November 1, 2024",
+                "year": 2024,
+                "url": "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2064125564%3Fsecret_token%3Ds-KEPufwedrtT&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true",
+                "trackLink": "https://soundcloud.com/bassweight-prague/epoche-zeek-plevel-sessions-part-7/s-KEPufwedrtT",
+                "genres": ["Experimental", "Electronic", "Session"]
+            },
+            {
+                "artist": ["Epoché", "Zeek"],
+                "title": "Plevel Sessions part 2",
+                "date": "November 1, 2024",
+                "year": 2024,
+                "url": "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2064125596%3Fsecret_token%3Ds-ERFKrgBiQd2&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true",
+                "trackLink": "https://soundcloud.com/bassweight-prague/epoche-zeek-plevel-sessions-part-2-8/s-ERFKrgBiQd2",
+                "genres": ["Experimental", "Electronic", "Session"]
+            },
+            {
+                "artist": ["Epoché", "Zeek"],
+                "title": "Plevel Sessions part 3",
+                "date": "November 1, 2024",
+                "year": 2024,
+                "url": "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2064125584%3Fsecret_token%3Ds-nq6K7mZrKFw&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true",
+                "trackLink": "https://soundcloud.com/bassweight-prague/epoche-zeek-plevel-sessions-part-3-9/s-nq6K7mZrKFw",
+                "genres": ["Experimental", "Electronic", "Session"]
+            },
+            {
+                "artist": ["Epoché", "Zeek"],
+                "title": "Lagasta 2019-11-09",
+                "date": "November 1, 2024",
+                "year": 2024,
+                "url": "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2064125588%3Fsecret_token%3Ds-bjssVRrthiy&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true",
+                "trackLink": "https://soundcloud.com/bassweight-prague/epoche-zeek-lagasta-2019-11-09-1/s-bjssVRrthiy",
+                "genres": ["Electronic", "Experimental", "Live Recording"]
+            },
+            {
+                "artist": ["Epoché", "Zeek"],
+                "title": "Sileny pomaly songy",
+                "date": "November 1, 2024",
+                "year": 2024,
+                "url": "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2064125580%3Fsecret_token%3Ds-oQZ8cbBZLch&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true",
+                "trackLink": "https://soundcloud.com/bassweight-prague/epoche-zeek-sileny-pomaly-songy-2/s-oQZ8cbBZLch",
+                "genres": ["Experimental", "Downtempo", "Electronic"]
+            },
+            {
+                "artist": ["Epoché", "Zeek"],
+                "title": "MRDACKY NA SRACKY",
+                "date": "November 1, 2024",
+                "year": 2024,
+                "url": "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2064125572%3Fsecret_token%3Ds-TXuHwjPSIK9&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true",
+                "trackLink": "https://soundcloud.com/bassweight-prague/epoche-zeek-mrdacky-na-sracky-3/s-TXuHwjPSIK9",
+                "genres": ["Experimental", "Electronic", "Avant-garde"]
+            },
+            {
+                "artist": ["Epoché", "Zeek"],
+                "title": "Ondry techno asi 2019-11-09",
+                "date": "November 1, 2024",
+                "year": 2024,
+                "url": "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2064125568%3Fsecret_token%3Ds-JIKpJnVMbjI&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true",
+                "trackLink": "https://soundcloud.com/bassweight-prague/epoche-zeek-ondry-techno-asi-2019-11-09-4/s-JIKpJnVMbjI",
+                "genres": ["Techno", "Electronic", "Experimental"]
+            },
+            {
+                "artist": ["Epoché", "Zeek"],
+                "title": "After Varg [OP]",
+                "date": "August 16, 2020",
+                "year": 2020,
+                "url": "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2064112580%3Fsecret_token%3Ds-xbmJu8yfcP3&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true",
+                "trackLink": "https://soundcloud.com/bassweight-prague/epoche-zeek-after-varg-op-1/s-xbmJu8yfcP3",
+                "genres": []
+            },
+            {
+                "artist": ["Epoché", "Zeek"],
+                "title": "Hypnotic madness [OP]",
+                "date": "August 16, 2020",
+                "year": 2020,
+                "url": "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2064112584%3Fsecret_token%3Ds-U1eD39m7b3I&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true",
+                "trackLink": "https://soundcloud.com/bassweight-prague/epoche-zeek-hypnotic-madness-op-8/s-U1eD39m7b3I",
+                "genres": []
+            },
+            {
+                "artist": ["Epoché", "Zeek"],
+                "title": "After transform b [OP]",
+                "date": "June 28, 2020",
+                "year": 2020,
+                "url": "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2064096608%3Fsecret_token%3Ds-TcGJpmFewh8&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true",
+                "trackLink": "https://soundcloud.com/bassweight-prague/epoche-zeek-after-transform-b-op-3/s-TcGJpmFewh8",
+                "genres": []
+            },
+            {
+                "artist": ["Epoché", "Zeek"],
+                "title": "After transform a [OP]",
+                "date": "June 28, 2020",
+                "year": 2020,
+                "url": "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2064096616%3Fsecret_token%3Ds-p5IUdJOqK3t&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true",
+                "trackLink": "https://soundcloud.com/bassweight-prague/epoche-zeek-after-transform-a-op-2/s-p5IUdJOqK3t",
+                "genres": []
+            },
+            {
+                "artist": ["Epoché", "Zeek"],
+                "title": "130+protobordel [OP]",
+                "date": "December 22, 2020",
+                "year": 2020,
+                "url": "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2064096620%3Fsecret_token%3Ds-Nm9dg7aHCfb&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true",
+                "trackLink": "https://soundcloud.com/bassweight-prague/epoche-zeek-130protobordel-op-1/s-Nm9dg7aHCfb",
+                "genres": []
+            },
+            {
+                "artist": ["Epoché", "Zeek"],
+                "title": "After transform c [OP]",
+                "date": "June 28, 2020",
+                "year": 2020,
+                "url": "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2064096612%3Fsecret_token%3Ds-9URU0XH4nHM&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true",
+                "trackLink": "https://soundcloud.com/bassweight-prague/epoche-zeek-after-transform-c-op-4/s-9URU0XH4nHM",
+                "genres": []
+            },
+            {
+                "artist": ["Epoché", "Zeek"],
+                "title": "Extinct style [OP]",
+                "date": "February 25, 2019",
+                "year": 2019,
+                "url": "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2064112572%3Fsecret_token%3Ds-22DicjbTFCQ&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true",
+                "trackLink": "https://soundcloud.com/bassweight-prague/epoche-zeek-extinct-style-op-7/s-22DicjbTFCQ",
+                "genres": []
+            },
+            {
+                "artist": ["Epoché", "Zeek"],
+                "title": "Deviant trenink [OP]",
+                "date": "June 28, 2020",
+                "year": 2020,
+                "url": "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2064112560%3Fsecret_token%3Ds-VgUTU5bDvPG&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true",
+                "trackLink": "https://soundcloud.com/bassweight-prague/epoche-zeek-deviant-trenink-op-6/s-VgUTU5bDvPG",
+                "genres": []
+            },
+            {
+                "artist": ["Epoché", "Zeek"],
+                "title": "Hi there [OP]",
+                "date": "June 20, 2020",
+                "year": 2020,
+                "url": "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2064112564%3Fsecret_token%3Ds-Kh3IPrO7Kri&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true",
+                "trackLink": "https://soundcloud.com/bassweight-prague/epoche-zeek-hi-there-op-5/s-Kh3IPrO7Kri",
+                "genres": []
+            },
+            {
+                "artist": ["Epoché", "Zeek"],
+                "title": "Deaviant random shit (unaveny epochyny a mimozni zyka) [OP]",
+                "date": "May 31, 2020",
+                "year": 2020,
+                "url": "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2064112568%3Fsecret_token%3Ds-jjXR0i6qyNT&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true",
+                "trackLink": "https://soundcloud.com/bassweight-prague/epoche-zeek-deaviant-random-shit-op-4/s-jjXR0i6qyNT",
+                "genres": []
+            },
+            {
+                "artist": ["Epoché", "Zeek"],
+                "title": "Deephousos 2019-12-12 [OP]",
+                "date": "December 12, 2019",
+                "year": 2019,
+                "url": "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2064112588%3Fsecret_token%3Ds-AQ5UM0VkcyI&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true",
+                "trackLink": "https://soundcloud.com/bassweight-prague/epoche-zeek-deephousos-2019-12-12-op-3/s-AQ5UM0VkcyI",
+                "genres": []
+            },
+            {
+                "artist": ["Epoché", "Zeek"],
+                "title": "Bubinkyeverywhere [OP]",
+                "date": "January 18, 2020",
+                "year": 2020,
+                "url": "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2064112576%3Fsecret_token%3Ds-VUvctOlK1r4&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true",
+                "trackLink": "https://soundcloud.com/bassweight-prague/epoche-zeek-bubinkyeverywhere-op-2/s-VUvctOlK1r4",
+                "genres": []
+            },
             {
 
                 "artist": ["Unknown Artist", "Unknown Artist"],
@@ -699,6 +792,27 @@
             }
         ];
 
+        const MIXES_PER_PAGE = 10;
+        let currentPage = 1;
+        let currentSortOption = 'oldest';
+
+        function sortMixes(mixes) {
+            switch (currentSortOption) {
+                case 'newest':
+                    return mixes.sort((a, b) => new Date(b.date) - new Date(a.date));
+                case 'oldest':
+                    return mixes.sort((a, b) => new Date(a.date) - new Date(b.date));
+                case 'artist':
+                    return mixes.sort((a, b) => {
+                        const artistA = Array.isArray(a.artist) ? a.artist[0] : a.artist;
+                        const artistB = Array.isArray(b.artist) ? b.artist[0] : b.artist;
+                        return artistA.localeCompare(artistB);
+                    });
+                default:
+                    return mixes;
+            }
+        }
+
         // Function to generate mix HTML with multi-artist support
         function generateMixHTML(mix) {
             // Join artists with ' & ' if it's an array, otherwise use as is
@@ -764,7 +878,7 @@
             const yearFilter = document.getElementById('yearFilter').value;
             const genreFilter = document.getElementById('genreFilter').value;
 
-            const filteredMixes = mixes.filter(mix => {
+            let filteredMixes = mixes.filter(mix => {
                 const artistMatch = !artistFilter ||
                     (Array.isArray(mix.artist)
                         ? mix.artist.includes(artistFilter)
@@ -774,16 +888,101 @@
                 return artistMatch && yearMatch && genreMatch;
             });
 
-            mixContainer.innerHTML = filteredMixes.map(generateMixHTML).join('');
+            // Sort the filtered mixes
+            filteredMixes = sortMixes(filteredMixes);
 
-            // Add this line to update the mix count
+            // Paginate the filtered and sorted mixes
+            const paginatedMixes = getPaginatedMixes(filteredMixes);
+
+            mixContainer.innerHTML = paginatedMixes.map(generateMixHTML).join('');
+
+            // Update mix count and pagination
             updateMixCount(filteredMixes.length);
+            updatePagination(filteredMixes);
+        }
+
+        function getPaginatedMixes(mixesToPaginate) {
+            const startIndex = (currentPage - 1) * MIXES_PER_PAGE;
+            return mixesToPaginate.slice(startIndex, startIndex + MIXES_PER_PAGE);
+        }
+
+        // New function to create pagination controls
+        function updatePagination(filteredMixes) {
+            const paginationContainer = document.getElementById('paginationContainer');
+            if (!paginationContainer) return;
+
+            const totalPages = Math.ceil(filteredMixes.length / MIXES_PER_PAGE);
+
+            // Clear previous pagination
+            paginationContainer.innerHTML = '';
+
+            // Create pagination nav
+            const paginationNav = document.createElement('nav');
+            paginationNav.setAttribute('aria-label', 'Mix pagination');
+
+            const paginationList = document.createElement('ul');
+            paginationList.className = 'pagination pagination-lg justify-content-center';
+
+            // Previous button
+            const prevListItem = document.createElement('li');
+            prevListItem.className = `page-item ${currentPage === 1 ? 'disabled' : ''}`;
+            const prevLink = document.createElement('a');
+            prevLink.className = 'page-link';
+            prevLink.href = '#';
+            prevLink.innerHTML = '&laquo;';
+            prevLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (currentPage > 1) {
+                    currentPage--;
+                    filterMixes();
+                }
+            });
+            prevListItem.appendChild(prevLink);
+            paginationList.appendChild(prevListItem);
+
+            // Page number buttons
+            for (let i = 1; i <= totalPages; i++) {
+                const pageListItem = document.createElement('li');
+                pageListItem.className = `page-item ${i === currentPage ? 'active' : ''}`;
+                const pageLink = document.createElement('a');
+                pageLink.className = 'page-link';
+                pageLink.href = '#';
+                pageLink.textContent = i;
+                pageLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    currentPage = i;
+                    filterMixes();
+                });
+                pageListItem.appendChild(pageLink);
+                paginationList.appendChild(pageListItem);
+            }
+
+            // Next button
+            const nextListItem = document.createElement('li');
+            nextListItem.className = `page-item ${currentPage === totalPages ? 'disabled' : ''}`;
+            const nextLink = document.createElement('a');
+            nextLink.className = 'page-link';
+            nextLink.href = '#';
+            nextLink.innerHTML = '&raquo;';
+            nextLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    filterMixes();
+                }
+            });
+            nextListItem.appendChild(nextLink);
+            paginationList.appendChild(nextListItem);
+
+            // Assemble and add to container
+            paginationNav.appendChild(paginationList);
+            paginationContainer.appendChild(paginationNav);
         }
 
         function updateMixCount(filteredMixesCount) {
             const mixCountDisplay = document.getElementById('mixCountDisplay');
             if (mixCountDisplay) {
-                mixCountDisplay.textContent = `Showing ${filteredMixesCount} mix${filteredMixesCount !== 1 ? 'es' : ''}`;
+                mixCountDisplay.textContent = `Found ${filteredMixesCount} mix${filteredMixesCount !== 1 ? 'es' : ''}`;
             }
         }
 
@@ -791,13 +990,31 @@
         document.addEventListener('DOMContentLoaded', () => {
             populateFilters();
             const mixContainer = document.getElementById('mixContainer');
-            mixContainer.innerHTML = mixes.map(generateMixHTML).join('');
+            mixContainer.innerHTML = getPaginatedMixes(mixes).map(generateMixHTML).join('');
 
-            updateMixCount(mixes.length);
+            // Sort initial mixes
+            const sortedMixes = sortMixes([...mixes]);
+            mixContainer.innerHTML = getPaginatedMixes(sortedMixes).map(generateMixHTML).join('');
+            updateMixCount(sortedMixes.length);
+            updatePagination(sortedMixes);
 
-            document.getElementById('artistFilter').addEventListener('change', filterMixes);
-            document.getElementById('yearFilter').addEventListener('change', filterMixes);
-            document.getElementById('genreFilter').addEventListener('change', filterMixes);
+            document.getElementById('artistFilter').addEventListener('change', () => {
+                currentPage = 1; // Reset to first page when filter changes
+                filterMixes();
+            });
+            document.getElementById('yearFilter').addEventListener('change', () => {
+                currentPage = 1; // Reset to first page when filter changes
+                filterMixes();
+            });
+            document.getElementById('genreFilter').addEventListener('change', () => {
+                currentPage = 1; // Reset to first page when filter changes
+                filterMixes();
+            });
+            document.getElementById('sortSelect').addEventListener('change', (e) => {
+                currentSortOption = e.target.value;
+                currentPage = 1; // Reset to first page when sorting changes
+                filterMixes();
+            });
         });
     </script>
 
