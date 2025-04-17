@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { overflow: hidden; }
@@ -31,6 +32,7 @@ video {
     background: rgba(0,0,0,0.7);
     overflow-y: auto;
     padding: 10px;
+    z-index: 10;
 }
 
 button {
@@ -53,62 +55,141 @@ button:hover {
 button.active {
     background: #007bff;
 }
-
-/* Hide scrollbar but keep functionality */
-.controls::-webkit-scrollbar {
-    width: 5px;
-}
-
-.controls::-webkit-scrollbar-thumb {
-    background: rgba(255,255,255,0.2);
-}
 </style>
 </head>
 <body>
 
-<div class="container">
+<div class="container" onclick="toggleFullscreen()">
     <div class="video-wrapper">
-        <video autoplay loop></video>
+        <video id="video" muted playsinline></video>
     </div>
-    
-    <div class="controls">
-        <button onclick="playVideo('videa/BW-CHLUBENIVSE.mp4', this)">CHLUBENIVSE</button>
-        <button onclick="playVideo('videa/BW-CHLUBICI1.mp4', this)">CHLUBICI 1</button>
-        <button onclick="playVideo('videa/BW-CHLUBICI2.mp4', this)">CHLUBICI 2</button>
-        <button onclick="playVideo('videa/BW-CHOZENI.mp4', this)">CHOZENI</button>
-        <button onclick="playVideo('videa/BW-CLUNEM.mp4', this)">CLUNEM</button>
-        <button onclick="playVideo('videa/BW-CLUNY.mp4', this)">CLUNY</button>
-        <button onclick="playVideo('videa/BW-LIDIVSE.mp4', this)">LIDIVSE</button>
-        <button onclick="playVideo('videa/BW-MENU.mp4', this)">MENU</button>
-        <button onclick="playVideo('videa/BW-NAVNADY.mp4', this)">NAVNADY</button>
-        <button onclick="playVideo('videa/BW-PARTY.mp4', this)">PARTY</button>
-        <button onclick="playVideo('videa/BW-RYBA1.mp4', this)">RYBA 1</button>
-        <button onclick="playVideo('videa/BW-RYBA2.mp4', this)">RYBA 2</button>
-        <button onclick="playVideo('videa/BW-RYBA3.mp4', this)">RYBA 3</button>
-        <button onclick="playVideo('videa/BW-RYBA4.mp4', this)">RYBA 4</button>
-        <button onclick="playVideo('videa/BW-RYBA5.mp4', this)">RYBA 5</button>
-        <button onclick="playVideo('videa/BW-RYBA6.mp4', this)">RYBA 6</button>
-        <button onclick="playVideo('videa/BW-RYBY.mp4', this)">RYBY</button>
-        <button onclick="playVideo('videa/BW-TRSAME.mp4', this)">TRSAME</button>
+
+    <div class="controls" id="controls">
+        <!-- Removed CHLUBENIVSE -->
+        <button onclick="manualPlay(0)">CHLUBICI 1</button>
+        <button onclick="manualPlay(1)">CHLUBICI 2</button>
+        <button onclick="manualPlay(2)">CHOZENI</button>
+        <button onclick="manualPlay(3)">CLUNEM</button>
+        <button onclick="manualPlay(4)">CLUNY</button>
+        <button onclick="manualPlay(5)">LIDIVSE</button>
+        <button onclick="manualPlay(6)">MENU</button>
+        <button onclick="manualPlay(7)">NAVNADY</button>
+        <button onclick="manualPlay(8)">PARTY</button>
+        <button onclick="manualPlay(9)">RYBA 1</button>
+        <button onclick="manualPlay(10)">RYBA 2</button>
+        <button onclick="manualPlay(11)">RYBA 3</button>
+        <button onclick="manualPlay(12)">RYBA 4</button>
+        <button onclick="manualPlay(13)">RYBA 5</button>
+        <button onclick="manualPlay(14)">RYBA 6</button>
+        <button onclick="manualPlay(15)">RYBY</button>
+        <button onclick="manualPlay(16)">TRSAME</button>
     </div>
 </div>
 
 <script>
-function playVideo(src, btn) {
-    document.querySelector('video').src = src;
-    document.querySelectorAll('button').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
+const videoElement = document.getElementById('video');
+const controlPanel = document.getElementById('controls');
+const videoButtons = controlPanel.querySelectorAll('button');
+
+const videoList = [
+    'videa/BW-CHLUBICI1.mp4',
+    'videa/BW-CHLUBICI2.mp4',
+    'videa/BW-CHOZENI.mp4',
+    'videa/BW-CLUNEM.mp4',
+    'videa/BW-CLUNY.mp4',
+    'videa/BW-LIDIVSE.mp4',
+    'videa/BW-MENU.mp4',
+    'videa/BW-NAVNADY.mp4',
+    'videa/BW-PARTY.mp4',
+    'videa/BW-RYBA1.mp4',
+    'videa/BW-RYBA2.mp4',
+    'videa/BW-RYBA3.mp4',
+    'videa/BW-RYBA4.mp4',
+    'videa/BW-RYBA5.mp4',
+    'videa/BW-RYBA6.mp4',
+    'videa/BW-RYBY.mp4',
+    'videa/BW-TRSAME.mp4'
+];
+
+let currentIndex = 0;
+let playCount = 0;
+
+function playVideo(index) {
+    currentIndex = index;
+    playCount = 0;
+
+    videoElement.src = videoList[index];
+    videoElement.load();
+
+    videoElement.play().then(() => {
+        // Autoplay success
+    }).catch(err => {
+        console.warn("Autoplay failed 😤", err);
+    });
+
+    videoButtons.forEach(btn => btn.classList.remove('active'));
+    if (videoButtons[index]) videoButtons[index].classList.add('active');
 }
 
-// Play first video on load
-document.querySelector('button').click();
-
-// Optional: Press 'H' to hide/show controls
-document.addEventListener('keydown', function(e) {
-    if(e.key.toLowerCase() === 'h') {
-        document.querySelector('.controls').style.display = 
-        document.querySelector('.controls').style.display === 'none' ? 'block' : 'none';
+function manualPlay(index) {
+    playVideo(index);
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(err => console.warn("Fullscreen error:", err));
     }
+}
+
+
+function playRandomVideo() {
+    let nextIndex;
+    do {
+        nextIndex = Math.floor(Math.random() * videoList.length);
+    } while (nextIndex === currentIndex);
+    playVideo(nextIndex);
+}
+
+videoElement.addEventListener('ended', () => {
+    playCount++;
+    if (playCount < 3) {
+        videoElement.currentTime = 0;
+        videoElement.play();
+    } else {
+        playRandomVideo();
+    }
+});
+
+function toggleFullscreen() {
+    const elem = document.documentElement;
+    if (!document.fullscreenElement) {
+        elem.requestFullscreen().catch(err => console.warn("Fullscreen error:", err));
+    } else {
+        document.exitFullscreen();
+    }
+}
+
+document.addEventListener('fullscreenchange', () => {
+    controlPanel.style.display = document.fullscreenElement ? 'none' : 'block';
+});
+
+document.addEventListener('keydown', function(e) {
+    if (e.key.toLowerCase() === 'h') {
+        controlPanel.style.display = controlPanel.style.display === 'none' ? 'block' : 'none';
+    }
+    if (e.key.toLowerCase() === 'f') {
+        toggleFullscreen();
+    }
+    if (e.key.toLowerCase() === 'r') {
+        playRandomVideo();
+    }
+});
+
+// Ensure autoplay works only after user interaction
+window.addEventListener('DOMContentLoaded', () => {
+    // Wait for user click to start playback
+    const startPlayback = () => {
+        document.removeEventListener('click', startPlayback);
+        playVideo(Math.floor(Math.random() * videoList.length));
+    };
+    document.addEventListener('click', startPlayback);
 });
 </script>
 
