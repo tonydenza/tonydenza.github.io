@@ -4,32 +4,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bass Weight Prague - Prague based DJs specializing in Broken Techno, Dubstep, Jungle, and UKG">
+  <meta name="theme-color" content="#000000">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Bass Weight Prague">
   <meta name="application-name" content="Bass Weight Prague">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Add Open Graph tags for better social media sharing -->
+  <meta property="og:title" content="BASS WEIGHT PRAGUE">
+  <meta property="og:description" content="Prague based DJs specializing in Broken Techno, Dubstep, Jungle, and UKG">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bassweightprague.com">
+  <!-- Keep your existing favicon links -->
+  <!-- Update to modern Font Awesome version -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <link rel="stylesheet" href="./css/style.css">
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
   <title>BASS WEIGHT PRAGUE</title>
 </head>
 
 <body>
-  <input id="image-selector-input" class="d-none" type="file">
+  <input id="image-selector-input" class="visually-hidden" type="file" aria-hidden="true">
+  
+  <canvas id="background-canvas" aria-hidden="true"></canvas>
 
-  <canvas></canvas>
-
-  <header>
+  <header class="site-header">
     <h1 class="bass-text" id="bwp">BASS<br>WEIGHT<br>PRAGUE</h1>
-    <nav>
-      <ul>
-        <li><a target="_blank" href="https://www.facebook.com/bassweightprg"><i class="fab fa-facebook-f bass-link"></i></a></li>
-        <li><a target="_blank" href="https://www.instagram.com/bassweight_prg/"><i class="fab fa-instagram bass-link"></i></a></li>
-        <li><a target="_blank" href="https://soundcloud.com/bassweight-prague"><i class="fab fa-soundcloud bass-link"></i></a></li>
-        <li><a target="_blank" href="mailto:bassweight.prg@gmail.com"><i class="fas fa-envelope bass-link"></i></a></li>
-        <li><a id="utilsModalBtn" target="_blank"><i class="fas fa-toolbox bass-link"></i></a></li>
+    <nav aria-label="Social Media Links">
+      <ul class="social-links">
+        <li><a target="_blank" href="https://www.facebook.com/bassweightprg" aria-label="Facebook"><i class="fab fa-facebook-f bass-link"></i></a></li>
+        <li><a target="_blank" href="https://www.instagram.com/bassweight_prg/" aria-label="Instagram"><i class="fab fa-instagram bass-link"></i></a></li>
+        <li><a target="_blank" href="https://soundcloud.com/bassweight-prague" aria-label="SoundCloud"><i class="fab fa-soundcloud bass-link"></i></a></li>
+        <li><a target="_blank" href="mailto:bassweight.prg@gmail.com" aria-label="Email"><i class="fas fa-envelope bass-link"></i></a></li>
+        <li><a id="utilsModalBtn" href="#" aria-label="DJ Utilities"><i class="fas fa-toolbox bass-link"></i></a></li>
       </ul>
     </nav>
   </header>
@@ -138,181 +144,6 @@
       </div>
     </div>
   </div>
-
-
-
-
-
-  <div id="anezkaModal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <div class="container">
-        <div class="scene-body">
-          <style>
-            .scene-body {
-                background: black;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 70vh;
-                margin: 0;
-                overflow: hidden;
-            }
-    
-            .scene {
-                position: relative;
-                width: 300px;
-                height: 300px;
-                perspective: 500px;
-            }
-    
-            .coin {
-                position: absolute;
-                left: 50%;
-                top: 56%;
-                transform-style: preserve-3d;
-                animation: spinCoin 8s linear infinite;
-            }
-    
-            .coin img {
-                width: 250px;
-                height: 250px;
-                position: absolute;
-                transform: translate(-50%, -50%);
-            }
-    
-            .text {
-                position: absolute;
-                color: #6495ED;
-                font-size: 28px;
-                font-family: Arial, sans-serif;
-                text-transform: uppercase;
-                white-space: nowrap;
-            }
-    
-            .text2 {
-                position: absolute;
-                color: #b73499;
-                font-size: 28px;
-                font-family: Arial, sans-serif;
-                text-transform: uppercase;
-                white-space: nowrap;
-            }
-    
-            .text3 {
-                position: absolute;
-                color: #6495ED;
-                font-size: 28px;
-                font-family: Arial, sans-serif;
-                text-transform: uppercase;
-                white-space: nowrap;
-                font-weight: 900;
-                top: 300px !important;
-                font-family: "Bungee Inline", serif;
-            }
-    
-            .word-container {
-                position: absolute;
-                width: 110%;
-                height: 100%;
-                transform-style: preserve-3d;
-            }
-    
-            @keyframes spinCoin {
-                from { transform: rotateY(0deg); }
-                to { transform: rotateY(360deg); }
-            }
-        </style>
-          <div class="scene">
-            <div class="coin">
-                <img src="./utils/mince.png" alt="Coin">
-            </div>
-
-            <script>
-              const scene = document.querySelector('.scene');
-              const words = [
-                  { text: 'BASSWEIGHT', delay: 3 },
-                  { text: 'SAPYENS', delay: 5 },
-                  { text: '22.3.', delay: 7 }
-              ];
-              const radius = 120;
-      
-              words.forEach((word, wordIndex) => {
-                  const container = document.createElement('div');
-                  container.className = 'word-container';
-                  
-                  // Adjust rotation for each word container
-                  if (wordIndex === 1) {
-                      container.style.transform = 'rotate(90deg)';
-                  } else if (wordIndex === 2) {
-                      container.style.transform = '';
-                  }
-      
-                  const letters = word.text.split('');
-                  const letterSpacing = 40;
-                  const totalWidth = letters.length * letterSpacing;
-                  const startX = -totalWidth / 2 + letterSpacing / 2;
-      
-                  letters.forEach((letter, index) => {
-                      const element = document.createElement('div');
-                      // Apply different class based on word index
-                      if (wordIndex === 0) element.className = 'text';
-                      else if (wordIndex === 1) element.className = 'text2';
-                      else element.className = 'text3';
-                      
-                      element.textContent = letter;
-                      
-                      const x = startX + (index * letterSpacing);
-                      element.style.left = `${150 + x}px`;
-                      element.style.top = '150px';
-                      
-                      const animationName = `moveLetter${wordIndex}`;
-                      element.style.animation = `${animationName} 6s linear 1s`;
-                      element.style.animationDelay = `${word.delay + index * 0.1}s`;
-                      
-                      
-                      container.appendChild(element);
-                  });
-      
-                  scene.appendChild(container);
-              });
-      
-              const style = document.createElement('style');
-              style.textContent = `
-                  @keyframes moveLetter0 {
-                      0% {
-                          transform: translate(-50%, -50%) rotate(0deg) translateY(${-radius}px) rotate(0deg);
-                      }
-                      100% {
-                          transform: translate(-50%, -50%) rotate(360deg) translateY(${-radius}px) rotate(-360deg);
-                      }
-                  }
-                  @keyframes moveLetter1 {
-                      0% {
-                          transform: translate(-50%, -50%) rotate(0deg) translateY(${-radius}px) rotate(0deg);
-                      }
-                      100% {
-                          transform: translate(-50%, -50%) rotate(360deg) translateY(${-radius}px) rotate(-360deg);
-                      }
-                  }
-              `;
-              document.head.appendChild(style);
-          </script>
-        </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-
-
-
-
-
-
-
-
 
   <footer>
     <h2>

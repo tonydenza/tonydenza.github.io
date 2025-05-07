@@ -1,0 +1,160 @@
+<div style="display: hidden" id="anezkaModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div class="container">
+        <div class="scene-body">
+          <style>
+            .scene-body {
+                background: black;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 70vh;
+                margin: 0;
+                overflow: hidden;
+            }
+    
+            .scene {
+                position: relative;
+                width: 300px;
+                height: 300px;
+                perspective: 500px;
+            }
+    
+            .coin {
+                position: absolute;
+                left: 50%;
+                top: 56%;
+                transform-style: preserve-3d;
+                animation: spinCoin 8s linear infinite;
+            }
+    
+            .coin img {
+                width: 250px;
+                height: 250px;
+                position: absolute;
+                transform: translate(-50%, -50%);
+            }
+    
+            .text {
+                position: absolute;
+                color: #6495ED;
+                font-size: 28px;
+                font-family: Arial, sans-serif;
+                text-transform: uppercase;
+                white-space: nowrap;
+            }
+    
+            .text2 {
+                position: absolute;
+                color: #b73499;
+                font-size: 28px;
+                font-family: Arial, sans-serif;
+                text-transform: uppercase;
+                white-space: nowrap;
+            }
+    
+            .text3 {
+                position: absolute;
+                color: #6495ED;
+                font-size: 28px;
+                font-family: Arial, sans-serif;
+                text-transform: uppercase;
+                white-space: nowrap;
+                font-weight: 900;
+                top: 300px !important;
+                font-family: "Bungee Inline", serif;
+            }
+    
+            .word-container {
+                position: absolute;
+                width: 110%;
+                height: 100%;
+                transform-style: preserve-3d;
+            }
+    
+            @keyframes spinCoin {
+                from { transform: rotateY(0deg); }
+                to { transform: rotateY(360deg); }
+            }
+        </style>
+          <div class="scene">
+            <div class="coin">
+                <img src="./utils/mince.png" alt="Coin">
+            </div>
+
+            <script>
+              const scene = document.querySelector('.scene');
+              const words = [
+                  { text: 'BASSWEIGHT', delay: 3 },
+                  { text: 'SAPYENS', delay: 5 },
+                  { text: '22.3.', delay: 7 }
+              ];
+              const radius = 120;
+      
+              words.forEach((word, wordIndex) => {
+                  const container = document.createElement('div');
+                  container.className = 'word-container';
+                  
+                  // Adjust rotation for each word container
+                  if (wordIndex === 1) {
+                      container.style.transform = 'rotate(90deg)';
+                  } else if (wordIndex === 2) {
+                      container.style.transform = '';
+                  }
+      
+                  const letters = word.text.split('');
+                  const letterSpacing = 40;
+                  const totalWidth = letters.length * letterSpacing;
+                  const startX = -totalWidth / 2 + letterSpacing / 2;
+      
+                  letters.forEach((letter, index) => {
+                      const element = document.createElement('div');
+                      // Apply different class based on word index
+                      if (wordIndex === 0) element.className = 'text';
+                      else if (wordIndex === 1) element.className = 'text2';
+                      else element.className = 'text3';
+                      
+                      element.textContent = letter;
+                      
+                      const x = startX + (index * letterSpacing);
+                      element.style.left = `${150 + x}px`;
+                      element.style.top = '150px';
+                      
+                      const animationName = `moveLetter${wordIndex}`;
+                      element.style.animation = `${animationName} 6s linear 1s`;
+                      element.style.animationDelay = `${word.delay + index * 0.1}s`;
+                      
+                      
+                      container.appendChild(element);
+                  });
+      
+                  scene.appendChild(container);
+              });
+      
+              const style = document.createElement('style');
+              style.textContent = `
+                  @keyframes moveLetter0 {
+                      0% {
+                          transform: translate(-50%, -50%) rotate(0deg) translateY(${-radius}px) rotate(0deg);
+                      }
+                      100% {
+                          transform: translate(-50%, -50%) rotate(360deg) translateY(${-radius}px) rotate(-360deg);
+                      }
+                  }
+                  @keyframes moveLetter1 {
+                      0% {
+                          transform: translate(-50%, -50%) rotate(0deg) translateY(${-radius}px) rotate(0deg);
+                      }
+                      100% {
+                          transform: translate(-50%, -50%) rotate(360deg) translateY(${-radius}px) rotate(-360deg);
+                      }
+                  }
+              `;
+              document.head.appendChild(style);
+          </script>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>

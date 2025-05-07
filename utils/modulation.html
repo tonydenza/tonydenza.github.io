@@ -275,6 +275,48 @@
   animate()
   randomizeFmParams()
   </script>
+
+  <script>
+    // Wait for the page to fully load
+window.addEventListener('load', function() {
+  // Create and dispatch keydown event for numpad 3
+  const keydown3 = new KeyboardEvent('keydown', {
+    key: '3',
+    code: 'Numpad3',
+    keyCode: 99,
+    which: 99,
+    location: KeyboardEvent.DOM_KEY_LOCATION_NUMPAD, // Specifies numpad location
+    bubbles: true,
+    cancelable: true
+  });
+  
+  // Create and dispatch keydown event for numpad 7
+  const keydown7 = new KeyboardEvent('keydown', {
+    key: '7',
+    code: 'Numpad7',
+    keyCode: 103,
+    which: 103,
+    location: KeyboardEvent.DOM_KEY_LOCATION_NUMPAD, // Specifies numpad location
+    bubbles: true,
+    cancelable: true
+  });
+  
+  // Dispatch the events
+  document.dispatchEvent(keydown3);
+  document.dispatchEvent(keydown7);
+  
+  console.log('Numpad keys 3 and 7 are now being "held down"');
+  
+  // Optional: To prevent the default keyup behavior (which would stop the "holding")
+  document.addEventListener('keyup', function(e) {
+    if ((e.code === 'Numpad3' || e.code === 'Numpad7') && 
+        e.location === KeyboardEvent.DOM_KEY_LOCATION_NUMPAD) {
+      e.preventDefault();
+      console.log('Prevented keyup for ' + e.code);
+    }
+  }, true);
+});
+  </script>
 </body>
 
 </html>
