@@ -101,6 +101,28 @@
         .page-link {
             padding: 5px 10px !important;
         }
+
+        .artist-filter-link,
+        .tag-filter-link {
+            color: inherit;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .artist-filter-link:hover {
+            color: #ff5500;
+            text-decoration: underline;
+        }
+
+        .tag-filter-link:hover {
+            color: #ff5500;
+            text-decoration: underline;
+        }
+
+        #loading {
+            text-align: center;
+            padding: 20px;
+        }
     </style>
 </head>
 
@@ -131,12 +153,16 @@
                             <select id="sortSelect" class="form-select">
                                 <option value="oldest">Oldest First</option>
                                 <option value="newest">Newest First</option>
-                                <option value="artist">By Artist</option>
                             </select>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
 
+        <div id="loading" class="row justify-content-center">
+            <div class="col-12 text-center">
+                <p>Loading mixes...</p>
             </div>
         </div>
 
@@ -159,92 +185,104 @@
         // data here: https://docs.google.com/spreadsheets/d/1PaOQ1WUqZJrV07PsNd4GV6fkpko-wvMVRHtA2Xgn8rI/edit?gid=0#gid=0
         // api calls here: https://app.sheetbest.com/admin/connection-detail/95ec2938-277b-4a98-9ec0-3eb0da2ac232
         let mixes = [];
-        fetch("https://api.sheetbest.com/sheets/95ec2938-277b-4a98-9ec0-3eb0da2ac232")
-    .then(response => response.json())
-    .then(data => {
-        mixes = data.map(mix => ({
-            ...mix,
-            artist: mix.artist ? mix.artist.split(',').map(a => a.trim()) : [],
-            tags: mix.tags ? mix.tags.split(',').map(g => g.trim()) : []
-        }));
-
-        currentPage = 1;
-        filterMixes(); // will trigger render, count, pagination
-        populateFilters(mixes); // ← needs to be here
-    })
-    .catch(err => console.error("Error loading mixes:", err));
-
-
         const MIXES_PER_PAGE = 10;
         let currentPage = 1;
         let currentSortOption = 'oldest';
 
-        function populateFilters(mixes) {
-    const artistSet = new Set();
-    const yearSet = new Set();
-    const tagSet = new Set();
+        // Function to populate filter dropdowns
+        function populateFilters(mixData) {
+            const artistSet = new Set();
+            const yearSet = new Set();
+            const tagSet = new Set();
 
-    mixes.forEach(mix => {
-        (mix.artist || []).forEach(a => artistSet.add(a));
-        (mix.tags || []).forEach(t => tagSet.add(t));
-        if (mix.year) yearSet.add(mix.year);
-    });
+            mixData.forEach(mix => {
+                (mix.artist || []).forEach(a => artistSet.add(a));
+                (mix.tags || []).forEach(t => tagSet.add(t));
+                if (mix.year) yearSet.add(mix.year);
+            });
 
-    const artistFilter = document.getElementById("artistFilter");
-    const yearFilter = document.getElementById("yearFilter");
-    const tagFilter = document.getElementById("tagFilter");
+            const artistFilter = document.getElementById("artistFilter");
+            const yearFilter = document.getElementById("yearFilter");
+            const tagFilter = document.getElementById("tagFilter");
 
-    artistFilter.innerHTML = `<option value="">All Artists</option>` +
-        Array.from(artistSet).sort().map(a => `<option value="${a}">${a}</option>`).join("");
+            artistFilter.innerHTML = `<option value="">All Artists</option>` +
+                Array.from(artistSet).sort().map(a => `<option value="${a}">${a}</option>`).join("");
 
-    yearFilter.innerHTML = `<option value="">All Years</option>` +
-        Array.from(yearSet).sort((a, b) => a - b).map(y => `<option value="${y}">${y}</option>`).join("");
+            yearFilter.innerHTML = `<option value="">All Years</option>` +
+                Array.from(yearSet).sort((a, b) => a - b).map(y => `<option value="${y}">${y}</option>`).join("");
 
-    tagFilter.innerHTML = `<option value="">All Tags</option>` +
-        Array.from(tagSet).sort().map(t => `<option value="${t}">${t}</option>`).join("");
-}
+            tagFilter.innerHTML = `<option value="">All Tags</option>` +
+                Array.from(tagSet).sort().map(t => `<option value="${t}">${t}</option>`).join("");
+        }
 
-
-        function sortMixes(mixes) {
+        function sortMixes(mixesToSort) {
             switch (currentSortOption) {
                 case 'newest':
-                    return mixes.sort((a, b) => new Date(b.date) - new Date(a.date));
+                    return mixesToSort.sort((a, b) => new Date(b.date) - new Date(a.date));
                 case 'oldest':
-                    return mixes.sort((a, b) => new Date(a.date) - new Date(b.date));
+                    return mixesToSort.sort((a, b) => new Date(a.date) - new Date(b.date));
                 case 'artist':
-                    return mixes.sort((a, b) => {
+                    return mixesToSort.sort((a, b) => {
                         const artistA = Array.isArray(a.artist) ? a.artist[0] : a.artist;
                         const artistB = Array.isArray(b.artist) ? b.artist[0] : b.artist;
                         return artistA.localeCompare(artistB);
                     });
                 default:
-                    return mixes;
+                    return mixesToSort;
             }
         }
 
         // Function to generate mix HTML with multi-artist support
         function generateMixHTML(mix) {
-            // Join artists with ' & ' if it's an array, otherwise use as is
-            const artistDisplay = Array.isArray(mix.artist) ? mix.artist.join(" & ") : mix.artist;
+            // Join artists with clickable links
+            const artistDisplay = Array.isArray(mix.artist)
+                ? mix.artist.map(a => `<a href="#" class="artist-filter-link">${a}</a>`).join(" & ")
+                : `<a href="#" class="artist-filter-link">${mix.artist}</a>`;
+
+            // Create clickable tags
+            const tagsDisplay = mix.tags.map(tag =>
+                `<a href="#" class="tag-filter-link">${tag}</a>`
+            ).join(", ");
+
             return `
-                <div class="col-12 col-md-10 col-lg-8">
-                    <div class="mix-card card mb-4">
-                        <div class="card-body">
-                            <div class="mix-header">
-                                <div class="mix-title">${artistDisplay} - <a href="${mix.trackLink}" target="_blank" class="soundcloud-link">${mix.title}</a></div>
-                                <div class="mix-date">${mix.date}</div>
-                            </div>
-                            <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="${mix.url}"></iframe>
-                            <div class="mix-metadata">
-                                <div class="mix-date">${mix.tags.join(", ")}</div>
-                            </div>
-                        </div>
+        <div class="col-12 col-md-10 col-lg-8">
+            <div class="mix-card card mb-4">
+                <div class="card-body">
+                    <div class="mix-header">
+                        <div class="mix-title">${artistDisplay} - <a href="${mix.trackLink}" target="_blank" class="soundcloud-link">${mix.title}</a> ${mix.label || ''} </div>
+                        <div class="mix-date">${mix.date}</div>
+                    </div>
+                    <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="${mix.url}"></iframe>
+                    <div class="mix-metadata">
+                        <div class="mix-date">${tagsDisplay}</div>
                     </div>
                 </div>
-            `;
+            </div>
+        </div>
+    `;
         }
 
-     
+        function applyFilter(filterType, value) {
+            // Reset to first page
+            currentPage = 1;
+
+            // Set the appropriate filter dropdown value
+            const filterElement = document.getElementById(`${filterType}Filter`);
+            if (filterElement) {
+                filterElement.value = value;
+            }
+
+            // Apply the filter
+            filterMixes();
+
+        }
+
+        function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
 
         // Function to filter mixes
         function filterMixes() {
@@ -274,6 +312,8 @@
             // Update mix count and pagination
             updateMixCount(filteredMixes.length);
             updatePagination(filteredMixes);
+
+            scrollToTop();
         }
 
         function getPaginatedMixes(mixesToPaginate) {
@@ -281,7 +321,7 @@
             return mixesToPaginate.slice(startIndex, startIndex + MIXES_PER_PAGE);
         }
 
-        // New function to create pagination controls
+        // Function to create pagination controls
         function updatePagination(filteredMixes) {
             const paginationContainer = document.getElementById('paginationContainer');
             if (!paginationContainer) return;
@@ -315,8 +355,46 @@
             prevListItem.appendChild(prevLink);
             paginationList.appendChild(prevListItem);
 
-            // Page number buttons
-            for (let i = 1; i <= totalPages; i++) {
+            // Page number buttons (limit to a reasonable number if there are many pages)
+            const maxDisplayedPages = 10;
+            let startPage = Math.max(1, currentPage - Math.floor(maxDisplayedPages / 2));
+            let endPage = Math.min(totalPages, startPage + maxDisplayedPages - 1);
+
+            // Adjust if we're near the end
+            if (endPage - startPage < maxDisplayedPages - 1) {
+                startPage = Math.max(1, endPage - maxDisplayedPages + 1);
+            }
+
+            // First page button if needed
+            if (startPage > 1) {
+                const firstPageItem = document.createElement('li');
+                firstPageItem.className = 'page-item';
+                const firstPageLink = document.createElement('a');
+                firstPageLink.className = 'page-link';
+                firstPageLink.href = '#';
+                firstPageLink.textContent = '1';
+                firstPageLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    currentPage = 1;
+                    filterMixes();
+                });
+                firstPageItem.appendChild(firstPageLink);
+                paginationList.appendChild(firstPageItem);
+
+                // Add ellipsis if needed
+                if (startPage > 2) {
+                    const ellipsisItem = document.createElement('li');
+                    ellipsisItem.className = 'page-item disabled';
+                    const ellipsisLink = document.createElement('a');
+                    ellipsisLink.className = 'page-link';
+                    ellipsisLink.innerHTML = '&hellip;';
+                    ellipsisItem.appendChild(ellipsisLink);
+                    paginationList.appendChild(ellipsisItem);
+                }
+            }
+
+            // Page buttons
+            for (let i = startPage; i <= endPage; i++) {
                 const pageListItem = document.createElement('li');
                 pageListItem.className = `page-item ${i === currentPage ? 'active' : ''}`;
                 const pageLink = document.createElement('a');
@@ -330,6 +408,34 @@
                 });
                 pageListItem.appendChild(pageLink);
                 paginationList.appendChild(pageListItem);
+            }
+
+            // Last page button if needed
+            if (endPage < totalPages) {
+                // Add ellipsis if needed
+                if (endPage < totalPages - 1) {
+                    const ellipsisItem = document.createElement('li');
+                    ellipsisItem.className = 'page-item disabled';
+                    const ellipsisLink = document.createElement('a');
+                    ellipsisLink.className = 'page-link';
+                    ellipsisLink.innerHTML = '&hellip;';
+                    ellipsisItem.appendChild(ellipsisLink);
+                    paginationList.appendChild(ellipsisItem);
+                }
+
+                const lastPageItem = document.createElement('li');
+                lastPageItem.className = 'page-item';
+                const lastPageLink = document.createElement('a');
+                lastPageLink.className = 'page-link';
+                lastPageLink.href = '#';
+                lastPageLink.textContent = totalPages;
+                lastPageLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    currentPage = totalPages;
+                    filterMixes();
+                });
+                lastPageItem.appendChild(lastPageLink);
+                paginationList.appendChild(lastPageItem);
             }
 
             // Next button
@@ -357,40 +463,75 @@
         function updateMixCount(filteredMixesCount) {
             const mixCountDisplay = document.getElementById('mixCountDisplay');
             if (mixCountDisplay) {
-                // in total
                 mixCountDisplay.textContent = `Found ${filteredMixesCount} mix${filteredMixesCount !== 1 ? 'es' : ''}`;
             }
         }
 
-        // Event listeners for filters
+        // Load data when page loads
         document.addEventListener('DOMContentLoaded', () => {
-            populateFilters();
-            const mixContainer = document.getElementById('mixContainer');
-            mixContainer.innerHTML = getPaginatedMixes(mixes).map(generateMixHTML).join('');
-
-            // Sort initial mixes
-            const sortedMixes = sortMixes([...mixes]);
-            mixContainer.innerHTML = getPaginatedMixes(sortedMixes).map(generateMixHTML).join('');
-            updateMixCount(sortedMixes.length);
-            updatePagination(sortedMixes);
-
+            // Add event listeners for filters
             document.getElementById('artistFilter').addEventListener('change', () => {
                 currentPage = 1; // Reset to first page when filter changes
                 filterMixes();
             });
+
             document.getElementById('yearFilter').addEventListener('change', () => {
                 currentPage = 1; // Reset to first page when filter changes
                 filterMixes();
             });
+
             document.getElementById('tagFilter').addEventListener('change', () => {
                 currentPage = 1; // Reset to first page when filter changes
                 filterMixes();
             });
+
             document.getElementById('sortSelect').addEventListener('change', (e) => {
                 currentSortOption = e.target.value;
                 currentPage = 1; // Reset to first page when sorting changes
                 filterMixes();
             });
+
+            document.getElementById('mixContainer').addEventListener('click', (e) => {
+                // Handle artist filter link clicks
+                if (e.target.classList.contains('artist-filter-link')) {
+                    e.preventDefault();
+                    const artistName = e.target.textContent;
+                    applyFilter('artist', artistName);
+                }
+
+                // Handle tag filter link clicks
+                if (e.target.classList.contains('tag-filter-link')) {
+                    e.preventDefault();
+                    const tagName = e.target.textContent;
+                    applyFilter('tag', tagName);
+                }
+            });
+
+            // Fetch data from API
+            fetch("https://api.sheetbest.com/sheets/95ec2938-277b-4a98-9ec0-3eb0da2ac232")
+                .then(response => response.json())
+                .then(data => {
+                    // Hide loading indicator
+                    document.getElementById('loading').style.display = 'none';
+
+                    // Process the data
+                    mixes = data.map(mix => ({
+                        ...mix,
+                        artist: mix.artist ? mix.artist.split(',').map(a => a.trim()) : [],
+                        tags: mix.tags ? mix.tags.split(',').map(g => g.trim()) : []
+                    }));
+
+                    // Populate filters with the data
+                    populateFilters(mixes);
+
+                    // Set default values and render
+                    currentPage = 1;
+                    filterMixes();
+                })
+                .catch(err => {
+                    console.error("Error loading mixes:", err);
+                    document.getElementById('loading').innerHTML = '<div class="col-12 text-center"><p>Error loading mixes. Please try again later.</p></div>';
+                });
         });
     </script>
 
