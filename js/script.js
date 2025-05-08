@@ -9,9 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Get all modals
     const utilsModal = document.getElementById("utilsModal");
-    const anezkaModal = document.getElementById("anezkaModal");
 
-    anezkaModal.style.display = "block";
     
     // Get all close buttons
     const closeButtons = document.getElementsByClassName("close");
