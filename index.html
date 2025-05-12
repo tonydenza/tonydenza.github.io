@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Bass Weight Prague - Prague based DJs specializing in Broken Techno, Dubstep, Jungle, and UKG">
+  <meta name="description"
+    content="Bass Weight Prague - Prague based DJs specializing in Broken Techno, Dubstep, Jungle, and UKG">
   <meta name="theme-color" content="#000000">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -15,108 +16,591 @@
   <meta property="og:description" content="Prague based DJs specializing in Broken Techno, Dubstep, Jungle, and UKG">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://bassweightprague.com">
-  <!-- Keep your existing favicon links -->
-  <!-- Update to modern Font Awesome version -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-  <link rel="stylesheet" href="./css/style.css">
-  <title>BASS WEIGHT PRAGUE</title>
+  <title>Bass Weight Prague</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <style>
+    body {
+      background: linear-gradient(to bottom, #0e1a1a 0%, #1c1c1c 100%);
+      color: #e3fdfd;
+      font-family: 'Courier New', Courier, monospace;
+      padding: 2rem;
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: -1000;
+      overflow: hidden;
+      scrollbar-width: 0;
+      opacity: 0.6;
+      margin-top: -55px;
+      height: 110%;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 2rem;
+      margin-top: 2rem;
+    }
+
+    .header h1 {
+      font-size: 4rem;
+      font-weight: bold;
+      text-shadow: 1px 1px 0 #00ffff, -1px -1px 0 #ff00ff;
+      transition: all 0.2s ease-in-out;
+      display: inline-block;
+    }
+
+    .header h1:hover,
+    .tagline:hover,
+    span:hover {
+      animation: shake 0.3s infinite !important;
+    }
+
+    @keyframes shake {
+      0% {
+        transform: translate(0, 0);
+      }
+
+      20% {
+        transform: translate(2px, -1px);
+      }
+
+      40% {
+        transform: translate(-2px, 1px);
+      }
+
+      60% {
+        transform: translate(1px, -2px);
+      }
+
+      80% {
+        transform: translate(-1px, 2px);
+      }
+
+      100% {
+        transform: translate(0, 0);
+      }
+    }
+
+    .header img {
+      width: 100px;
+      margin-top: 1rem;
+    }
+
+    .tagline {
+      font-style: italic;
+      color: #96d5b7;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+
+    }
+
+    .social-icons a {
+      margin: 0 0.6rem;
+      color: #f2f2f2;
+      text-decoration: none;
+      transition: transform 0.3s ease;
+      font-size: 1.25rem;
+    }
+
+    .social-icons a:hover {
+      transform: scale(1.3) rotate(6deg);
+      color: #00ff99;
+    }
+
+    .fish-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 1rem 0;
+      position: fixed;
+      z-index: -5;
+    }
+
+    .fish-container model-viewer {
+      width: 200px;
+      height: 200px;
+      margin: 10px;
+    }
+
+    .soundcloud-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .sc-frame {
+      border: 3px dotted #ff69b4;
+      padding: 1rem;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 12px;
+    }
+
+    .bass-link {
+      cursor: pointer;
+      transition: transform 0.2s ease;
+      will-change: transform;
+      font-weight: bold;
+    }
+
+    .bass-link:hover {
+      animation: bassVibration 0.5s infinite linear !important;
+    }
+
+
+    iframe {
+      width: 100%;
+      height: 166px;
+      border-radius: 8px;
+    }
+
+    .events-gallery {
+      margin-top: 4rem;
+    }
+
+    .events-gallery h2 {
+      font-size: 1.8rem;
+      color: #00ffff;
+    }
+
+    .gallery-scroll {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      padding: 1rem 0;
+    }
+
+    .gallery-scroll img {
+      height: 320px;
+      width: 220px;
+      border-radius: 10px;
+      flex-shrink: 0;
+      border: 2px solid #444;
+    }
+
+    .podcast-section {
+      margin-top: 4rem;
+    }
+
+    .podcast-section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: #00ffaa;
+    }
+
+    .mixes-section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: #93c3ff;
+    }
+
+    .events-gallery h2 {
+      font-size: 1.8rem;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 1.25rem;
+      color: #5dbbff;
+      padding:
+        0 10em;
+    }
+
+    section {
+      padding: 0 15em !important
+    }
+
+    .footer em {
+      color: #ffcc00;
+    }
+
+    .footer img {
+      width: 120px;
+      opacity: 0.6;
+      margin-top: 3rem;
+      margin-bottom: 1rem;
+
+    }
+
+    .cue {
+      display: none;
+    }
+
+
+    /* ======================
+     Animations
+     ====================== */
+    @keyframes pondColors {
+      0% {
+        color: #507d72;
+      }
+
+      25% {
+        color: #688d84;
+      }
+
+      50% {
+        color: #78a097;
+      }
+
+      75% {
+        color: #82b3a5;
+      }
+
+      100% {
+        color: #6a9d8e;
+      }
+    }
+
+    @keyframes bassVibration {
+      0% {
+        transform: translate(0, 0);
+      }
+
+      25% {
+        transform: translate(6px, 3px);
+      }
+
+      50% {
+        transform: translate(-6px, -3px);
+      }
+
+      75% {
+        transform: translate(6px, -3px);
+      }
+
+      100% {
+        transform: translate(0, 0);
+      }
+    }
+
+    @keyframes rotate {
+      0% {
+        transform: rotateY(0deg);
+      }
+
+      100% {
+        transform: rotateY(16deg);
+      }
+    }
+
+    @keyframes bounce {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-5px);
+      }
+    }
+
+    /* Social Media Animations */
+    @keyframes facebook {
+      0% {
+        color: var(--color-text);
+        transform: rotateY(0deg);
+      }
+
+      100% {
+        color: #1877f2;
+        transform: rotateY(360deg);
+      }
+    }
+
+    @keyframes soundcloud {
+      0% {
+        color: var(--color-text);
+        transform: rotateY(0deg);
+      }
+
+      100% {
+        color: #ff5500;
+        transform: rotateY(360deg);
+      }
+    }
+
+    @keyframes instagram {
+      0% {
+        color: var(--color-text);
+        transform: rotateY(0deg);
+      }
+
+      100% {
+        color: #c13584;
+        transform: rotateY(360deg);
+      }
+    }
+
+    @keyframes envelope {
+      0% {
+        color: var(--color-text);
+        transform: rotateY(0deg);
+      }
+
+      100% {
+        color: white;
+        transform: rotateY(360deg);
+      }
+    }
+
+    @keyframes headphones {
+      0% {
+        color: var(--color-text);
+        transform: rotateY(0deg);
+      }
+
+      100% {
+        color: #5f9ea0;
+        transform: rotateY(360deg);
+      }
+    }
+
+
+    /* ======================
+     Media Queries
+     ====================== */
+    @media (max-width: 768px) {
+      h1 {
+        line-height: 40px;
+        margin-top: 20px;
+        font-size: 4em;
+        margin-bottom: 5px;
+      }
+
+      h2 {
+        font-size: small;
+        line-height: 13px;
+        padding: 0px 10px 0px 10px;
+        margin: 0;
+      }
+
+      .footer {
+        padding:
+          0 0.33em;
+      }
+
+      section {
+        padding: 0 !important;
+      }
+
+
+      nav {
+        margin: 0;
+        padding: 40px 20px 0 0;
+      }
+
+      nav ul {
+        display: flex;
+        padding: 0 10px;
+      }
+
+      nav ul li {
+        display: block;
+        margin: auto;
+      }
+
+      content {
+        padding: 7% 2em 10% 2em;
+      }
+
+      content iframe {
+        width: 100%;
+        padding: 0;
+      }
+
+      content div {
+        margin: 0 1em 0 0;
+        text-align: left;
+      }
+
+      .modal-content {
+        margin: 10% auto;
+      }
+
+      textarea {
+        width: 80% !important;
+        margin-bottom: 20px;
+      }
+
+      canvas {
+        transform: scale(4);
+      }
+
+      .fish-one {
+        transform: translateX(-25vw) translateY(41vh) !important;
+      }
+    }
+
+    @media (min-width: 601px) and (max-width: 1200px) {
+      canvas {
+        transform: scale(3);
+      }
+    }
+  </style>
 </head>
 
 <body>
+
+
   <input id="image-selector-input" class="visually-hidden" type="file" aria-hidden="true">
-  
+
   <canvas id="background-canvas" aria-hidden="true"></canvas>
-
-  <header class="site-header">
-    <h1 class="bass-text" id="bwp">BASS<br>WEIGHT<br>PRAGUE</h1>
-    <nav aria-label="Social Media Links">
-      <ul class="social-links">
-        <li><a target="_blank" href="https://www.facebook.com/bassweightprg" aria-label="Facebook"><i class="fab fa-facebook-f bass-link"></i></a></li>
-        <li><a target="_blank" href="https://www.instagram.com/bassweight_prg/" aria-label="Instagram"><i class="fab fa-instagram bass-link"></i></a></li>
-        <li><a target="_blank" href="https://soundcloud.com/bassweight-prague" aria-label="SoundCloud"><i class="fab fa-soundcloud bass-link"></i></a></li>
-        <li><a target="_blank" href="mailto:bassweight.prg@gmail.com" aria-label="Email"><i class="fas fa-envelope bass-link"></i></a></li>
-        <li><a id="utilsModalBtn" href="#" aria-label="DJ Utilities"><i class="fas fa-toolbox bass-link"></i></a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <div class="spinnin-bass" id="ryby">
-    <model-viewer class="fish-one" src="https://bassweightprague.com/assets/models/scene.gltf" alt="A 3D model" auto-rotate shadow-intensity="1"></model-viewer>
-    <model-viewer class="fish-two" src="https://bassweightprague.com/assets/models/scene.gltf" alt="A 3D model" auto-rotate shadow-intensity="2"></model-viewer>
-    <model-viewer class="fish-three" src="https://bassweightprague.com/assets/models/scene.gltf" alt="A 3D model" auto-rotate shadow-intensity="3"></model-viewer>
-    <model-viewer class="fish-four" src="https://bassweightprague.com/assets/models/scene.gltf" alt="A 3D model" auto-rotate shadow-intensity="3"></model-viewer>
+  <div class="header">
+    <h1>Bass Weight Prague</h1>
+    <div class="tagline">“Gone bassin'… back by the next drop”</div>
+    <div class="social-icons">
+      <a href="https://www.facebook.com/bassweightprg" aria-label="Facebook" target="_blank"><i
+          class="fab fa-facebook bass-link"></i> facebook</a>
+      <a href="https://www.instagram.com/bassweight_prg" aria-label="Instagram" target="_blank"><i
+          class="fab fa-instagram bass-link"></i> instagram</a>
+      <a href="https://soundcloud.com/bassweight-prague" aria-label="Soundcloud" target="_blank"><i
+          class="fab fa-soundcloud bass-link"></i> soundcloud</a>
+      <a href="mailto:bassweight.prg@gmail.com" aria-label="Email" target="_blank"><i
+          class="fa fa-envelope bass-link"></i> mail</a>
+      <a style="display: none;" id="utilsModalBtn" href="#" aria-label="DJ Utilities"><i
+          class="fa fa-toolbox bass-link"></i> tools</a>
+    </div>
   </div>
 
-  <content>
-    <div class="player">
-      <iframe loading="lazy" id="soundcloud-player-2" width="100%" height="150" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1894778460&color=%235f9ea0&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true"></iframe>
-      <div class="current">
-        <div class="playing" id="playing-2"></div>
+  <section class="fish-container">
+    <model-viewer src="https://bassweightprague.com/assets/models/scene.gltf" auto-rotate
+      camera-controls></model-viewer>
+    <model-viewer src="https://bassweightprague.com/assets/models/scene.gltf" auto-rotate
+      camera-controls></model-viewer>
+    <model-viewer src="https://bassweightprague.com/assets/models/scene.gltf" auto-rotate
+      camera-controls></model-viewer>
+    <model-viewer src="https://bassweightprague.com/assets/models/scene.gltf" auto-rotate
+      camera-controls></model-viewer>
+  </section>
+
+  <section class="mixes-section">
+    <h2>Mixseries </h2>
+    <div class="soundcloud-grid">
+      <div class="sc-frame">
+        <p>Hardware - I Got 140 Problems But a Bass Ain't One</p>
+        <iframe loading="lazy" id="soundcloud-player-2" width="100%" height="150" scrolling="no" frameborder="no"
+          src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1894778460&color=%235f9ea0&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true"></iframe>
+        <div class="current">
+          <div class="playing" id="playing-2"></div>
+        </div>
       </div>
-    </div>
-    <pre class="cue" id="cue2">
-00:00:00 INGI - PPI
-00:02:32 Kellen303 - Neon Breaks
-00:04:35 Destrata - Clubmoss
-00:06:38 Circuit 900 - Andara
-00:08:28 Mercy System - Four Winters
-00:10:45 Dyslecta - Eating Woodlice
-00:13:16 Laksa - Enjoyment
-00:15:06 Stenny - Wipe Out
-00:17:09 9TRANE - GONE4AMIN
-00:18:59 Air Max 97 - Eat the Rich
-00:20:35 Ido Plumes - Been Here
-00:22:39 Mosca - Look After the Dead
-00:24:56 SPE:C - Sludge
-00:26:45 Alan Johnson - Ten Year Tonnage
-00:28:35 Low End Activist - Dry Chat, Wet Rag
-00:30:52 Dogpatrol - Creepin ft. NKK
-00:33:22 Paradox - Breakbeater
-00:36:35 Mantra - Ala
-00:38:11 Pearson Sound - PLSN
-00:40:28 WZ - Funk On the Spot
-00:42:46 Henzo - Be That As It May (Unhinged Mix)
-00:44:35 Hojo - 16 O's feat. Novelist
-00:45:44 Francesco Skip - Oceans Explorer
-00:48:01 Addison Groove - Elevator
-00:49:09 Ploy - Ninety One
-00:51:54 Rhyw - Engine Track
-00:54:55 re:ni - BURSTTRAP
-00:57:13 Mumdance - Artificial Intelligence
-    </pre>
-    <div class="player">
-      <iframe loading="lazy" id="soundcloud-player-1" width="100%" height="150" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1806254454&color=%235f9ea0&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true"></iframe>
-      <div class="current">
-        <div class="playing" id="playing-1"></div>
+      <pre class="cue" id="cue2">
+        00:00:00 INGI - PPI
+        00:02:32 Kellen303 - Neon Breaks
+        00:04:35 Destrata - Clubmoss
+        00:06:38 Circuit 900 - Andara
+        00:08:28 Mercy System - Four Winters
+        00:10:45 Dyslecta - Eating Woodlice
+        00:13:16 Laksa - Enjoyment
+        00:15:06 Stenny - Wipe Out
+        00:17:09 9TRANE - GONE4AMIN
+        00:18:59 Air Max 97 - Eat the Rich
+        00:20:35 Ido Plumes - Been Here
+        00:22:39 Mosca - Look After the Dead
+        00:24:56 SPE:C - Sludge
+        00:26:45 Alan Johnson - Ten Year Tonnage
+        00:28:35 Low End Activist - Dry Chat, Wet Rag
+        00:30:52 Dogpatrol - Creepin ft. NKK
+        00:33:22 Paradox - Breakbeater
+        00:36:35 Mantra - Ala
+        00:38:11 Pearson Sound - PLSN
+        00:40:28 WZ - Funk On the Spot
+        00:42:46 Henzo - Be That As It May (Unhinged Mix)
+        00:44:35 Hojo - 16 O's feat. Novelist
+        00:45:44 Francesco Skip - Oceans Explorer
+        00:48:01 Addison Groove - Elevator
+        00:49:09 Ploy - Ninety One
+        00:51:54 Rhyw - Engine Track
+        00:54:55 re:ni - BURSTTRAP
+        00:57:13 Mumdance - Artificial Intelligence
+            </pre>
+
+      <div class="sc-frame">
+        <p>DLKTek - Enter the Bass W8</p>
+
+        <iframe loading="lazy" id="soundcloud-player-1" width="100%" height="150" scrolling="no" frameborder="no"
+          src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1806254454&color=%235f9ea0&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true"></iframe>
+        <div class="current">
+          <div class="playing" id="playing-1"></div>
+        </div>
       </div>
+      <pre class="cue" id="cue1">
+        00:00:00 Escha - An Outward Visible Sign Of An Inward Invisible Hell
+        00:00:00 C+C Music Factory - Everybody Dance Now (808gong x REFILLED REMIX)
+        00:00:00 Wasted Fates X Future X E65 - Life’s Good '65 (Blue Bootleg)
+        00:00:00 Dj Deeon - Freak U Rite
+        00:00:00 Supraman - Misdemeanor Ha
+        00:00:00 Dj Babatr - All Right​.​.​. Teque Teque (Nick Le​ó​n Remix)
+        00:00:00 Shygirl - Want More
+        00:00:00 Bapari x Underworld - Born Slippy Edit
+        00:00:00 Black Rave Culture - Sub Poppin
+        00:00:00 Europa - Protection
+        00:00:00 Pangaea - Game
+        00:00:00 Dj Tray - I Wanna Be With You
+        00:00:00 Stingray313 - 2.4 GHz ISM
+        00:00:00 DJ Stoner Dad - No Rules
+        00:00:00 Turk Turkelton - 803
+        00:00:00 Dej Loaf - Try Me (Nick Catchdubs Jersey Gardens Mix)
+        00:00:00 Koffee - Toast (DjTray Remix)
+        00:00:00 Cloudsteppers - Trigger Happy
+        00:00:00 Dean Lyon - Only You (DJ Swisha Bootleg)
+        00:00:00 Black Rave Culture - Long Distance Dilemma (Practice)
+        00:00:00 LSDXOXO - Baby
+        00:00:00 Zomby - Float
+        00:00:00 LSDXOXO - Smoke of the Skunk
+        00:00:00 Kelela, Agazero, & Bbymutha - Raven (Agazero Remix feat. Bbymutha)
+            </pre>
+
     </div>
-    <pre class="cue" id="cue1">
-00:00:00 Escha - An Outward Visible Sign Of An Inward Invisible Hell
-00:00:00 C+C Music Factory - Everybody Dance Now (808gong x REFILLED REMIX)
-00:00:00 Wasted Fates X Future X E65 - Life’s Good '65 (Blue Bootleg)
-00:00:00 Dj Deeon - Freak U Rite
-00:00:00 Supraman - Misdemeanor Ha
-00:00:00 Dj Babatr - All Right​.​.​. Teque Teque (Nick Le​ó​n Remix)
-00:00:00 Shygirl - Want More
-00:00:00 Bapari x Underworld - Born Slippy Edit
-00:00:00 Black Rave Culture - Sub Poppin
-00:00:00 Europa - Protection
-00:00:00 Pangaea - Game
-00:00:00 Dj Tray - I Wanna Be With You
-00:00:00 Stingray313 - 2.4 GHz ISM
-00:00:00 DJ Stoner Dad - No Rules
-00:00:00 Turk Turkelton - 803
-00:00:00 Dej Loaf - Try Me (Nick Catchdubs Jersey Gardens Mix)
-00:00:00 Koffee - Toast (DjTray Remix)
-00:00:00 Cloudsteppers - Trigger Happy
-00:00:00 Dean Lyon - Only You (DJ Swisha Bootleg)
-00:00:00 Black Rave Culture - Long Distance Dilemma (Practice)
-00:00:00 LSDXOXO - Baby
-00:00:00 Zomby - Float
-00:00:00 LSDXOXO - Smoke of the Skunk
-00:00:00 Kelela, Agazero, & Bbymutha - Raven (Agazero Remix feat. Bbymutha)
-    </pre>
-  </content>
+  </section>
+
+
+  <section class="podcast-section">
+    <h2>Podcasts</h2>
+    <div class="soundcloud-grid">
+      <div class="sc-frame">
+        <p>Radio Labe - Bass Weight #1</p>
+
+        <iframe id="soundcloud-podcast-1" width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay"
+          src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2087526954&color=%23a37c66&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true"></iframe>
+        <div class="current">
+          <div class="playing" id="playing-p1"></div>
+        </div>
+      </div>
+      <pre class="cue" id="cuep1">
+        00:00:00 -
+        00:05:49 2562 - Kameleon
+        00:11:11 -
+        00:14:13 Boddika - Soul What
+        00:19:17 -
+        00:22:00 Yak - Fret
+        00:26:06 -
+        00:34:35 Yaleesa Hall - Light Headed
+        00:39:15 -
+        00:42:26 Catatonic Silentio - 
+        00:46:55 -
+        00:50:32 TRG - Broken Hearts (Martyn Remix) - Kameleon
+        00:55:50 -
+      </pre>
+    </div>
+  </section>
+
+  <section class="events-gallery">
+    <h2>Past Expeditions</h2>
+    <div class="gallery-scroll">
+      <img src="./assets/images/anezka.png" alt="Cafe Anezka Event">
+      <img src="./assets/images/funkstation.png" alt="Funkstation Event">
+      <img src="./assets/images/bikejesus.jpg" alt="Bike Jesus Event">
+      <img src="./assets/images/akropolis.jpg" alt="Akropolis Underground Event">
+    </div>
+  </section>
 
   <div id="utilsModal" class="modal">
     <div class="modal-content">
@@ -130,7 +614,8 @@
                 <h3>Bandcamp Tagger</h3>
               </div>
               <p>Browser extension that helps organize and tag your Bandcamp collections.</p>
-              <p>Get it <a target="_blank" href="https://addons.mozilla.org/en-US/firefox/addon/bandcamp-tagger/">here</a></p>
+              <p>Get it <a target="_blank"
+                  href="https://addons.mozilla.org/en-US/firefox/addon/bandcamp-tagger/">here</a></p>
             </div>
             <div class="util-card">
               <div class="util-header">
@@ -145,74 +630,85 @@
     </div>
   </div>
 
-  <footer>
-    <h2>
-      Prague based DJs. Never limiting ourselves to particular vibe but always diligently fishing for the fattest bass. 🐟<br><br>
-      🎣 Broken Techno 🎣 Dubstep 🎣 Jungle 🎣 UKG</h2>
-    <script src="https://w.soundcloud.com/player/api.js"></script>
-    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-    <script type="module" src="./js/script.js"></script>
-    <script>document.addEventListener('DOMContentLoaded', () => {
+  <div class="footer">
+    <img src="./assets/images/logonobg.png" alt="Bassmasters cover vibe" />
+
+    <p><em>Bass Weight</em>
+      Prague based DJs. Never limiting ourselves to particular vibe but always diligently fishing
+      for the fattest bass 🐟<br><br> 🎣 Broken Techno 🎣 Dubstep 🎣 Jungle 🎣 UKG 🎣 </p>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://w.soundcloud.com/player/api.js"></script>
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <script type="module" src="./js/script.js"></script>
+  <script>document.addEventListener('DOMContentLoaded', () => {
       // Initialize SoundCloud widgets and bind events after they're ready
       const widget1 = SC.Widget('soundcloud-player-1');
       const widget2 = SC.Widget('soundcloud-player-2');
-  
+      const podcast1 = SC.Widget('soundcloud-podcast-1');
+
       // Wait for widgets to be ready
-      widget1.bind(SC.Widget.Events.READY, function() {
-          widget1.bind(SC.Widget.Events.PLAY_PROGRESS, function(e) {
-              updateTrackDisplay(e.currentPosition, 'cue1', 'playing-1');
-          });
+      widget1.bind(SC.Widget.Events.READY, function () {
+        widget1.bind(SC.Widget.Events.PLAY_PROGRESS, function (e) {
+          updateTrackDisplay(e.currentPosition, 'cue1', 'playing-1');
+        });
       });
-  
-      widget2.bind(SC.Widget.Events.READY, function() {
-          widget2.bind(SC.Widget.Events.PLAY_PROGRESS, function(e) {
-              updateTrackDisplay(e.currentPosition, 'cue2', 'playing-2');
-          });
+
+      widget2.bind(SC.Widget.Events.READY, function () {
+        widget2.bind(SC.Widget.Events.PLAY_PROGRESS, function (e) {
+          updateTrackDisplay(e.currentPosition, 'cue2', 'playing-2');
+        });
       });
-  
+
+      podcast1.bind(SC.Widget.Events.READY, function () {
+        podcast1.bind(SC.Widget.Events.PLAY_PROGRESS, function (e) {
+          updateTrackDisplay(e.currentPosition, 'cuep1', 'playing-p1');
+        });
+      });
+
       function updateTrackDisplay(position, cueId, displayId) {
-          const currentTime = Math.floor(position / 1000);
-          const tracklist = document.getElementById(cueId).innerText;
-          const currentTrack = findCurrentTrack(currentTime, tracklist);
-          
-          const displayElement = document.getElementById(displayId);
-          if (displayElement && currentTrack) {
-              displayElement.innerText = currentTrack;
-          }
+        const currentTime = Math.floor(position / 1000);
+        const tracklist = document.getElementById(cueId).innerText;
+        const currentTrack = findCurrentTrack(currentTime, tracklist);
+
+        const displayElement = document.getElementById(displayId);
+        if (displayElement && currentTrack) {
+          displayElement.innerText = currentTrack;
+        }
       }
-  
+
       function findCurrentTrack(currentTime, tracklist) {
-          // Parse the tracklist and find current track
-          const tracks = tracklist
-              .split('\n')
-              .map(line => line.trim())
-              .filter(line => line.match(/^\d{2}:\d{2}:\d{2}/))
-              .map(line => {
-                  const timeStr = line.substring(0, 8);
-                  const trackName = line.substring(9).trim();
-                  return {
-                      time: timeToSeconds(timeStr),
-                      track: trackName
-                  };
-              });
-  
-          // Find the current track based on time
-          for (let i = 0; i < tracks.length; i++) {
-              const nextTime = i < tracks.length - 1 ? tracks[i + 1].time : Infinity;
-              if (currentTime >= tracks[i].time && currentTime < nextTime) {
-                  return tracks[i].track;
-              }
+        // Parse the tracklist and find current track
+        const tracks = tracklist
+          .split('\n')
+          .map(line => line.trim())
+          .filter(line => line.match(/^\d{2}:\d{2}:\d{2}/))
+          .map(line => {
+            const timeStr = line.substring(0, 8);
+            const trackName = line.substring(9).trim();
+            return {
+              time: timeToSeconds(timeStr),
+              track: trackName
+            };
+          });
+
+        // Find the current track based on time
+        for (let i = 0; i < tracks.length; i++) {
+          const nextTime = i < tracks.length - 1 ? tracks[i + 1].time : Infinity;
+          if (currentTime >= tracks[i].time && currentTime < nextTime) {
+            return tracks[i].track;
           }
-          
-          return '';
+        }
+
+        return '';
       }
-  
+
       function timeToSeconds(timeStr) {
-          const [hours, minutes, seconds] = timeStr.split(':').map(Number);
-          return (hours * 3600) + (minutes * 60) + seconds;
+        const [hours, minutes, seconds] = timeStr.split(':').map(Number);
+        return (hours * 3600) + (minutes * 60) + seconds;
       }
-  });</script>
-  </footer>
+    });</script>
 </body>
 
 </html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bass Weight Prague - Prague based DJs specializing in Broken Techno, Dubstep, Jungle, and UKG">
+  <meta name="theme-color" content="#000000">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Bass Weight Prague">
+  <meta name="application-name" content="Bass Weight Prague">
+  <!-- Add Open Graph tags for better social media sharing -->
+  <meta property="og:title" content="BASS WEIGHT PRAGUE">
+  <meta property="og:description" content="Prague based DJs specializing in Broken Techno, Dubstep, Jungle, and UKG">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bassweightprague.com">
+  <!-- Keep your existing favicon links -->
+  <!-- Update to modern Font Awesome version -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <title>BASS WEIGHT PRAGUE</title>
+</head>
+
+<body>
+  <input id="image-selector-input" class="visually-hidden" type="file" aria-hidden="true">
+  
+  <canvas id="background-canvas" aria-hidden="true"></canvas>
+
+  <header class="site-header">
+    <h1 class="bass-text" id="bwp">BASS<br>WEIGHT<br>PRAGUE</h1>
+    <nav aria-label="Social Media Links">
+      <ul class="social-links">
+        <li><a target="_blank" href="https://www.facebook.com/bassweightprg" aria-label="Facebook"><i class="fab fa-facebook-f bass-link"></i></a></li>
+        <li><a target="_blank" href="https://www.instagram.com/bassweight_prg/" aria-label="Instagram"><i class="fab fa-instagram bass-link"></i></a></li>
+        <li><a target="_blank" href="https://soundcloud.com/bassweight-prague" aria-label="SoundCloud"><i class="fab fa-soundcloud bass-link"></i></a></li>
+        <li><a target="_blank" href="mailto:bassweight.prg@gmail.com" aria-label="Email"><i class="fas fa-envelope bass-link"></i></a></li>
+        <li><a id="utilsModalBtn" href="#" aria-label="DJ Utilities"><i class="fas fa-toolbox bass-link"></i></a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="spinnin-bass" id="ryby">
+    <model-viewer class="fish-one" src="https://bassweightprague.com/assets/models/scene.gltf" alt="A 3D model" auto-rotate shadow-intensity="1"></model-viewer>
+    <model-viewer class="fish-two" src="https://bassweightprague.com/assets/models/scene.gltf" alt="A 3D model" auto-rotate shadow-intensity="2"></model-viewer>
+    <model-viewer class="fish-three" src="https://bassweightprague.com/assets/models/scene.gltf" alt="A 3D model" auto-rotate shadow-intensity="3"></model-viewer>
+    <model-viewer class="fish-four" src="https://bassweightprague.com/assets/models/scene.gltf" alt="A 3D model" auto-rotate shadow-intensity="3"></model-viewer>
+  </div>
+
+  <content>
+    <div class="player">
+      <iframe loading="lazy" id="soundcloud-player-2" width="100%" height="150" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1894778460&color=%235f9ea0&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true"></iframe>
+      <div class="current">
+        <div class="playing" id="playing-2"></div>
+      </div>
+    </div>
+    <pre class="cue" id="cue2">
+00:00:00 INGI - PPI
+00:02:32 Kellen303 - Neon Breaks
+00:04:35 Destrata - Clubmoss
+00:06:38 Circuit 900 - Andara
+00:08:28 Mercy System - Four Winters
+00:10:45 Dyslecta - Eating Woodlice
+00:13:16 Laksa - Enjoyment
+00:15:06 Stenny - Wipe Out
+00:17:09 9TRANE - GONE4AMIN
+00:18:59 Air Max 97 - Eat the Rich
+00:20:35 Ido Plumes - Been Here
+00:22:39 Mosca - Look After the Dead
+00:24:56 SPE:C - Sludge
+00:26:45 Alan Johnson - Ten Year Tonnage
+00:28:35 Low End Activist - Dry Chat, Wet Rag
+00:30:52 Dogpatrol - Creepin ft. NKK
+00:33:22 Paradox - Breakbeater
+00:36:35 Mantra - Ala
+00:38:11 Pearson Sound - PLSN
+00:40:28 WZ - Funk On the Spot
+00:42:46 Henzo - Be That As It May (Unhinged Mix)
+00:44:35 Hojo - 16 O's feat. Novelist
+00:45:44 Francesco Skip - Oceans Explorer
+00:48:01 Addison Groove - Elevator
+00:49:09 Ploy - Ninety One
+00:51:54 Rhyw - Engine Track
+00:54:55 re:ni - BURSTTRAP
+00:57:13 Mumdance - Artificial Intelligence
+    </pre>
+    <div class="player">
+      <iframe loading="lazy" id="soundcloud-player-1" width="100%" height="150" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1806254454&color=%235f9ea0&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true"></iframe>
+      <div class="current">
+        <div class="playing" id="playing-1"></div>
+      </div>
+    </div>
+    <pre class="cue" id="cue1">
+00:00:00 Escha - An Outward Visible Sign Of An Inward Invisible Hell
+00:00:00 C+C Music Factory - Everybody Dance Now (808gong x REFILLED REMIX)
+00:00:00 Wasted Fates X Future X E65 - Life’s Good '65 (Blue Bootleg)
+00:00:00 Dj Deeon - Freak U Rite
+00:00:00 Supraman - Misdemeanor Ha
+00:00:00 Dj Babatr - All Right​.​.​. Teque Teque (Nick Le​ó​n Remix)
+00:00:00 Shygirl - Want More
+00:00:00 Bapari x Underworld - Born Slippy Edit
+00:00:00 Black Rave Culture - Sub Poppin
+00:00:00 Europa - Protection
+00:00:00 Pangaea - Game
+00:00:00 Dj Tray - I Wanna Be With You
+00:00:00 Stingray313 - 2.4 GHz ISM
+00:00:00 DJ Stoner Dad - No Rules
+00:00:00 Turk Turkelton - 803
+00:00:00 Dej Loaf - Try Me (Nick Catchdubs Jersey Gardens Mix)
+00:00:00 Koffee - Toast (DjTray Remix)
+00:00:00 Cloudsteppers - Trigger Happy
+00:00:00 Dean Lyon - Only You (DJ Swisha Bootleg)
+00:00:00 Black Rave Culture - Long Distance Dilemma (Practice)
+00:00:00 LSDXOXO - Baby
+00:00:00 Zomby - Float
+00:00:00 LSDXOXO - Smoke of the Skunk
+00:00:00 Kelela, Agazero, & Bbymutha - Raven (Agazero Remix feat. Bbymutha)
+    </pre>
+  </content>
+
+  <div id="utilsModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div class="container">
+        <div>
+          <h3>DJ utilities</h3>
+          <div class="utils-grid">
+            <div class="util-card">
+              <div class="util-header">
+                <h3>Bandcamp Tagger</h3>
+              </div>
+              <p>Browser extension that helps organize and tag your Bandcamp collections.</p>
+              <p>Get it <a target="_blank" href="https://addons.mozilla.org/en-US/firefox/addon/bandcamp-tagger/">here</a></p>
+            </div>
+            <div class="util-card">
+              <div class="util-header">
+                <h3>Cue Formatter</h3>
+              </div>
+              <p>Convert Rekordbox .cue files and other sources into properly formatted tracklists with timestamps.</p>
+              <p>Try it <a target="_blank" href="./utils/formatter.html">here</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <h2>
+      Prague based DJs. Never limiting ourselves to particular vibe but always diligently fishing for the fattest bass. 🐟<br><br>
+      🎣 Broken Techno 🎣 Dubstep 🎣 Jungle 🎣 UKG</h2>
+    <script src="https://w.soundcloud.com/player/api.js"></script>
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <script type="module" src="./js/script.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', () => {
+      // Initialize SoundCloud widgets and bind events after they're ready
+      const widget1 = SC.Widget('soundcloud-player-1');
+      const widget2 = SC.Widget('soundcloud-player-2');
+  
+      // Wait for widgets to be ready
+      widget1.bind(SC.Widget.Events.READY, function() {
+          widget1.bind(SC.Widget.Events.PLAY_PROGRESS, function(e) {
+              updateTrackDisplay(e.currentPosition, 'cue1', 'playing-1');
+          });
+      });
+  
+      widget2.bind(SC.Widget.Events.READY, function() {
+          widget2.bind(SC.Widget.Events.PLAY_PROGRESS, function(e) {
+              updateTrackDisplay(e.currentPosition, 'cue2', 'playing-2');
+          });
+      });
+  
+      function updateTrackDisplay(position, cueId, displayId) {
+          const currentTime = Math.floor(position / 1000);
+          const tracklist = document.getElementById(cueId).innerText;
+          const currentTrack = findCurrentTrack(currentTime, tracklist);
+          
+          const displayElement = document.getElementById(displayId);
+          if (displayElement && currentTrack) {
+              displayElement.innerText = currentTrack;
+          }
+      }
+  
+      function findCurrentTrack(currentTime, tracklist) {
+          // Parse the tracklist and find current track
+          const tracks = tracklist
+              .split('\n')
+              .map(line => line.trim())
+              .filter(line => line.match(/^\d{2}:\d{2}:\d{2}/))
+              .map(line => {
+                  const timeStr = line.substring(0, 8);
+                  const trackName = line.substring(9).trim();
+                  return {
+                      time: timeToSeconds(timeStr),
+                      track: trackName
+                  };
+              });
+  
+          // Find the current track based on time
+          for (let i = 0; i < tracks.length; i++) {
+              const nextTime = i < tracks.length - 1 ? tracks[i + 1].time : Infinity;
+              if (currentTime >= tracks[i].time && currentTime < nextTime) {
+                  return tracks[i].track;
+              }
+          }
+          
+          return '';
+      }
+  
+      function timeToSeconds(timeStr) {
+          const [hours, minutes, seconds] = timeStr.split(':').map(Number);
+          return (hours * 3600) + (minutes * 60) + seconds;
+      }
+  });</script>
+  </footer>
+</body>
+
+</html>
