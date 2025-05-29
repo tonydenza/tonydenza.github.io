@@ -41,6 +41,10 @@
       height: 110%;
     }
 
+    a {
+      color:rgb(145, 178, 226)
+    }
+
     .header {
       text-align: center;
       margin-bottom: 2rem;
@@ -159,6 +163,10 @@
       border-radius: 8px;
     }
 
+    .playlist-iframe {
+      height: 500px;
+    }
+
     .events-gallery {
       margin-top: 4rem;
     }
@@ -183,11 +191,11 @@
       border: 2px solid #444;
     }
 
-    .podcast-section {
+    .podcast-section, .hosting-section {
       margin-top: 4rem;
     }
 
-    .podcast-section h2 {
+    .podcast-section h2, .hosting-section h2 {
       font-size: 1.8rem;
       margin-bottom: 1rem;
       color: #00ffaa;
@@ -561,6 +569,17 @@
     </div>
   </section>
 
+    <section class="hosting-section">
+    <h2>Hosting expeditions </h2>
+    <div class="soundcloud-grid">
+      <div class="sc-frame">
+        <p>Guestmixes</p>
+        <iframe class="playlist-iframe" width="100%" height="500" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1792211628&color=%2384b4b4&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"></div>
+        <div class="playing" id="playing-2"></div>
+      </div>
+    </div>
+    <pre class="cue" id="cue2"></pre>
+  </section>
 
   <section class="podcast-section">
     <h2>Podcasts</h2>
@@ -570,8 +589,18 @@
 
         <iframe id="soundcloud-podcast-1" width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay"
           src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2087526954&color=%23a37c66&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true"></iframe>
-        <div class="current">
-          <div class="playing" id="playing-p1"></div>
+        <div class="description">
+          <div class="playing">
+            <div>Tracks & Links</div>
+            <ul>  
+              <li><a href="https://tectonicrecordings.bandcamp.com/track/kameleon">2562 - Kameleon</a></li>
+              <li><a href="https://nonplusrecords.bandcamp.com/track/soul-what">Boddika - Soul What</a></li>
+              <li><a href="https://yaksound.bandcamp.com/track/yak-fret">Yak - Fret</a></li>
+              <li><a href="https://yaleesahall.bandcamp.com/track/light-headed">Yaleesa Hall - Light Headed</a></li>
+              <li><a href="https://undermyfeetldn.bandcamp.com/track/middle-ages">Katatonic Silentio - Middle Ages</a></li>
+              <li><a href="https://cosmintrg.bandcamp.com/track/broken-heart-martyns-dcm-remix">Cosmin TRG - Broken Heart (Marty’s DCM Remix)</a></li>
+            </ul>
+          </div>
         </div>
       </div>
       <pre class="cue" id="cuep1">
