@@ -4,8 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description"
-    content="Bass Weight Prague - Prague based DJs specializing in Broken Techno, Dubstep, Jungle, and UKG">
+  <meta name="description" content="Bass Weight Prague - Prague based DJs specializing in Broken Techno, Dubstep, Jungle, and UKG">
   <meta name="theme-color" content="#000000">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -19,572 +18,8 @@
   <title>Bass Weight Prague</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-  <style>
-    body {
-      background: linear-gradient(to bottom, #0e1a1a 0%, #1c1c1c 100%);
-      color: #e3fdfd;
-      font-family: 'Courier New', Courier, monospace;
-      padding: 2rem;
-    }
-
-    canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: -1000;
-      overflow: hidden;
-      scrollbar-width: 0;
-      opacity: 0.6;
-      margin-top: -55px;
-      height: 110%;
-    }
-
-    a {
-      color: rgb(145, 178, 226)
-    }
-
-    i {
-      font-size: x-large;
-    }
-
-    iframe {
-      width: 100%;
-      height: 166px;
-      border-radius: 8px;
-    }
-
-    section {
-      padding: 0 15em !important
-    }
-
-    h2 {
-      animation: pondColors 5s infinite alternate;
-      padding-top: 1em;
-      font-weight: 900;
-    }
-
-    .header {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-
-    .header h1 {
-      font-size: 4rem;
-      font-weight: bold;
-      text-shadow: 1px 1px 0 #00ffff, -1px -1px 0 #ff00ff;
-      transition: all 0.2s ease-in-out;
-      display: inline-block;
-    }
-
-    .header h1:hover,
-    .tagline:hover,
-    span:hover {
-      animation: shake 0.3s infinite !important;
-    }
-
-    .tagline {
-      font-style: italic;
-      color: #96d5b7;
-      margin-bottom: 1rem;
-      font-size: 1.5rem;
-
-    }
-
-    .fish-container {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin: 1rem 0;
-      position: fixed;
-      z-index: -5;
-    }
-
-    .fish-container model-viewer {
-      width: 200px;
-      height: 200px;
-      margin: 10px;
-    }
-
-    .soundcloud-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2rem;
-    }
-
-    .sc-frame {
-      border: 3px dotted #ff69b4;
-      padding: 1rem;
-      background: rgba(0, 0, 0, 0.3);
-      border-radius: 12px;
-    }
-
-    .bass-link {
-      cursor: pointer;
-      transition: transform 0.2s ease;
-      will-change: transform;
-      font-weight: bold;
-    }
-
-    .bass-link:hover {
-      animation: bassVibration 0.5s infinite linear !important;
-    }
-
-    .playlist-iframe {
-      height: 500px;
-    }
-
-    .events-gallery {
-      margin-top: 4rem;
-    }
-
-    .events-gallery h2 {
-      font-size: 1.8rem;
-      color: #00ffff;
-    }
-
-    .gallery-scroll {
-      display: flex;
-      gap: 1rem;
-      overflow-x: auto;
-      padding: 1em 0.5em;
-    }
-
-    .gallery-scroll img {
-      height: 640px;
-      width: 440px;
-      border-radius: 10px;
-      flex-shrink: 0;
-      border: 2px solid #444;
-      margin: 0 0.5em;
-    }
-
-    .hosting-section,
-    .mixes-section,
-    .utilities-section {
-      margin-top: 4rem;
-    }
-
-    .podcast-section h2,
-    .hosting-section h2,
-    .mixes-section h2,
-    .utilities-section h2 {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-      color: #00ffaa;
-    }
-
-    .mixes-section h2,
-    .events-gallery h2 {
-      text-align: right;
-    }
-
-    .mixes-section h2 {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-      color: #93c3ff;
-    }
-
-    .events-gallery h2 {
-      font-size: 1.8rem;
-    }
-
-    .footer {
-      text-align: center;
-      font-size: 1.25rem;
-      color: #5dbbff;
-      padding: 0 10em;
-    }
-
-    .footer em {
-      color: #ffcc00;
-    }
-
-    .footer img {
-      width: 120px;
-      opacity: 0.6;
-      margin-top: 3rem;
-      margin-bottom: 1rem;
-
-    }
-
-    .cue {
-      display: none;
-    }
-
-    .mix-box {
-      transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .mix-box::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 0;
-      height: 0;
-      background: radial-gradient(circle, rgba(78, 205, 196, 0.2) 0%, transparent 70%);
-      border-radius: 50%;
-      transform: translate(-50%, -50%);
-      transition: all 0.6s ease-out;
-      z-index: 1;
-    }
-
-    .mix-box:hover::before {
-      width: 300px;
-      height: 300px;
-    }
-
-    .mix-box:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow:
-        0 20px 40px rgba(0, 0, 0, 0.3),
-        0 0 30px rgba(78, 205, 196, 0.2);
-      border-color: rgba(78, 205, 196, 0.4);
-      background: rgba(255, 255, 255, 0.12);
-    }
-
-    .mix-box:hover .mix-title {
-      color: #4ecdc4;
-      text-shadow: 0 0 10px rgba(78, 205, 196, 0.5);
-    }
-
-    .util-2 {
-      margin-top: 1em;
-    }
-
-    .nav-menu {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      margin-bottom: 40px;
-      flex-wrap: wrap;
-    }
-
-    .nav-item {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      padding: 12px 24px;
-      border-radius: 25px;
-      color: white;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .nav-item::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-      transition: left 0.5s;
-    }
-
-    .nav-item:hover::before {
-      left: 100%;
-    }
-
-    .nav-item:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-      background: rgba(255, 255, 255, 0.2);
-    }
-
-    .social-container {
-      text-align: center;
-      margin: 0 0 25px 0;
-    }
-
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .social-link {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: rgba(255, 255, 255, 0.1);
-      padding: 12px 20px;
-      border-radius: 25px;
-      color: white;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(10px);
-    }
-
-    .social-link:hover {
-      transform: translateY(-2px);
-      background: rgba(255, 255, 255, 0.2);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    }
-
-    .mixes-desc {
-      text-align: right;
-    }
-
-    #waveform {
-      height: 50px;
-      margin-top: -1em;
-      margin-bottom: 2em;
-      transform: scaleY(50%);
-    }
-
-    /* ====================== Animations ====================== */
-
-    @keyframes shake {
-      0% {
-        transform: translate(0, 0);
-      }
-
-      20% {
-        transform: translate(2px, -1px);
-      }
-
-      40% {
-        transform: translate(-2px, 1px);
-      }
-
-      60% {
-        transform: translate(1px, -2px);
-      }
-
-      80% {
-        transform: translate(-1px, 2px);
-      }
-
-      100% {
-        transform: translate(0, 0);
-      }
-    }
-
-    @keyframes pondColors {
-      0% {
-        color: #5bf587;
-      }
-
-      25% {
-        color: #81f9c7;
-      }
-
-      50% {
-        color: #7efbe0;
-      }
-
-      75% {
-        color: #82b3a5;
-      }
-
-      100% {
-        color: #37c5f9;
-      }
-    }
-
-    @keyframes bassVibration {
-      0% {
-        transform: translate(0, 0);
-      }
-
-      25% {
-        transform: translate(6px, 3px);
-      }
-
-      50% {
-        transform: translate(-6px, -3px);
-      }
-
-      75% {
-        transform: translate(6px, -3px);
-      }
-
-      100% {
-        transform: translate(0, 0);
-      }
-    }
-
-    @keyframes rotate {
-      0% {
-        transform: rotateY(0deg);
-      }
-
-      100% {
-        transform: rotateY(16deg);
-      }
-    }
-
-    @keyframes bounce {
-
-      0%,
-      100% {
-        transform: translateY(0);
-      }
-
-      50% {
-        transform: translateY(-5px);
-      }
-    }
-
-    @keyframes facebook {
-      0% {
-        color: var(--color-text);
-        transform: rotateY(0deg);
-      }
-
-      100% {
-        color: #1877f2;
-        transform: rotateY(360deg);
-      }
-    }
-
-    @keyframes soundcloud {
-      0% {
-        color: var(--color-text);
-        transform: rotateY(0deg);
-      }
-
-      100% {
-        color: #ff5500;
-        transform: rotateY(360deg);
-      }
-    }
-
-    @keyframes instagram {
-      0% {
-        color: var(--color-text);
-        transform: rotateY(0deg);
-      }
-
-      100% {
-        color: #c13584;
-        transform: rotateY(360deg);
-      }
-    }
-
-    @keyframes envelope {
-      0% {
-        color: var(--color-text);
-        transform: rotateY(0deg);
-      }
-
-      100% {
-        color: white;
-        transform: rotateY(360deg);
-      }
-    }
-
-    @keyframes headphones {
-      0% {
-        color: var(--color-text);
-        transform: rotateY(0deg);
-      }
-
-      100% {
-        color: #5f9ea0;
-        transform: rotateY(360deg);
-      }
-    }
-
-    /* ====================== Media Queries ====================== */
-    @media (max-width: 768px) {
-      h1 {
-        line-height: 40px;
-        margin-top: 20px;
-        font-size: 4em;
-        margin-bottom: 10px;
-      }
-
-      h2 {
-        font-size: small;
-        line-height: 13px;
-        margin-bottom: 1em;
-      }
-
-      .footer {
-        padding:
-          0 0.33em;
-      }
-
-      .hint {
-        display: none;
-      }
-
-      section {
-        padding: 0 !important;
-      }
-
-
-      nav {
-        margin: 0;
-        padding: 0;
-      }
-
-      .nav-menu {
-        justify-content: space-between;
-        gap: 15px;
-      }
-
-      .nav-item {
-        width: 100%
-      }
-
-      nav ul {
-        display: flex;
-        padding: 0 10px;
-      }
-
-      nav ul li {
-        display: block;
-        margin: auto;
-      }
-
-      content {
-        padding: 7% 2em 10% 2em;
-      }
-
-      content iframe {
-        width: 100%;
-        padding: 0;
-      }
-
-      content div {
-        margin: 0 1em 0 0;
-        text-align: left;
-      }
-
-      .modal-content {
-        margin: 10% auto;
-      }
-
-      textarea {
-        width: 80% !important;
-        margin-bottom: 20px;
-      }
-
-      canvas {
-        transform: scale(4);
-      }
-
-      .fish-one {
-        transform: translateX(-25vw) translateY(41vh) !important;
-      }
-    }
-
-    @media (min-width: 601px) and (max-width: 1200px) {
-      canvas {
-        transform: scale(3);
-      }
-    }
-  </style>
 </head>
 
 <body>
@@ -592,9 +27,9 @@
   <canvas id="background-canvas" aria-hidden="true"></canvas>
 
   <div class="header">
-    <h1>Bass Weight Prague</h1>
+    <h1 id="heading">Bass Weight Prague</h1>
 
-    <div class="tagline">“Gone bassin'… back by the next drop”</div>
+    <div class="tagline" id="tagline">“Gone bassin'… back by the next drop”</div>
 
     <div class="social-container">
       <div class="social-links">
@@ -821,14 +256,6 @@
         for the fattest bass!<br><br> 🎣 Broken Techno 🎣 Dubstep 🎣 Jungle 🎣 UKG 🎣 </p>
     </div>
 
-
-
-
-
-
-
-
-
     <script src="https://unpkg.com/wavesurfer.js"></script>
     <script>
       const wavesurfer = WaveSurfer.create({
@@ -942,7 +369,7 @@
           const modulationIndex = parseFloat(document.getElementById('modulationIndex').value)
           const modulationDepth = parseFloat(document.getElementById('modulationDepth').value)
           const duration = parseFloat(document.getElementById('duration').value)
-          return playNote(freq, freq * modulationIndex, modulationDepth, duration)
+          return playNote(freq, freq * 1, modulationDepth, duration)
         }
 
         const onKeyUp = (voice) => {
@@ -950,69 +377,103 @@
           releaseNote(voice, duration)
         }
 
-        const createButton = (row, col) => {
-          const button = document.createElement('button')
-          const key = qwerty[(row * numCols + col) % qwerty.length]
-          const capsKey = capsQwerty[(row * numCols + col) % capsQwerty.length]
-          const frequency = noteFrequency(row, col)
-          let note = null
-
-          button.textContent = key
-          pianoRoll.appendChild(button)
-
-          // Mouse
-          button.addEventListener('mousedown', (e) => {
-            note = onKeyDown(frequency * (e.shiftKey ? numRows : 1))
-          })
-          button.addEventListener('mouseup', () => {
-            if (note) {
-              onKeyUp(note)
-              note = null
-            }
-          })
-
-          // Keyboard
-          document.addEventListener('keydown', (e) => {
-            if (e.key === key || e.key === capsKey) {
-              button.className = 'active'
-              if (!note) {
-                note = onKeyDown(frequency * (e.shiftKey ? numRows : 1))
-              }
-            }
-          })
-          document.addEventListener('keyup', (e) => {
-            if (e.key === key || e.key === capsKey) {
-              button.className = ''
-              if (note) {
-                onKeyUp(note)
-                note = null
-              }
-            }
-          })
-        }
-
-        for (let row = 0; row < numRows; row++) {
-          for (let col = 0; col < numCols; col++) {
-            createButton(row, col)
-          }
-        }
-
-        const buttons = document.querySelectorAll('button')
-        document.addEventListener('keydown', (e) => {
-          if (e.shiftKey) {
-            Array.from(buttons).forEach((button, index) => {
-              button.textContent = capsQwerty[index]
-            })
-          }
-        })
-        document.addEventListener('keyup', (e) => {
-          if (!e.shiftKey) {
-            Array.from(buttons).forEach((button, index) => {
-              button.textContent = qwerty[index]
-            })
-          }
-        })
+        
+const createButton = (row, col) => {
+  const button = document.createElement('button')
+  const key = qwerty[(row * numCols + col) % qwerty.length]
+  const capsKey = capsQwerty[(row * numCols + col) % capsQwerty.length]
+  const frequency = noteFrequency(row, col)
+  let note = null
+  button.textContent = key
+  pianoRoll.appendChild(button)
+  
+  // Mouse events for button
+  button.addEventListener('mousedown', (e) => {
+    note = onKeyDown(frequency * (e.shiftKey ? numRows : 1))
+  })
+  
+  button.addEventListener('mouseup', () => {
+    if (note) {
+      onKeyUp(note)
+      note = null
+    }
+  })
+  
+  // Keyboard events
+  document.addEventListener('keydown', (e) => {
+    if (e.key === key || e.key === capsKey) {
+      button.className = 'active'
+      if (!note) {
+        note = onKeyDown(frequency * (e.shiftKey ? numRows : 1))
       }
+    }
+  })
+  
+  document.addEventListener('keyup', (e) => {
+    if (e.key === key || e.key === capsKey) {
+      button.className = ''
+      if (note) {
+        onKeyUp(note)
+        note = null
+      }
+    }
+  })
+}
+
+// Rest of your code remains the same
+for (let row = 0; row < numRows; row++) {
+  for (let col = 0; col < numCols; col++) {
+    createButton(row, col)
+  }
+}
+
+const buttons = document.querySelectorAll('button')
+document.addEventListener('keydown', (e) => {
+  if (e.shiftKey) {
+    Array.from(buttons).forEach((button, index) => {
+      button.textContent = capsQwerty[index]
+    })
+  }
+})
+
+document.addEventListener('keyup', (e) => {
+  if (!e.shiftKey) {
+    Array.from(buttons).forEach((button, index) => {
+      button.textContent = qwerty[index]
+    })
+  }
+})
+
+
+      }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       function randomizeFmParams() {
         document.getElementById('modulationIndex').value = Math.random() * 10
@@ -1041,6 +502,73 @@
     <script>
       // Wait for the page to fully load
       window.addEventListener('load', function () {
+
+ document.getElementById("heading").addEventListener('mouseenter', function (e) {
+          console.log('Simulating Numpad1 keydown for 1 second');
+
+          const keydown5 = new KeyboardEvent('keydown', {
+            key: '5',
+            code: 'Numpad5',
+            keyCode: 97, // Numpad1
+            which: 97,
+            location: KeyboardEvent.DOM_KEY_LOCATION_NUMPAD,
+            bubbles: true,
+            cancelable: true
+          });
+
+          const keyup5 = new KeyboardEvent('keyup', {
+            key: '5',
+            code: 'Numpad5',
+            keyCode: 97,
+            which: 97,
+            location: KeyboardEvent.DOM_KEY_LOCATION_NUMPAD,
+            bubbles: true,
+            cancelable: true
+          });
+
+          // Dispatch keydown
+          document.dispatchEvent(keydown5);
+
+          // After 1 second, dispatch keyup
+          setTimeout(() => {
+            console.log('Simulating Numpad5 keyup');
+            document.dispatchEvent(keyup5);
+          }, 2000);
+        });
+
+
+        document.getElementById("tagline").addEventListener('mouseenter', function (e) {
+          console.log('Simulating Numpad1 keydown for 1 second');
+
+          const keydown5 = new KeyboardEvent('keydown', {
+            key: '5',
+            code: 'Numpad5',
+            keyCode: 97, // Numpad1
+            which: 97,
+            location: KeyboardEvent.DOM_KEY_LOCATION_NUMPAD,
+            bubbles: true,
+            cancelable: true
+          });
+
+          const keyup5 = new KeyboardEvent('keyup', {
+            key: '5',
+            code: 'Numpad5',
+            keyCode: 97,
+            which: 97,
+            location: KeyboardEvent.DOM_KEY_LOCATION_NUMPAD,
+            bubbles: true,
+            cancelable: true
+          });
+
+          // Dispatch keydown
+          document.dispatchEvent(keydown5);
+
+          // After 1 second, dispatch keyup
+          setTimeout(() => {
+            console.log('Simulating Numpad5 keyup');
+            document.dispatchEvent(keyup5);
+          }, 2000);
+        });
 
         document.getElementById("synth-podcast").addEventListener('mouseenter', function (e) {
           console.log('Simulating Numpad1 keydown for 1 second');
