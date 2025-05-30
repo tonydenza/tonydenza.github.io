@@ -11,7 +11,6 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Bass Weight Prague">
   <meta name="application-name" content="Bass Weight Prague">
-  <!-- Add Open Graph tags for better social media sharing -->
   <meta property="og:title" content="BASS WEIGHT PRAGUE">
   <meta property="og:description" content="Prague based DJs specializing in Broken Techno, Dubstep, Jungle, and UKG">
   <meta property="og:type" content="website">
@@ -42,7 +41,27 @@
     }
 
     a {
-      color:rgb(145, 178, 226)
+      color: rgb(145, 178, 226)
+    }
+
+    i {
+      font-size: x-large;
+    }
+
+    iframe {
+      width: 100%;
+      height: 166px;
+      border-radius: 8px;
+    }
+
+    section {
+      padding: 0 15em !important
+    }
+
+    h2 {
+      animation: pondColors 5s infinite alternate;
+      padding-top: 1em;
+      font-weight: 900;
     }
 
     .header {
@@ -65,56 +84,12 @@
       animation: shake 0.3s infinite !important;
     }
 
-    @keyframes shake {
-      0% {
-        transform: translate(0, 0);
-      }
-
-      20% {
-        transform: translate(2px, -1px);
-      }
-
-      40% {
-        transform: translate(-2px, 1px);
-      }
-
-      60% {
-        transform: translate(1px, -2px);
-      }
-
-      80% {
-        transform: translate(-1px, 2px);
-      }
-
-      100% {
-        transform: translate(0, 0);
-      }
-    }
-
-    .header img {
-      width: 100px;
-      margin-top: 1rem;
-    }
-
     .tagline {
       font-style: italic;
       color: #96d5b7;
       margin-bottom: 1rem;
       font-size: 1.5rem;
 
-    }
-
-    .social-icons a {
-      margin: 0 0.6rem;
-      color: #f2f2f2;
-      text-decoration: none;
-      transition: transform 0.3s ease;
-      font-size: 1.25rem;
-    }
-
-    .social-icons a:hover {
-      transform: scale(1.3) rotate(6deg);
-      color: #00ff99;
     }
 
     .fish-container {
@@ -156,13 +131,6 @@
       animation: bassVibration 0.5s infinite linear !important;
     }
 
-
-    iframe {
-      width: 100%;
-      height: 166px;
-      border-radius: 8px;
-    }
-
     .playlist-iframe {
       height: 500px;
     }
@@ -180,25 +148,36 @@
       display: flex;
       gap: 1rem;
       overflow-x: auto;
-      padding: 1rem 0;
+      padding: 1em 0.5em;
     }
 
     .gallery-scroll img {
-      height: 320px;
-      width: 220px;
+      height: 640px;
+      width: 440px;
       border-radius: 10px;
       flex-shrink: 0;
       border: 2px solid #444;
+      margin: 0 0.5em;
     }
 
-    .podcast-section, .hosting-section, .mixes-section {
+    .hosting-section,
+    .mixes-section,
+    .utilities-section {
       margin-top: 4rem;
     }
 
-    .podcast-section h2, .hosting-section h2, .mixes-section h2 {
+    .podcast-section h2,
+    .hosting-section h2,
+    .mixes-section h2,
+    .utilities-section h2 {
       font-size: 1.8rem;
       margin-bottom: 1rem;
       color: #00ffaa;
+    }
+
+    .mixes-section h2,
+    .events-gallery h2 {
+      text-align: right;
     }
 
     .mixes-section h2 {
@@ -215,12 +194,7 @@
       text-align: center;
       font-size: 1.25rem;
       color: #5dbbff;
-      padding:
-        0 10em;
-    }
-
-    section {
-      padding: 0 15em !important
+      padding: 0 10em;
     }
 
     .footer em {
@@ -239,21 +213,172 @@
       display: none;
     }
 
+    .mix-box {
+      transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+      position: relative;
+      overflow: hidden;
+    }
 
-    /* ======================
-     Animations
-     ====================== */
+    .mix-box::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: radial-gradient(circle, rgba(78, 205, 196, 0.2) 0%, transparent 70%);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: all 0.6s ease-out;
+      z-index: 1;
+    }
+
+    .mix-box:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+
+    .mix-box:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.3),
+        0 0 30px rgba(78, 205, 196, 0.2);
+      border-color: rgba(78, 205, 196, 0.4);
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .mix-box:hover .mix-title {
+      color: #4ecdc4;
+      text-shadow: 0 0 10px rgba(78, 205, 196, 0.5);
+    }
+
+    .util-2 {
+      margin-top: 1em;
+    }
+
+    .nav-menu {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .nav-item {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      padding: 12px 24px;
+      border-radius: 25px;
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    .nav-item:hover::before {
+      left: 100%;
+    }
+
+    .nav-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .social-container {
+      text-align: center;
+      margin: 0 0 25px 0;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 12px 20px;
+      border-radius: 25px;
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .social-link:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .mixes-desc {
+      text-align: right;
+    }
+
+    #waveform {
+      height: 50px;
+      margin-top: -1em;
+      margin-bottom: 2em;
+      transform: scaleY(50%);
+    }
+
+    /* ====================== Animations ====================== */
+
+    @keyframes shake {
+      0% {
+        transform: translate(0, 0);
+      }
+
+      20% {
+        transform: translate(2px, -1px);
+      }
+
+      40% {
+        transform: translate(-2px, 1px);
+      }
+
+      60% {
+        transform: translate(1px, -2px);
+      }
+
+      80% {
+        transform: translate(-1px, 2px);
+      }
+
+      100% {
+        transform: translate(0, 0);
+      }
+    }
+
     @keyframes pondColors {
       0% {
-        color: #507d72;
+        color: #5bf587;
       }
 
       25% {
-        color: #688d84;
+        color: #81f9c7;
       }
 
       50% {
-        color: #78a097;
+        color: #7efbe0;
       }
 
       75% {
@@ -261,7 +386,7 @@
       }
 
       100% {
-        color: #6a9d8e;
+        color: #37c5f9;
       }
     }
 
@@ -309,7 +434,6 @@
       }
     }
 
-    /* Social Media Animations */
     @keyframes facebook {
       0% {
         color: var(--color-text);
@@ -370,28 +494,28 @@
       }
     }
 
-
-    /* ======================
-     Media Queries
-     ====================== */
+    /* ====================== Media Queries ====================== */
     @media (max-width: 768px) {
       h1 {
         line-height: 40px;
         margin-top: 20px;
         font-size: 4em;
-        margin-bottom: 5px;
+        margin-bottom: 10px;
       }
 
       h2 {
         font-size: small;
         line-height: 13px;
-        padding: 0px 10px 0px 10px;
-        margin: 0;
+        margin-bottom: 1em;
       }
 
       .footer {
         padding:
           0 0.33em;
+      }
+
+      .hint {
+        display: none;
       }
 
       section {
@@ -401,7 +525,16 @@
 
       nav {
         margin: 0;
-        padding: 40px 20px 0 0;
+        padding: 0;
+      }
+
+      .nav-menu {
+        justify-content: space-between;
+        gap: 15px;
+      }
+
+      .nav-item {
+        width: 100%
       }
 
       nav ul {
@@ -455,26 +588,33 @@
 </head>
 
 <body>
-
-
   <input id="image-selector-input" class="visually-hidden" type="file" aria-hidden="true">
-
   <canvas id="background-canvas" aria-hidden="true"></canvas>
+
   <div class="header">
     <h1>Bass Weight Prague</h1>
+
     <div class="tagline">“Gone bassin'… back by the next drop”</div>
-    <div class="social-icons">
-      <a href="https://www.facebook.com/bassweightprg" aria-label="Facebook" target="_blank"><i
-          class="fab fa-facebook bass-link"></i> facebook</a>
-      <a href="https://www.instagram.com/bassweight_prg" aria-label="Instagram" target="_blank"><i
-          class="fab fa-instagram bass-link"></i> instagram</a>
-      <a href="https://soundcloud.com/bassweight-prague" aria-label="Soundcloud" target="_blank"><i
-          class="fab fa-soundcloud bass-link"></i> soundcloud</a>
-      <a href="mailto:bassweight.prg@gmail.com" aria-label="Email" target="_blank"><i
-          class="fa fa-envelope bass-link"></i> mail</a>
-      <a style="display: none;" id="utilsModalBtn" href="#" aria-label="DJ Utilities"><i
-          class="fa fa-toolbox bass-link"></i> tools</a>
+
+    <div class="social-container">
+      <div class="social-links">
+        <a href="#" class="social-link"><span><i class="fab fa-facebook bass-link"></i></span></a>
+        <a href="#" class="social-link"><span><i class="fab fa-instagram bass-link"></i></span></a>
+        <a href="#" class="social-link"><span><i class="fab fa-soundcloud bass-link"></i></span></a>
+        <a href="#" class="social-link"><span><i class="fa fa-envelope bass-link"></i></span></a>
+      </div>
     </div>
+
+    <nav class="nav-menu">
+      <a href="#podcast" class="nav-item" id="synth-podcast">Podcast</a>
+      <a href="#mixes" class="nav-item" id="synth-mixseries">Mixseries</a>
+      <a href="#hosting" class="nav-item" id="synth-hosting">Hosting</a>
+      <a href="#expeditions" class="nav-item" id="synth-expeditions">Expeditions</a>
+      <a href="#utilities" class="nav-item" id="synth-utilities">Utilities</a>
+    </nav>
+
+    <div class="hint">[Press and hold keys to bass!]</div>
+
   </div>
 
   <section class="fish-container">
@@ -488,29 +628,46 @@
       camera-controls></model-viewer>
   </section>
 
-  <section class="podcast-section">
-    <h2>Podcasts</h2>
-    <div class="soundcloud-grid">
-      <div class="sc-frame">
-        <p>Radio Labe - Bass Weight #1</p>
+  <div class="container" id="modulation-container">
+    <div>
+      <div>
+        <label style="display: none;">Modulation index:</label>
+        <input type="range" min="0.5" max="10" value="2" step="0.5" id="modulationIndex" style="display: none;">
+        <label style="display: none;">Modulation depth:</label>
+        <input type="range" min="1" max="200" value="5" step="1" id="modulationDepth" style="display: none;">
+        <label style="display: none;">Attack/release:</label>
+        <input type="range" min="100" max="1000" value="10" step="10" id="duration" style="display: none;">
+      </div>
+      <div id="waveform"></div>
+      <div id="pianoRoll" style="display: none;"></div>
+    </div>
 
-        <iframe id="soundcloud-podcast-1" width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay"
-          src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2087526954&color=%23a37c66&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true"></iframe>
-        <div class="description">
-          <div class="playing">
-            <div>Tracks & Links</div>
-            <ul>  
-              <li><a href="https://tectonicrecordings.bandcamp.com/track/kameleon">2562 - Kameleon</a></li>
-              <li><a href="https://nonplusrecords.bandcamp.com/track/soul-what">Boddika - Soul What</a></li>
-              <li><a href="https://yaksound.bandcamp.com/track/yak-fret">Yak - Fret</a></li>
-              <li><a href="https://yaleesahall.bandcamp.com/track/light-headed">Yaleesa Hall - Light Headed</a></li>
-              <li><a href="https://undermyfeetldn.bandcamp.com/track/middle-ages">Katatonic Silentio - Middle Ages</a></li>
-              <li><a href="https://cosmintrg.bandcamp.com/track/broken-heart-martyns-dcm-remix">Cosmin TRG - Broken Heart (Marty’s DCM Remix)</a></li>
-            </ul>
+    <section class="podcast-section" id="podcast">
+      <h2>Podcast</h2>
+      <p>Every month on <a href="https://www.radiolabe.com/shows/4" target="_blank">Radio Labe!</a></p>
+
+      <div class="soundcloud-grid">
+        <div class="sc-frame">
+          <p>Radio Labe - Bass Weight #1</p>
+          <iframe id="soundcloud-podcast-1" width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay"
+            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2087526954&color=%23a37c66&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true"></iframe>
+          <div class="description">
+            <div class="playing">
+              <div>Tracks & Links</div>
+              <ul>
+                <li><a href="https://tectonicrecordings.bandcamp.com/track/kameleon">2562 - Kameleon</a></li>
+                <li><a href="https://nonplusrecords.bandcamp.com/track/soul-what">Boddika - Soul What</a></li>
+                <li><a href="https://yaksound.bandcamp.com/track/yak-fret">Yak - Fret</a></li>
+                <li><a href="https://yaleesahall.bandcamp.com/track/light-headed">Yaleesa Hall - Light Headed</a></li>
+                <li><a href="https://undermyfeetldn.bandcamp.com/track/middle-ages">Katatonic Silentio - Middle Ages</a>
+                </li>
+                <li><a href="https://cosmintrg.bandcamp.com/track/broken-heart-martyns-dcm-remix">Cosmin TRG - Broken
+                    Heart (Marty’s DCM Remix)</a></li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
-      <pre class="cue" id="cuep1">
+        <pre class="cue" id="cuep1">
         00:00:00 -
         00:05:49 2562 - Kameleon
         00:11:11 -
@@ -525,21 +682,23 @@
         00:50:32 TRG - Broken Hearts (Martyn Remix) - Kameleon
         00:55:50 -
       </pre>
-    </div>
-  </section>
-
-  <section class="mixes-section">
-    <h2>Mixseries </h2>
-    <div class="soundcloud-grid">
-      <div class="sc-frame">
-        <p>Hardware - I Got 140 Problems But a Bass Ain't One</p>
-        <iframe loading="lazy" id="soundcloud-player-2" width="100%" height="150" scrolling="no" frameborder="no"
-          src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1894778460&color=%235f9ea0&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true"></iframe>
-        <div class="current">
-          <div class="playing" id="playing-2"></div>
-        </div>
       </div>
-      <pre class="cue" id="cue2">
+    </section>
+
+    <section class="mixes-section" id="mixes">
+      <h2>Mixseries </h2>
+      <p class="mixes-desc">Prague Bass Chronicles</p>
+      <div class="soundcloud-grid">
+        <div class="sc-frame">
+          <p>Hardware - I Got 140 Problems But a Bass Ain't One</p>
+          <iframe loading="lazy" id="soundcloud-player-2" width="100%" height="150" scrolling="no" frameborder="no"
+            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1894778460&color=%235f9ea0&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true"></iframe>
+          <div class="current">
+            <div class="playing" id="playing-2"></div>
+          </div>
+        </div>
+
+        <pre class="cue" id="cue2">
         00:00:00 INGI - PPI
         00:02:32 Kellen303 - Neon Breaks
         00:04:35 Destrata - Clubmoss
@@ -568,18 +727,19 @@
         00:51:54 Rhyw - Engine Track
         00:54:55 re:ni - BURSTTRAP
         00:57:13 Mumdance - Artificial Intelligence
-            </pre>
+      </pre>
 
-      <div class="sc-frame">
-        <p>DLKTek - Enter the Bass W8</p>
+        <div class="sc-frame">
+          <p>DLKTek - Enter the Bass W8</p>
 
-        <iframe loading="lazy" id="soundcloud-player-1" width="100%" height="150" scrolling="no" frameborder="no"
-          src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1806254454&color=%235f9ea0&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true"></iframe>
-        <div class="current">
-          <div class="playing" id="playing-1"></div>
+          <iframe loading="lazy" id="soundcloud-player-1" width="100%" height="150" scrolling="no" frameborder="no"
+            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1806254454&color=%235f9ea0&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true"></iframe>
+          <div class="current">
+            <div class="playing" id="playing-1"></div>
+          </div>
         </div>
-      </div>
-      <pre class="cue" id="cue1">
+
+        <pre class="cue" id="cue1">
         00:00:00 Escha - An Outward Visible Sign Of An Inward Invisible Hell
         00:00:00 C+C Music Factory - Everybody Dance Now (808gong x REFILLED REMIX)
         00:00:00 Wasted Fates X Future X E65 - Life’s Good '65 (Blue Bootleg)
@@ -604,140 +764,530 @@
         00:00:00 Zomby - Float
         00:00:00 LSDXOXO - Smoke of the Skunk
         00:00:00 Kelela, Agazero, & Bbymutha - Raven (Agazero Remix feat. Bbymutha)
-            </pre>
-
-    </div>
-  </section>
-
-    <section class="hosting-section">
-    <h2>Hosting expeditions </h2>
-    <div class="soundcloud-grid">
-      <div class="sc-frame">
-        <p>Guestmixes</p>
-        <iframe class="playlist-iframe" width="100%" height="500" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1792211628&color=%2384b4b4&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"></div>
-        <div class="playing" id="playing-2"></div>
+      </pre>
       </div>
-    </div>
-    <pre class="cue" id="cue2"></pre>
-  </section>
+    </section>
 
-  <section class="events-gallery">
-    <h2>Past Expeditions</h2>
-    <div class="gallery-scroll">
-      <img src="./assets/images/anezka.png" alt="Cafe Anezka Event">
-      <img src="./assets/images/funkstation.png" alt="Funkstation Event">
-      <img src="./assets/images/bikejesus.jpg" alt="Bike Jesus Event">
-      <img src="./assets/images/akropolis.jpg" alt="Akropolis Underground Event">
-    </div>
-  </section>
-
-  <div id="utilsModal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <div class="container">
-        <div>
-          <h3>DJ utilities</h3>
-          <div class="utils-grid">
-            <div class="util-card">
-              <div class="util-header">
-                <h3>Bandcamp Tagger</h3>
-              </div>
-              <p>Browser extension that helps organize and tag your Bandcamp collections.</p>
-              <p>Get it <a target="_blank"
-                  href="https://addons.mozilla.org/en-US/firefox/addon/bandcamp-tagger/">here</a></p>
-            </div>
-            <div class="util-card">
-              <div class="util-header">
-                <h3>Cue Formatter</h3>
-              </div>
-              <p>Convert Rekordbox .cue files and other sources into properly formatted tracklists with timestamps.</p>
-              <p>Try it <a target="_blank" href="./utils/formatter.html">here</a></p>
-            </div>
+    <section class="hosting-section" id="hosting">
+      <h2>Hosting Expeditions </h2>
+      <p>Guestmixes</p>
+      <div class="soundcloud-grid">
+        <div class="sc-frame">
+          <iframe class="playlist-iframe" width="100%" height="500" scrolling="no" frameborder="no" allow="autoplay"
+            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1792211628&color=%2384b4b4&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"></iframe>
+          <div
+            style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;">
           </div>
+          <div class="playing" id="playing-2"></div>
         </div>
       </div>
+      <pre class="cue" id="cue2"></pre>
+    </section>
+
+    <section class="events-gallery" id="expeditions">
+      <h2>Past Expeditions</h2>
+
+      <div class="gallery-scroll sc-frame">
+        <a href="./assets/images/anezka.png" data-toggle="lightbox"><img src="./assets/images/anezka.png"
+            alt="Cafe Anezka Event"></a>
+        <img src="./assets/images/funkstation.png" alt="Funkstation Event">
+        <img src="./assets/images/bikejesus.jpg" alt="Bike Jesus Event">
+        <img src="./assets/images/akropolis.jpg" alt="Akropolis Underground Event">
+      </div>
+    </section>
+
+    <section class="utilities-section" id="utilities">
+      <h2>DJ Utilities</h2>
+      <div class="sc-frame mix-box">
+        <h3>Bandcamp Tagger</h3>
+        <p>Browser extension that helps organize and tag your Bandcamp collections.</p>
+        <p>Get it here for <a target="_blank"
+            href="https://addons.mozilla.org/en-US/firefox/addon/bandcamp-tagger/">Firefox</a> or <a target="_blank"
+            href="https://chromewebstore.google.com/detail/bandcamp-tagger/nhohddpofkkbfofnefnjkdkcniogoheh">Chrome</a>
+        </p>
+      </div>
+      <div class="sc-frame mix-box util-2">
+        <h3>Cue Formatter</h3>
+        <p>Convert Rekordbox .cue files and other sources into properly formatted tracklists with timestamps.</p>
+        <p>Try it <a target="_blank" href="./utils/formatter.html">here</a></p>
+      </div>
+    </section>
+
+    <div class="footer">
+      <img src="./assets/images/logonobg.png" alt="Bassmasters cover vibe" />
+      <p><em>Bass Weight</em>
+        Prague based DJs. Never limiting ourselves to particular vibe but always diligently fishing
+        for the fattest bass 🐟<br><br> 🎣 Broken Techno 🎣 Dubstep 🎣 Jungle 🎣 UKG 🎣 </p>
     </div>
-  </div>
 
-  <div class="footer">
-    <img src="./assets/images/logonobg.png" alt="Bassmasters cover vibe" />
 
-    <p><em>Bass Weight</em>
-      Prague based DJs. Never limiting ourselves to particular vibe but always diligently fishing
-      for the fattest bass 🐟<br><br> 🎣 Broken Techno 🎣 Dubstep 🎣 Jungle 🎣 UKG 🎣 </p>
-  </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://w.soundcloud.com/player/api.js"></script>
-  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-  <script type="module" src="./js/script.js"></script>
-  <script>document.addEventListener('DOMContentLoaded', () => {
-      // Initialize SoundCloud widgets and bind events after they're ready
-      const widget1 = SC.Widget('soundcloud-player-1');
-      const widget2 = SC.Widget('soundcloud-player-2');
-      const podcast1 = SC.Widget('soundcloud-podcast-1');
 
-      // Wait for widgets to be ready
-      widget1.bind(SC.Widget.Events.READY, function () {
-        widget1.bind(SC.Widget.Events.PLAY_PROGRESS, function (e) {
-          updateTrackDisplay(e.currentPosition, 'cue1', 'playing-1');
-        });
-      });
 
-      widget2.bind(SC.Widget.Events.READY, function () {
-        widget2.bind(SC.Widget.Events.PLAY_PROGRESS, function (e) {
-          updateTrackDisplay(e.currentPosition, 'cue2', 'playing-2');
-        });
-      });
 
-      podcast1.bind(SC.Widget.Events.READY, function () {
-        podcast1.bind(SC.Widget.Events.PLAY_PROGRESS, function (e) {
-          updateTrackDisplay(e.currentPosition, 'cuep1', 'playing-p1');
-        });
-      });
 
-      function updateTrackDisplay(position, cueId, displayId) {
-        const currentTime = Math.floor(position / 1000);
-        const tracklist = document.getElementById(cueId).innerText;
-        const currentTrack = findCurrentTrack(currentTime, tracklist);
 
-        const displayElement = document.getElementById(displayId);
-        if (displayElement && currentTrack) {
-          displayElement.innerText = currentTrack;
+
+    <script src="https://unpkg.com/wavesurfer.js"></script>
+    <script>
+      const wavesurfer = WaveSurfer.create({
+        container: '#waveform',
+        waveColor: 'rgb(200, 0, 200)',
+        cursorColor: 'transparent',
+        barWidth: 2,
+        interact: false,
+      })
+
+      const audioContext = new AudioContext()
+
+      // Create an analyser node
+      const analyser = audioContext.createAnalyser()
+      analyser.fftSize = 512 * 2
+      analyser.connect(audioContext.destination)
+      const dataArray = new Float32Array(analyser.frequencyBinCount)
+
+      function createVoice() {
+        // Carrier oscillator
+        const carrierOsc = audioContext.createOscillator()
+        carrierOsc.type = 'sine'
+
+        // Modulator oscillator
+        const modulatorOsc = audioContext.createOscillator()
+        modulatorOsc.type = 'sine'
+
+        // Modulation depth
+        const modulationGain = audioContext.createGain()
+
+        // Connect the modulator to the carrier frequency
+        modulatorOsc.connect(modulationGain)
+        modulationGain.connect(carrierOsc.frequency)
+
+        // Create an output gain
+        const outputGain = audioContext.createGain()
+        outputGain.gain.value = 0
+
+        // Connect carrier oscillator to output
+        carrierOsc.connect(outputGain)
+
+        // Connect output to analyser
+        outputGain.connect(analyser)
+
+        // Start oscillators
+        carrierOsc.start()
+        modulatorOsc.start()
+
+        return {
+          carrierOsc,
+          modulatorOsc,
+          modulationGain,
+          outputGain,
         }
       }
 
-      function findCurrentTrack(currentTime, tracklist) {
-        // Parse the tracklist and find current track
-        const tracks = tracklist
-          .split('\n')
-          .map(line => line.trim())
-          .filter(line => line.match(/^\d{2}:\d{2}:\d{2}/))
-          .map(line => {
-            const timeStr = line.substring(0, 8);
-            const trackName = line.substring(9).trim();
-            return {
-              time: timeToSeconds(timeStr),
-              track: trackName
-            };
-          });
+      function playNote(frequency, modulationFrequency, modulationDepth, duration) {
+        const voice = createVoice()
+        const { carrierOsc, modulatorOsc, modulationGain, outputGain } = voice
 
-        // Find the current track based on time
-        for (let i = 0; i < tracks.length; i++) {
-          const nextTime = i < tracks.length - 1 ? tracks[i + 1].time : Infinity;
-          if (currentTime >= tracks[i].time && currentTime < nextTime) {
-            return tracks[i].track;
+        carrierOsc.frequency.value = frequency
+        modulatorOsc.frequency.value = modulationFrequency
+        modulationGain.gain.value = modulationDepth
+
+        outputGain.gain.setValueAtTime(0.00001, audioContext.currentTime)
+        outputGain.gain.exponentialRampToValueAtTime(1, audioContext.currentTime + duration / 1000)
+
+        return voice
+      }
+
+      function releaseNote(voice, duration) {
+        const { carrierOsc, modulatorOsc, modulationGain, outputGain } = voice
+        outputGain.gain.cancelScheduledValues(audioContext.currentTime)
+        outputGain.gain.setValueAtTime(1, audioContext.currentTime)
+        outputGain.gain.exponentialRampToValueAtTime(0.0001, audioContext.currentTime + duration / 1000)
+
+        setTimeout(() => {
+          carrierOsc.stop()
+          modulatorOsc.stop()
+          carrierOsc.disconnect()
+          modulatorOsc.disconnect()
+          modulationGain.disconnect()
+          outputGain.disconnect()
+          voice.carrierOsc = null
+          voice.modulatorOsc = null
+          voice.modulationGain = null
+          voice.outputGain = null
+        }, duration + 100)
+      }
+
+      function createPianoRoll() {
+        const baseFrequency = 110
+        const numRows = 4
+        const numCols = 10
+
+        const noteFrequency = (row, col) => {
+          // The top row is the bass
+          // The lower rows represent the notes of a major third chord
+          // Columns represent the notes of a C major scale (there are 10 columns and 4 rows)
+          const chord = [-8, 0, 4, 7]
+          const scale = [0, 2, 4, 5, 7, 9, 11, 12, 14, 16]
+          const note = chord[row] + scale[col]
+          return baseFrequency * Math.pow(2, note / 12)
+        }
+
+        const pianoRoll = document.getElementById('pianoRoll')
+        const qwerty = '1234567890qwertyuiopasdfghjkl;zxcvbnm,./'
+        const capsQwerty = '!@#$%^&*()QWERTYUIOPASDFGHJKL:ZXCVBNM<>?'
+
+        const onKeyDown = (freq) => {
+          const modulationIndex = parseFloat(document.getElementById('modulationIndex').value)
+          const modulationDepth = parseFloat(document.getElementById('modulationDepth').value)
+          const duration = parseFloat(document.getElementById('duration').value)
+          return playNote(freq, freq * modulationIndex, modulationDepth, duration)
+        }
+
+        const onKeyUp = (voice) => {
+          const duration = parseFloat(document.getElementById('duration').value)
+          releaseNote(voice, duration)
+        }
+
+        const createButton = (row, col) => {
+          const button = document.createElement('button')
+          const key = qwerty[(row * numCols + col) % qwerty.length]
+          const capsKey = capsQwerty[(row * numCols + col) % capsQwerty.length]
+          const frequency = noteFrequency(row, col)
+          let note = null
+
+          button.textContent = key
+          pianoRoll.appendChild(button)
+
+          // Mouse
+          button.addEventListener('mousedown', (e) => {
+            note = onKeyDown(frequency * (e.shiftKey ? numRows : 1))
+          })
+          button.addEventListener('mouseup', () => {
+            if (note) {
+              onKeyUp(note)
+              note = null
+            }
+          })
+
+          // Keyboard
+          document.addEventListener('keydown', (e) => {
+            if (e.key === key || e.key === capsKey) {
+              button.className = 'active'
+              if (!note) {
+                note = onKeyDown(frequency * (e.shiftKey ? numRows : 1))
+              }
+            }
+          })
+          document.addEventListener('keyup', (e) => {
+            if (e.key === key || e.key === capsKey) {
+              button.className = ''
+              if (note) {
+                onKeyUp(note)
+                note = null
+              }
+            }
+          })
+        }
+
+        for (let row = 0; row < numRows; row++) {
+          for (let col = 0; col < numCols; col++) {
+            createButton(row, col)
           }
         }
 
-        return '';
+        const buttons = document.querySelectorAll('button')
+        document.addEventListener('keydown', (e) => {
+          if (e.shiftKey) {
+            Array.from(buttons).forEach((button, index) => {
+              button.textContent = capsQwerty[index]
+            })
+          }
+        })
+        document.addEventListener('keyup', (e) => {
+          if (!e.shiftKey) {
+            Array.from(buttons).forEach((button, index) => {
+              button.textContent = qwerty[index]
+            })
+          }
+        })
       }
 
-      function timeToSeconds(timeStr) {
-        const [hours, minutes, seconds] = timeStr.split(':').map(Number);
-        return (hours * 3600) + (minutes * 60) + seconds;
+      function randomizeFmParams() {
+        document.getElementById('modulationIndex').value = Math.random() * 10
+        document.getElementById('modulationDepth').value = Math.random() * 200
+        document.getElementById('duration').value = Math.random() * 1000
       }
-    });</script>
+
+      // Draw the waveform
+      function drawWaveform() {
+        // Get the waveform data from the analyser
+        analyser.getFloatTimeDomainData(dataArray)
+        const duration = document.getElementById('duration').valueAsNumber
+        wavesurfer && wavesurfer.load('', [dataArray], duration)
+      }
+
+      function animate() {
+        requestAnimationFrame(animate)
+        drawWaveform()
+      }
+
+      createPianoRoll()
+      animate()
+      randomizeFmParams()
+    </script>
+
+    <script>
+      // Wait for the page to fully load
+      window.addEventListener('load', function () {
+
+        document.getElementById("synth-podcast").addEventListener('mouseenter', function (e) {
+          console.log('Simulating Numpad1 keydown for 1 second');
+
+          const keydown1 = new KeyboardEvent('keydown', {
+            key: '1',
+            code: 'Numpad1',
+            keyCode: 97, // Numpad1
+            which: 97,
+            location: KeyboardEvent.DOM_KEY_LOCATION_NUMPAD,
+            bubbles: true,
+            cancelable: true
+          });
+
+          const keyup1 = new KeyboardEvent('keyup', {
+            key: '1',
+            code: 'Numpad1',
+            keyCode: 97,
+            which: 97,
+            location: KeyboardEvent.DOM_KEY_LOCATION_NUMPAD,
+            bubbles: true,
+            cancelable: true
+          });
+
+          // Dispatch keydown
+          document.dispatchEvent(keydown1);
+
+          // After 1 second, dispatch keyup
+          setTimeout(() => {
+            console.log('Simulating Numpad1 keyup');
+            document.dispatchEvent(keyup1);
+          }, 2000);
+        });
+
+        document.getElementById("synth-mixseries").addEventListener('mouseenter', function (e) {
+          console.log('Simulating Numpad1 keydown for 1 second');
+
+          const keydown2 = new KeyboardEvent('keydown', {
+            key: '2',
+            code: 'Numpad2',
+            keyCode: 97, // Numpad1
+            which: 97,
+            location: KeyboardEvent.DOM_KEY_LOCATION_NUMPAD,
+            bubbles: true,
+            cancelable: true
+          });
+
+          const keyup2 = new KeyboardEvent('keyup', {
+            key: '2',
+            code: 'Numpad2',
+            keyCode: 97,
+            which: 97,
+            location: KeyboardEvent.DOM_KEY_LOCATION_NUMPAD,
+            bubbles: true,
+            cancelable: true
+          });
+
+          // Dispatch keydown
+          document.dispatchEvent(keydown2);
+
+          // After 1 second, dispatch keyup
+          setTimeout(() => {
+            console.log('Simulating Numpad2 keyup');
+            document.dispatchEvent(keyup2);
+          }, 2000);
+        });
+
+        document.getElementById("synth-hosting").addEventListener('mouseenter', function (e) {
+          console.log('Simulating Numpad1 keydown for 1 second');
+
+          const keydown3 = new KeyboardEvent('keydown', {
+            key: '3',
+            code: 'Numpad3',
+            keyCode: 97, // Numpad1
+            which: 97,
+            location: KeyboardEvent.DOM_KEY_LOCATION_NUMPAD,
+            bubbles: true,
+            cancelable: true
+          });
+
+          const keyup3 = new KeyboardEvent('keyup', {
+            key: '3',
+            code: 'Numpad3',
+            keyCode: 97,
+            which: 97,
+            location: KeyboardEvent.DOM_KEY_LOCATION_NUMPAD,
+            bubbles: true,
+            cancelable: true
+          });
+
+          // Dispatch keydown
+          document.dispatchEvent(keydown3);
+
+          // After 1 second, dispatch keyup
+          setTimeout(() => {
+            console.log('Simulating Numpad3 keyup');
+            document.dispatchEvent(keyup3);
+          }, 2000);
+        });
+
+        document.getElementById("synth-expeditions").addEventListener('mouseenter', function (e) {
+          console.log('Simulating Numpad1 keydown for 1 second');
+
+          const keydown4 = new KeyboardEvent('keydown', {
+            key: '4',
+            code: 'Numpad4',
+            keyCode: 97, // Numpad1
+            which: 97,
+            location: KeyboardEvent.DOM_KEY_LOCATION_NUMPAD,
+            bubbles: true,
+            cancelable: true
+          });
+
+          const keyup4 = new KeyboardEvent('keyup', {
+            key: '4',
+            code: 'Numpad4',
+            keyCode: 97,
+            which: 97,
+            location: KeyboardEvent.DOM_KEY_LOCATION_NUMPAD,
+            bubbles: true,
+            cancelable: true
+          });
+
+          // Dispatch keydown
+          document.dispatchEvent(keydown4);
+
+          // After 1 second, dispatch keyup
+          setTimeout(() => {
+            console.log('Simulating Numpad4 keyup');
+            document.dispatchEvent(keyup4);
+          }, 2000);
+        });
+
+        document.getElementById("synth-utilities").addEventListener('mouseenter', function (e) {
+          console.log('Simulating Numpad1 keydown for 1 second');
+
+          const keydown5 = new KeyboardEvent('keydown', {
+            key: '5',
+            code: 'Numpad5',
+            keyCode: 97, // Numpad1
+            which: 97,
+            location: KeyboardEvent.DOM_KEY_LOCATION_NUMPAD,
+            bubbles: true,
+            cancelable: true
+          });
+
+          const keyup5 = new KeyboardEvent('keyup', {
+            key: '5',
+            code: 'Numpad5',
+            keyCode: 97,
+            which: 97,
+            location: KeyboardEvent.DOM_KEY_LOCATION_NUMPAD,
+            bubbles: true,
+            cancelable: true
+          });
+
+          // Dispatch keydown
+          document.dispatchEvent(keydown5);
+
+          // After 1 second, dispatch keyup
+          setTimeout(() => {
+            console.log('Simulating Numpad5 keyup');
+            document.dispatchEvent(keyup5);
+          }, 2000);
+        });
+
+        // Optional: To prevent the default keyup behavior (which would stop the "holding")
+        document.addEventListener('keyup', function (e) {
+          if ((e.code === 'Numpad1' || e.code === 'Numpad2') &&
+            e.location === KeyboardEvent.DOM_KEY_LOCATION_NUMPAD) {
+            e.preventDefault();
+            console.log('Prevented keyup for ' + e.code);
+          }
+        }, true);
+      });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://w.soundcloud.com/player/api.js"></script>
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <script type="module" src="./js/script.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', () => {
+        // Initialize SoundCloud widgets and bind events after they're ready
+        const widget1 = SC.Widget('soundcloud-player-1');
+        const widget2 = SC.Widget('soundcloud-player-2');
+        const podcast1 = SC.Widget('soundcloud-podcast-1');
+
+        // Wait for widgets to be ready
+        widget1.bind(SC.Widget.Events.READY, function () {
+          widget1.bind(SC.Widget.Events.PLAY_PROGRESS, function (e) {
+            updateTrackDisplay(e.currentPosition, 'cue1', 'playing-1');
+          });
+        });
+
+        widget2.bind(SC.Widget.Events.READY, function () {
+          widget2.bind(SC.Widget.Events.PLAY_PROGRESS, function (e) {
+            updateTrackDisplay(e.currentPosition, 'cue2', 'playing-2');
+          });
+        });
+
+        podcast1.bind(SC.Widget.Events.READY, function () {
+          podcast1.bind(SC.Widget.Events.PLAY_PROGRESS, function (e) {
+            updateTrackDisplay(e.currentPosition, 'cuep1', 'playing-p1');
+          });
+        });
+
+        function updateTrackDisplay(position, cueId, displayId) {
+          const currentTime = Math.floor(position / 1000);
+          const tracklist = document.getElementById(cueId).innerText;
+          const currentTrack = findCurrentTrack(currentTime, tracklist);
+
+          const displayElement = document.getElementById(displayId);
+          if (displayElement && currentTrack) {
+            displayElement.innerText = currentTrack;
+          }
+        }
+
+        function findCurrentTrack(currentTime, tracklist) {
+          // Parse the tracklist and find current track
+          const tracks = tracklist
+            .split('\n')
+            .map(line => line.trim())
+            .filter(line => line.match(/^\d{2}:\d{2}:\d{2}/))
+            .map(line => {
+              const timeStr = line.substring(0, 8);
+              const trackName = line.substring(9).trim();
+              return {
+                time: timeToSeconds(timeStr),
+                track: trackName
+              };
+            });
+
+          // Find the current track based on time
+          for (let i = 0; i < tracks.length; i++) {
+            const nextTime = i < tracks.length - 1 ? tracks[i + 1].time : Infinity;
+            if (currentTime >= tracks[i].time && currentTime < nextTime) {
+              return tracks[i].track;
+            }
+          }
+
+          return '';
+        }
+
+        function timeToSeconds(timeStr) {
+          const [hours, minutes, seconds] = timeStr.split(':').map(Number);
+          return (hours * 3600) + (minutes * 60) + seconds;
+        }
+      });</script>
 </body>
 
 </html>
