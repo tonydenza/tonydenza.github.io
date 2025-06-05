@@ -28,7 +28,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     };
 
-
   // SoundCloud player initialization
   const initializePlayers = () => {
     const players = {
@@ -64,6 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const widget1 = SC.Widget('soundcloud-player-1');
       const widget2 = SC.Widget('soundcloud-player-2');
       const podcast1 = SC.Widget('soundcloud-podcast-1');
+      const podcast2 = SC.Widget('soundcloud-podcast-2');
 
       // Wait for widgets to be ready
       widget1.bind(SC.Widget.Events.READY, function () {
@@ -81,6 +81,12 @@ document.addEventListener("DOMContentLoaded", () => {
       podcast1.bind(SC.Widget.Events.READY, function () {
         podcast1.bind(SC.Widget.Events.PLAY_PROGRESS, function (e) {
           updateTrackDisplay(e.currentPosition, 'cuep1', 'playing-p1');
+        });
+      });
+
+      podcast2.bind(SC.Widget.Events.READY, function () {
+        podcast2.bind(SC.Widget.Events.PLAY_PROGRESS, function (e) {
+          updateTrackDisplay(e.currentPosition, 'cuep2', 'playing-p2');
         });
       });
 
