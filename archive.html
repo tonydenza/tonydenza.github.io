@@ -182,10 +182,8 @@
     </div>
 
     <script>
-        // data here: https://docs.google.com/spreadsheets/d/1PaOQ1WUqZJrV07PsNd4GV6fkpko-wvMVRHtA2Xgn8rI/edit?gid=0#gid=0
-        // api calls here: https://app.sheetbest.com/admin/connection-detail/95ec2938-277b-4a98-9ec0-3eb0da2ac232
         let mixes = [];
-        const MIXES_PER_PAGE = 10;
+        const MIXES_PER_PAGE = 15;
         let currentPage = 1;
         let currentSortOption = 'oldest';
 
@@ -278,11 +276,11 @@
         }
 
         function scrollToTop() {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-}
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
 
         // Function to filter mixes
         function filterMixes() {
@@ -356,7 +354,7 @@
             paginationList.appendChild(prevListItem);
 
             // Page number buttons (limit to a reasonable number if there are many pages)
-            const maxDisplayedPages = 10;
+            const maxDisplayedPages = 15;
             let startPage = Math.max(1, currentPage - Math.floor(maxDisplayedPages / 2));
             let endPage = Math.min(totalPages, startPage + maxDisplayedPages - 1);
 
@@ -507,9 +505,14 @@
                 }
             });
 
-            // Fetch data from API
-            fetch("https://api.sheetbest.com/sheets/95ec2938-277b-4a98-9ec0-3eb0da2ac232")
-                .then(response => response.json())
+            // Load data from JSON file
+            fetch("./archive.json")
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
                 .then(data => {
                     // Hide loading indicator
                     document.getElementById('loading').style.display = 'none';
@@ -530,7 +533,7 @@
                 })
                 .catch(err => {
                     console.error("Error loading mixes:", err);
-                    document.getElementById('loading').innerHTML = '<div class="col-12 text-center"><p>Error loading mixes. Please try again later.</p></div>';
+                    document.getElementById('loading').innerHTML = '<div class="col-12 text-center"><p>Error loading mixes. Please check that the data/mixes.json file exists and is accessible.</p></div>';
                 });
         });
     </script>
