@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hardcore Continuum Timeline</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #0f0f0f;
+            color: #f0f0f0;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        h1 {
+            text-align: center;
+            background: #ffc107;
+            margin: 0 4em;
+            padding: 0 5em;
+            border-radius: 9px;
+            color: black;
+            font-weight: 600;
+
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #ffc107;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+
+        .container-timeline {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+
+        .container-timeline.left {
+            left: 0;
+        }
+
+        .container-timeline.right {
+            left: 50%;
+        }
+
+        .content {
+            padding: 20px;
+            background-color: #1a1a1a;
+            position: relative;
+            border-radius: 6px;
+            border-left: 5px solid #ffc107;
+        }
+
+        .container-timeline.left .content {
+            margin-left: auto;
+        }
+
+        .container-timeline.right .content {
+            margin-right: auto;
+        }
+
+        .yearLeft {
+            font-size: 1.5rem;
+            color: #ffc107;
+            margin-bottom: 10px;
+            text-align: right;
+            background: #ffc107;
+            color: black;
+            font-weight: 700;
+            padding: 0 53px;
+            margin-right: -2.5em;
+            margin-left: -4.5%;
+        }
+
+        .yearRight {
+            font-size: 1.5rem;
+            color: #ffc107;
+            margin-bottom: 10px;
+            text-align: left;
+            background: #ffc107;
+            color: black;
+            font-weight: 700;
+            padding: 0 53px;
+            margin-left: -2.6em;
+            margin-right: -4.5%;
+        }
+
+        .contentLeft {
+            text-align: right !important;
+        }
+
+        .contentRight {
+            border-right: 5px solid #ffc107;
+            border-left: none;
+
+        }
+
+        .subgenre-list {
+            margin-top: 10px;
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .subgenre-list li {
+            padding: 4px 0;
+            font-size: 1.1rem;
+        }
+
+        .subgenre-list {
+            margin-top: 10px;
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .subgenre-list li {
+            padding: 4px 0;
+            font-size: 1.1rem;
+        }
+
+        /* Subgenre boxes */
+        .subgenre-container {
+            margin-top: 15px;
+            position: relative;
+        }
+
+        .subgenre-box {
+            background-color: #2a2a2a;
+            border: 2px solid #666;
+            border-radius: 4px;
+            padding: 10px;
+            margin: 8px 0;
+            font-size: 0.9rem;
+        }
+
+        .subgenre-box h5 {
+            color: #ffc107;
+            margin-bottom: 5px;
+            font-size: 1rem;
+        }
+
+        .subgenre-box p {
+            margin: 0;
+            color: #ccc;
+            font-size: 0.85rem;
+        }
+
+        .subgenre-left {
+            margin-right: 20px;
+        }
+
+        .subgenre-right {
+            margin-left: 20px;
+        }
+
+        audio {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        @media screen and (max-width: 768px) {
+
+            .container-timeline.left,
+            .container-timeline.right {
+                left: 0;
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline::after {
+                left: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Hardcore Continuum</h1>
+    <div class="timeline">
+
+        <!-- HARDCORE -->
+        <div class="container-timeline left">
+            <div class="content contentLeft">
+                <div class="yearLeft">late 1980s</div>
+                <h3>Breakbeat Hardcore</h3>
+                <h4>UK Hardcore</h4>
+                <ul class="subgenre-list">
+                    <li>Origins: Acid House, Bleep Techno, Breakbeat</li>
+                </ul>
+                <div class="embed-responsive embed-responsive-16by9 mt-3">
+                    <iframe width="560" height="615" src="https://www.youtube.com/embed/xZoM58x1TXY?si=-KLc8LAImFccUc3K"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="subgenre-container subgenre-left">
+                <div class="subgenre-box">
+                    <h5>Happy Hardcore</h5>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- JUNGLE -->
+        <div class="container-timeline right">
+            <div class="content contentRight">
+                <div class="yearRight">early 1990s</div>
+                <h3>Jungle</h3>
+                <ul class="subgenre-list">
+                    <li>Origins: Breakbeat Hardcore, Jamaica</li>
+                </ul>
+                <div class="embed-responsive embed-responsive-16by9 mt-3">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/bR3LJUQMF30?si=42f-Tqlta5aFQTOa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="subgenre-container subgenre-left">
+                <div class="subgenre-box">
+                    <h5>Ambient Jungle</h5>
+                                    <div class="embed-responsive embed-responsive-16by9 mt-3">
+
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/Kj0FM_yQK3M?si=oDS6nOVhvae_s_LV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                
+                </div></div>
+            </div>
+        </div>
+
+        <!-- DRUM & BASS -->
+        <div class="container-timeline left">
+            <div class="content contentLeft">
+                <div class="yearLeft">Early-to-mid 1990s</div>
+                <h3>Drum & Bass</h3>
+                <ul class="subgenre-list">
+                    <li>Origins: Jungle</li>
+                </ul>
+                <div class="embed-responsive embed-responsive-16by9 mt-3">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/e_UV3EVNrls?si=Y8Cz1WID0bk4cPge" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- UK GARAGE -->
+        <div class="container-timeline right">
+            <div class="content contentRight">
+                <div class="yearRight">Early to mid-1990s</div>
+                <h3>UK Garage</h3>
+                <ul class="subgenre-list">
+                    <li>Origins:</li>
+                </ul>
+
+                <div class="embed-responsive embed-responsive-16by9 mt-3">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/3p8jmvQzqjY"
+                        allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="subgenre-container subgenre-left">
+                <div class="subgenre-box">
+                    <h5>2-Step</h5>
+                </div>
+                <div class="subgenre-box">
+                    <h5>Speed Garage</h5>
+                </div>
+            </div>
+        </div>
+
+        <!-- GRIME -->
+        <div class="container-timeline left">
+            <div class="content contentLeft">
+                <div class="yearLeft">Early 2000s</div>
+                <h3>Grime</h3>
+                <ul class="subgenre-list">
+                    <li>Origins:</li>
+                </ul>
+                <ul class="subgenre-list">
+                    <li>Subgenres:</li>
+                </ul>
+                <ul class="subgenre-list">
+                    <li>Fusion genres: </li>
+                </ul>
+                <div class="embed-responsive embed-responsive-16by9 mt-3">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/3p8jmvQzqjY"
+                        allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- DUBSTEP -->
+        <div class="container-timeline right">
+            <div class="content contentRight">
+                <div class="yearRight">Early 2000s</div>
+                <h3>Dubstep</h3>
+                <ul class="subgenre-list">
+                    <li>Origins:</li>
+                </ul>
+                <ul class="subgenre-list">
+                    <li>Subgenres:</li>
+                </ul>
+                <ul class="subgenre-list">
+                    <li>Fusion genres: </li>
+                </ul>
+                <div class="embed-responsive embed-responsive-16by9 mt-3">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/3p8jmvQzqjY"
+                        allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- BASSLINE -->
+        <div class="container-timeline left">
+            <div class="content contentLeft">
+                <div class="yearLeft">Early 2000s</div>
+                <h3>Bassline</h3>
+                <ul class="subgenre-list">
+                    <li>Origins:</li>
+                </ul>
+                <ul class="subgenre-list">
+                    <li>Subgenres:</li>
+                </ul>
+                <ul class="subgenre-list">
+                    <li>Fusion genres: </li>
+                </ul>
+                <div class="embed-responsive embed-responsive-16by9 mt-3">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/3p8jmvQzqjY"
+                        allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- UK Funky -->
+        <div class="container-timeline right">
+            <div class="content contentRight">
+                <div class="yearRight">Mid-2000s</div>
+                <h3>UK Funky</h3>
+                <ul class="subgenre-list">
+                    <li>Origins:</li>
+                </ul>
+                <ul class="subgenre-list">
+                    <li>Subgenres:</li>
+                </ul>
+                <ul class="subgenre-list">
+                    <li>Fusion genres: </li>
+                </ul>
+                <div class="embed-responsive embed-responsive-16by9 mt-3">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/3p8jmvQzqjY"
+                        allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- UK Bass -->
+        <div class="container-timeline left">
+            <div class="content contentLeft">
+                <div class="yearLeft">Mid-to-late 2000s</div>
+                <h3>UK Bass</h3>
+                <ul class="subgenre-list">
+                    <li>Origins:</li>
+                </ul>
+                <ul class="subgenre-list">
+                    <li>Subgenres: </li>
+                </ul>
+                <ul class="subgenre-list">
+                    <li>Fusion genres: </li>
+                </ul>
+                <div class="embed-responsive embed-responsive-16by9 mt-3">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/3p8jmvQzqjY"
+                        allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
