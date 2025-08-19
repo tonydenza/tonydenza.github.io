@@ -553,6 +553,10 @@ body {
       .fish-one {
         transform: translateX(-25vw) translateY(41vh) !important;
       }
+
+      .sc-frame {
+        min-width: 320px;
+      }
     }
 
     @media (min-width: 601px) and (max-width: 1200px) {
