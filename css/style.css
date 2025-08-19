@@ -3,6 +3,7 @@ body {
       color: #e3fdfd;
       font-family: 'Courier New', Courier, monospace;
       padding: 2rem;
+      overflow-x: hidden;
     }
 
     canvas {
@@ -33,7 +34,7 @@ body {
     }
 
     section {
-      padding: 0 15em !important
+      padding: 0 10em !important
     }
 
     h2 {
@@ -85,9 +86,11 @@ body {
     }
 
     .soundcloud-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      display: flex;
       gap: 2rem;
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding: 1rem 0;
     }
 
     .sc-frame {
@@ -95,6 +98,8 @@ body {
       padding: 1rem;
       background: rgba(0, 0, 0, 0.3);
       border-radius: 12px;
+      flex: 0 0 320px;
+      min-width: 400px;
     }
 
     .bass-link {
