@@ -30,9 +30,19 @@
   <div class="header">
     <h1 id="heading">Bass Weight Prague</h1>
 
-    <div class="tagline" id="tagline">“Gone bassin'… back by the next drop”</div>
+    <div class="tagline d-none" id="tagline">“Gone bassin'… back by the next drop”</div>
 
-    <div class="social-container">
+
+
+    <nav class="nav-menu">
+      <a href="#podcast" class="nav-item" id="synth-podcast">Podcast</a>
+      <a href="#mixes" class="nav-item" id="synth-mixseries">Mixseries</a>
+      <a href="#hosting" class="nav-item" id="synth-hosting">Hosting</a>
+      <a href="#expeditions" class="nav-item" id="synth-expeditions">Expeditions</a>
+      <a href="#utilities" class="nav-item" id="synth-utilities">Utilities</a>
+    </nav>
+
+        <div class="social-container">
       <div class="social-links">
         <a href="https://www.facebook.com/bassweightprg" target="_blank" class="social-link"><span><i
               class="fab fa-facebook bass-link"></i></span></a>
@@ -45,19 +55,11 @@
       </div>
     </div>
 
-    <nav class="nav-menu">
-      <a href="#podcast" class="nav-item" id="synth-podcast">Podcast</a>
-      <a href="#mixes" class="nav-item" id="synth-mixseries">Mixseries</a>
-      <a href="#hosting" class="nav-item" id="synth-hosting">Hosting</a>
-      <a href="#expeditions" class="nav-item" id="synth-expeditions">Expeditions</a>
-      <a href="#utilities" class="nav-item" id="synth-utilities">Utilities</a>
-    </nav>
-
-    <div class="hint">[Press and hold keys to bass!]</div>
+    <div class="hint d-none">[Press and hold keys to bass!]</div>
 
   </div>
 
-  <section class="fish-container">
+  <div class="fish-container">
     <model-viewer src="https://bassweightprague.com/assets/models/scene.gltf" auto-rotate
       camera-controls></model-viewer>
     <model-viewer src="https://bassweightprague.com/assets/models/scene.gltf" auto-rotate
@@ -66,7 +68,7 @@
       camera-controls></model-viewer>
     <model-viewer src="https://bassweightprague.com/assets/models/scene.gltf" auto-rotate
       camera-controls></model-viewer>
-  </section>
+  </div>
 
   <div class="container" id="modulation-container">
     <div>
@@ -83,317 +85,168 @@
     </div>
 
     <section class="podcast-section" id="podcast">
-      <h2>Podcast</h2>
-      <p>Every first Wednesday of the month on <a href="https://www.radiolabe.com/shows/4" target="_blank">Radio
-          Labe!</a></p>
-
-      <div class="soundcloud-grid">
-        <!-- #4 episode -->
-        <div class="sc-frame">
-          <p>Radio Labe - Bass Weight #4 /w Fahell</p>
-          <iframe width="100%" height="450" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2134398912&color=%10b4bcc6&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true"></iframe>
-
-          <div class="description">
-            <div class="playing">
-              <div class="playing" id="playing-p4"></div><br>
-            </div>
-            <div>Tracks & Links</div>
-            <ul>
-              <li><a href="https://tectonicrecordings.bandcamp.com/track/digital-mystikz-molten-2" target="_blank">Digital Mystikz - Molten</a></li>
-              <li><a href="https://tectonicrecordings.bandcamp.com/track/enforcers-2" target="_blank">2562 - Enforcers</a></li>
-              <li><a href="https://dark-sky.bandcamp.com/track/double-u" target="_blank">dark sky - Double U</a></li>
-              <li><a href="https://pinch-tectonic.bandcamp.com/track/strobe-light" target="_blank">Pinch & Mumdance - Strobe Light</a></li>
-              <li><a href="https://pinch-tectonic.bandcamp.com/track/all-man-got-ft-trim" target="_blank">Pinch - All Man Got ft. Trim</a></li>
-              <li><a href="https://tectonicrecordings.bandcamp.com/track/beatrice-m-poison" target="_blank">Beatrice M. - Poison</a></li>
-            </ul>
-            <hr>
-            <ul>
-              <li><a href="https://tectonic-recordings.bandcamp.com/track/pinch-b2b-mumdance-mix" target="_blank">Pinch B2B Mumdance Mix</a></li>
-            </ul>
-
-          </div>
-        </div>
-        <pre class="cue" id="cuep4">
-        00:00:00 -
-        00:10:45 -
-        00:16:32 -
-        00:22:22 -
-        00:25:45 -
-        00:30:54 -
-        00:35:05 -
-        00:40:54 -
-        00:46:13 -
-        00:56:38 -
-        01:01:22 -
-        01:07:58 -
-        01:14:10 -
-        01:19:07 -
-        01:25:14 -
-        </pre>
-
-        <!-- #3 episode -->
-        <div class="sc-frame">
-          <p>Radio Labe - Bass Weight #3</p>
-          <iframe width="100%" height="450" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2111435598&color=%23d4bcc6&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true"></iframe>
-          <div class="description">
-            <div class="playing">
-              <div class="playing" id="playing-p3"></div><br>
-            </div>
-            <div>Tracks & Links</div>
-            <ul>
-              <li><a href="https://kemalrobdata.bandcamp.com/track/roadblock" target="_blank">Konflict - Roadblock</a></li>
-              <li><a href="https://scottgarcia.bandcamp.com/track/a-london-thing" target="_blank">Scott Garcia - It's a London Thing</a></li>
-              <li><a href="https://dprrecordings.bandcamp.com/album/groove-chronicles-heritage-classic" target="_blank">Groove Chronicles - Stone Cold</a></li>
-              <li><a href="https://www.youtube.com/watch?v=Yi0-T1-YBh4" target="_blank">Platinum 45 feat. More Fire Crew - Oi!</a></li>
-              <li><a href="https://gd4ya.bandcamp.com/track/lost-city-2" target="_blank">Cyrus vs Random Trio - Lost City</a></li>
-              <li><a href="https://www.youtube.com/watch?v=Mfx1EDicYC0" target="_blank">Martyn & dBridge - These Words (Roska's Speechless Mix)</a></li>
-              <li><a href="https://www.youtube.com/watch?v=7ZIRx5GcUDw" target="_blank">Freddo - What's Really Good</a></li>
-            </ul>
-            <hr>
-            <ul>
-              <li><a href="https://on.soundcloud.com/NGoLbDzHHTNfZKierr" target="_blank">Dubstep Warz 2006</a></li>
-              <li><a href="https://goldiemusic.bandcamp.com/album/timeless" target="_blank">Goldie - Timeless</a></li>
-              <li><a href="https://adamf.bandcamp.com/album/colours-revisited" target="_blank">Adam F - Colours Revisited</a></li>
-              <li><a href="https://skreamizm.bandcamp.com/track/midnight-request-line" target="_blank">Skream - Midnight Request Line</a></li>
-              <li><a href="https://youtu.be/0-OKiKYdRJA?si=dHszdXYFXlgnA9KX" target="_blank">Dizzie Rascal - Out of Your Mind</a></li>
-              <li><a href="https://youtu.be/Ci40ae8BlcE?si=sHAhM3eVcCUB62jx" target="_blank">Dizzie Rascal - Bonkers</a></li>
-              <li><a href="https://youtu.be/Bxjdg_D5YQY?si=l_CPOv5M3Xa9dC1y" target="_blank">Wiley - Wearing My Rolex</a></li>
-              <li><a href="https://youtu.be/fHXzyYWytAE?si=wpuv4_NLn95kog0F" target="_blank">Fuck Radio (grime dvd)</a></li>
-            </ul>
-          </div>
-        </div>
-        <pre class="cue" id="cuep3">
-        00:00:00 -
-        00:05:49 -
-        00:11:11 -
-        00:14:13 -
-        00:19:17 -
-        00:22:00 -
-        00:26:06 -
-        00:34:35 -
-        00:39:15 -
-        00:42:26 -
-        00:46:55 -
-        00:50:32 -
-        00:55:50 -
-        </pre>
-
-        <!-- #2 episode -->
-        <div class="sc-frame">
-          <p>Radio Labe - Bass Weight #2</p>
-          <iframe id="soundcloud-podcast-2" width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay"
-            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2099061027&color=%23b4bcc6&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true"></iframe>
-
-          <div class="description">
-            <div class="playing">
-              <div class="playing" id="playing-p2"></div><br>
-            </div>
-            <div>Tracks & Links</div>
-            <ul>
-              <li><a href="https://www.youtube.com/watch?v=ZaHUK5GnDgE" target="_blank">Steve 'Silk' Hurley - Jack Your
-                  Body</a></li>
-              <li><a href="https://warprecords.bandcamp.com/track/lfo" target="_blank">LFO - LFO</a></li>
-              <li><a href="https://shutupanddance.bandcamp.com/track/before-the-police-come" target="_blank">Shut Up And
-                  Dance - Before the Police Come</a></li>
-              <li><a href="https://www.junodownload.com/products/manix-head-in-the-clouds/6987855-02/"
-                  target="_blank">Manix - Oblivion (Head in the Clouds)</a></li>
-              <li><a href="https://www.youtube.com/watch?v=bR3LJUQMF30" target="_blank">Rufige Kru - Darkrider</a></li>
-              <li><a href="https://www.beatport.com/track/terrorist-original-mix/629906" target="_blank">Renegade -
-                  Terrorist</a></li>
-              <li><a href="https://www.youtube.com/watch?v=Kj0FM_yQK3M" target="_blank">LTJ Bukem - Untitled</a></li>
-            </ul>
-            <hr>
-            <ul>
-              <li><a href="https://www.amazon.com/Energy-Flash-Journey-Through-Culture/dp/0330350560"
-                  target="_blank">Energy Flash</a></li>
-              <li><a href="https://www.youtube.com/watch?v=Thr8PUAQuag" target="_blank">Everybody in the Place</a></li>
-              <li><a href="https://www.youtube.com/watch?v=nQyCyTo3mt4" target="_blank">BBC dokument o Jungle</a></li>
-              <li><a href="https://www.audiovideobass.cz/clanky/post-rave-continuum.html" target="_blank">Články na
-                  Audio Video Bass</a></li>
-            </ul>
-
-          </div>
-        </div>
-        <pre class="cue" id="cuep2">
-        00:00:00 -
-        00:10:45 Steve 'Silk' Hurley - Jack Your Body
-        00:16:32 -
-        00:22:22 LFO - LFO
-        00:25:45 -
-        00:30:54 Shut Up And Dance - Before the Police Come
-        00:35:05 -
-        00:40:54 Manix - Oblivion (Head in the Clouds)
-        00:46:13 -
-        00:56:38 Rufige Kru - Darkrider
-        01:01:22 -
-        01:07:58 Renegade - Terrorist
-        01:14:10 -
-        01:19:07 LTJ Bukem - Untitled
-        01:25:14 -
-        </pre>
-
-        <!-- #1 episode -->
-        <div class="sc-frame">
-          <p>Radio Labe - Bass Weight #1</p>
-          <iframe id="soundcloud-podcast-1" width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay"
-            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2087526954&color=%23a37c66&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true"></iframe>
-          <div class="description">
-            <div class="playing">
-              <div class="playing" id="playing-p1"></div><br>
-            </div>
-            <div>Tracks & Links</div>
-            <ul>
-              <li><a href="https://tectonicrecordings.bandcamp.com/track/kameleon" target="_blank">2562 - Kameleon</a>
-              </li>
-              <li><a href="https://nonplusrecords.bandcamp.com/track/soul-what" target="_blank">Boddika - Soul What</a>
-              </li>
-              <li><a href="https://yaksound.bandcamp.com/track/yak-fret" target="_blank">Yak - Fret</a></li>
-              <li><a href="https://yaleesahall.bandcamp.com/track/light-headed" target="_blank">Yaleesa Hall - Light
-                  Headed</a></li>
-              <li><a href="https://undermyfeetldn.bandcamp.com/track/middle-ages" target="_blank">Katatonic Silentio -
-                  Middle Ages</a>
-              </li>
-              <li><a href="https://cosmintrg.bandcamp.com/track/broken-heart-martyns-dcm-remix" target="_blank">Cosmin
-                  TRG - Broken
-                  Heart (Marty’s DCM Remix)</a></li>
-            </ul>
-          </div>
-        </div>
-        <pre class="cue" id="cuep1">
-        00:00:00 -
-        00:05:49 2562 - Kameleon
-        00:11:11 -
-        00:14:13 Boddika - Soul What
-        00:19:17 -
-        00:22:00 Yak - Fret
-        00:26:06 -
-        00:34:35 Yaleesa Hall - Light Headed
-        00:39:15 -
-        00:42:26 Catatonic Silentio - Middle Ages
-        00:46:55 -
-        00:50:32 TRG - Broken Hearts (Martyn Remix) - Kameleon
-        00:55:50 -
-        </pre>
+      <div class="podcast-header-flex">
+        <h2 style="margin:0;">Bass Talks</h2>
+        <p style="margin:0;">Every first Wednesday of the month on <a href="https://www.radiolabe.com/shows/4" target="_blank">Radio Labe!</a></p>
       </div>
-
-
+      <style>
+        .podcast-header-flex {
+          display: flex;
+          justify-content: space-between;
+          align-items: stretch;
+          margin-bottom: 0.5rem;
+        }
+        .podcast-header-flex h2 {
+          font-size: 2rem;
+          font-weight: bold;
+          align-self: flex-start;
+        }
+        .podcast-header-flex p {
+          font-size: 1rem;
+          text-align: right;
+          align-self: flex-end;
+        }
+        @media (max-width: 600px) {
+          .podcast-header-flex {
+            flex-direction: column;
+            align-items: flex-start;
+          }
+          .podcast-header-flex p {
+            text-align: left;
+            margin-top: 0.25rem;
+            align-self: flex-start;
+          }
+        }
+      </style>
+      <iframe style="height: 420px;" width="100%" height="450" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%253Aplaylists%253A2017095624&color=%2384b4b4&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"></iframe>
     </section>
 
     <section class="mixes-section" id="mixes">
-      <h2>Mixseries </h2>
-      <p class="mixes-desc">Prague Bass Chronicles</p>
-      <div class="soundcloud-grid">
-        <div class="sc-frame">
-          <p>Hardware - I Got 140 Problems But a Bass Ain't One</p>
-          <iframe loading="lazy" id="soundcloud-player-2" width="100%" height="150" scrolling="no" frameborder="no"
-            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1894778460&color=%23ff6b6b&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true"></iframe>
-          <div class="current">
-            <div class="playing" id="playing-2"></div>
-          </div>
-        </div>
+      <div class="podcast-header-flex">
 
-        <pre class="cue" id="cue2">
-        00:00:00 INGI - PPI
-        00:02:32 Kellen303 - Neon Breaks
-        00:04:35 Destrata - Clubmoss
-        00:06:38 Circuit 900 - Andara
-        00:08:28 Mercy System - Four Winters
-        00:10:45 Dyslecta - Eating Woodlice
-        00:13:16 Laksa - Enjoyment
-        00:15:06 Stenny - Wipe Out
-        00:17:09 9TRANE - GONE4AMIN
-        00:18:59 Air Max 97 - Eat the Rich
-        00:20:35 Ido Plumes - Been Here
-        00:22:39 Mosca - Look After the Dead
-        00:24:56 SPE:C - Sludge
-        00:26:45 Alan Johnson - Ten Year Tonnage
-        00:28:35 Low End Activist - Dry Chat, Wet Rag
-        00:30:52 Dogpatrol - Creepin ft. NKK
-        00:33:22 Paradox - Breakbeater
-        00:36:35 Mantra - Ala
-        00:38:11 Pearson Sound - PLSN
-        00:40:28 WZ - Funk On the Spot
-        00:42:46 Henzo - Be That As It May (Unhinged Mix)
-        00:44:35 Hojo - 16 O's feat. Novelist
-        00:45:44 Francesco Skip - Oceans Explorer
-        00:48:01 Addison Groove - Elevator
-        00:49:09 Ploy - Ninety One
-        00:51:54 Rhyw - Engine Track
-        00:54:55 re:ni - BURSTTRAP
-        00:57:13 Mumdance - Artificial Intelligence
-      </pre>
+        <h2>Mixseries</h2>
+        <p>Prague Bass Chronicles</p>
 
-        <div class="sc-frame">
-          <p>DLKTek - Enter the Bass W8</p>
-
-          <iframe loading="lazy" id="soundcloud-player-1" width="100%" height="150" scrolling="no" frameborder="no"
-            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1806254454&color=%234ecdc4&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true"></iframe>
-          <div class="current">
-            <div class="playing" id="playing-1"></div>
-          </div>
-        </div>
-
-        <pre class="cue" id="cue1">
-        00:00:00 Escha - An Outward Visible Sign Of An Inward Invisible Hell
-        00:00:00 C+C Music Factory - Everybody Dance Now (808gong x REFILLED REMIX)
-        00:00:00 Wasted Fates X Future X E65 - Life’s Good '65 (Blue Bootleg)
-        00:00:00 Dj Deeon - Freak U Rite
-        00:00:00 Supraman - Misdemeanor Ha
-        00:00:00 Dj Babatr - All Right​.​.​. Teque Teque (Nick Le​ó​n Remix)
-        00:00:00 Shygirl - Want More
-        00:00:00 Bapari x Underworld - Born Slippy Edit
-        00:00:00 Black Rave Culture - Sub Poppin
-        00:00:00 Europa - Protection
-        00:00:00 Pangaea - Game
-        00:00:00 Dj Tray - I Wanna Be With You
-        00:00:00 Stingray313 - 2.4 GHz ISM
-        00:00:00 DJ Stoner Dad - No Rules
-        00:00:00 Turk Turkelton - 803
-        00:00:00 Dej Loaf - Try Me (Nick Catchdubs Jersey Gardens Mix)
-        00:00:00 Koffee - Toast (DjTray Remix)
-        00:00:00 Cloudsteppers - Trigger Happy
-        00:00:00 Dean Lyon - Only You (DJ Swisha Bootleg)
-        00:00:00 Black Rave Culture - Long Distance Dilemma (Practice)
-        00:00:00 LSDXOXO - Baby
-        00:00:00 Zomby - Float
-        00:00:00 LSDXOXO - Smoke of the Skunk
-        00:00:00 Kelela, Agazero, & Bbymutha - Raven (Agazero Remix feat. Bbymutha)
-      </pre>
       </div>
+      <iframe  style="height: 320px;" width="100%" height="450" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%253Aplaylists%253A1813903749&color=%23627054&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"></iframe>
     </section>
 
     <section class="hosting-section" id="hosting">
-      <h2>Hosting </h2>
-      <p>Guestmixes & Expeditions</p>
-      <div class="soundcloud-grid">
-        <div class="sc-frame">
-          <iframe class="playlist-iframe" width="100%" height="500" scrolling="no" frameborder="no" allow="autoplay"
-            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1792211628&color=%2384b4b4&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"></iframe>
-          <div
-            style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;">
-          </div>
-          <div class="playing" id="playing-2"></div>
-        </div>
+              <div class="podcast-header-flex">
+      <h2>Guestmixes </h2>
+      <p>Our bass exports</p>
       </div>
-      <pre class="cue" id="cue2"></pre>
+      <iframe  style="height: 520px;" width="100%" height="450" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%253Aplaylists%253A1792211628&color=%2394a484&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"></iframe>
     </section>
 
     <section class="events-gallery" id="expeditions">
+              <div class="podcast-header-flex">
       <h2>Expeditions</h2>
       <p class="mixes-desc">From the past</p>
-      <div class="gallery-scroll sc-frame">
-        <a href="./assets/images/anezka.png"></a><img src="./assets/images/anezka.png" alt="Cafe Anezka Event">
-        <a href="./assets/images/anezka.png"></a><img src="./assets/images/funkstation.png" alt="Funkstation Event">
-        <a href="./assets/images/anezka.png"></a><img src="./assets/images/bikejesus.jpg" alt="Bike Jesus Event">
-        <a href="./assets/images/anezka.png"></a><img src="./assets/images/akropolis.jpg"
-          alt="Akropolis Underground Event">
       </div>
+      <div class="gallery-img-row">
+        <img src="./assets/images/anezka.png" class="gallery-img-large" alt="Cafe Anezka Event" data-full="./assets/images/anezka.png">
+        <img src="./assets/images/funkstation.png" class="gallery-img-large" alt="Funkstation Event" data-full="./assets/images/funkstation.png">
+        <img src="./assets/images/bikejesus.jpg" class="gallery-img-large" alt="Bike Jesus Event" data-full="./assets/images/bikejesus.jpg">
+        <img src="./assets/images/akropolis.jpg" class="gallery-img-large" alt="Akropolis Underground Event" data-full="./assets/images/akropolis.jpg">
+      </div>
+      <div id="lightbox" class="lightbox" style="display:none;">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-img" src="" alt="">
+      </div>
+      <style>
+        .gallery-img-row {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 2vw;
+          justify-content: center;
+          margin-bottom: 2rem;
+        }
+        .gallery-img-large {
+          width: 215px;
+          height: 350px;
+          object-fit: cover;
+          border-radius: 12px;
+          box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+          cursor: pointer;
+          transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .gallery-img-large:hover {
+          transform: scale(1.04);
+          box-shadow: 0 6px 24px rgba(0,0,0,0.22);
+        }
+        .lightbox {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          background: rgba(0,0,0,0.85);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 9999;
+        }
+        .lightbox-img {
+          max-width: 90vw;
+          max-height: 80vh;
+          border-radius: 16px;
+          box-shadow: 0 2px 24px rgba(0,0,0,0.32);
+        }
+        .lightbox-close {
+          position: absolute;
+          top: 32px;
+          right: 48px;
+          font-size: 3rem;
+          color: #fff;
+          cursor: pointer;
+          z-index: 10000;
+          user-select: none;
+        }
+        @media (max-width: 600px) {
+          .gallery-img-large {
+            width: 96vw;
+            height: 36vw;
+            min-height: 120px;
+          }
+        }
+      </style>
+      <script>
+        // Lightbox functionality for gallery
+        document.addEventListener('DOMContentLoaded', function () {
+          const galleryImages = document.querySelectorAll('.gallery-img-large');
+          const lightbox = document.getElementById('lightbox');
+          const lightboxImg = document.querySelector('.lightbox-img');
+          const lightboxClose = document.querySelector('.lightbox-close');
+
+          galleryImages.forEach(img => {
+            img.addEventListener('click', function () {
+              lightboxImg.src = img.getAttribute('data-full');
+              lightbox.style.display = 'flex';
+            });
+          });
+
+          lightboxClose.addEventListener('click', function () {
+            lightbox.style.display = 'none';
+            lightboxImg.src = '';
+          });
+
+          lightbox.addEventListener('click', function (e) {
+            if (e.target === lightbox) {
+              lightbox.style.display = 'none';
+              lightboxImg.src = '';
+            }
+          });
+        });
+      </script>
     </section>
 
-    <section class="utilities-section" id="utilities">
+    <section class="utilities-section row" id="utilities">
+              <div class="podcast-header-flex">
       <h2>Utilities</h2>
       <p>For DJs and diggers</p>
-      <div class="sc-frame mix-box">
+      </div>
+      <div class="sc-frame mix-box col-5">
         <h3>Bandcamp Tagger</h3>
         <p>Browser extension that helps organize and tag your Bandcamp collections.</p>
         <p>Get it here for <a target="_blank"
@@ -401,7 +254,8 @@
             href="https://chromewebstore.google.com/detail/bandcamp-tagger/nhohddpofkkbfofnefnjkdkcniogoheh">Chrome</a>
         </p>
       </div>
-      <div class="sc-frame mix-box util-2">
+      <div class="col-2"></div>
+      <div class="sc-frame mix-box col-5">
         <h3>Cue Formatter</h3>
         <p>Convert Rekordbox .cue files and other sources into properly formatted tracklists with timestamps.</p>
         <p>Try it <a target="_blank" href="./utils/formatter.html">here</a></p>
@@ -413,7 +267,8 @@
       <p>🐟 <em>Bass Weight</em> [DLKTek, Halucinace, Hardware & <a href="./archive.html" target="_blank">Zeek</a>]<br>
         <br>
         Prague based DJs and promoters. Never limiting ourselves to particular vibe but always diligently fishing
-        for the fattest bass!<br><br> 🎣 Broken Techno 🎣 Dubstep 🎣 Jungle 🎣 UKG 🎣 </p>
+        for the fattest bass!<br><br> 🎣 Broken Techno 🎣 Dubstep 🎣 Jungle 🎣 UKG 🎣
+      </p>
     </div>
 
     <script src="https://unpkg.com/wavesurfer.js"></script>
