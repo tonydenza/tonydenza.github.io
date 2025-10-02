@@ -504,9 +504,12 @@ body {
       }
 
       section {
-        padding: 0 !important;
+        padding: 1em !important;
+        margin: 3em 0em !important;
       }
-
+.gallery-img-large {
+  margin: 2em !important;
+}
 
       nav {
         margin: 0;
@@ -565,6 +568,9 @@ body {
 
       .sc-frame {
         min-width: 320px;
+      }
+      .podcast-header-flex h2 {
+        margin: 0;
       }
     }
 
@@ -679,8 +685,30 @@ position: fixed;
         }
         @media (max-width: 600px) {
           .gallery-img-large {
-            width: 96vw;
+            width: 75vw;
             height: 36vw;
             min-height: 120px;
           }
         }
+          /* iPhone-specific improvements */
+          @media only screen and (max-width: 430px) and (max-device-width: 932px) {
+            body {
+              padding: 0.5rem;
+            }
+            .lightbox-img {
+              max-width: 98vw;
+              max-height: 60vh;
+              border-radius: 10px;
+            }
+            .lightbox-close {
+              top: 12px;
+              right: 18px;
+              font-size: 2.2rem;
+            }
+            .gallery-img-large {
+              width: 75vw;
+              height: auto;
+              min-height: 80px;
+              border-radius: 10px;
+            }
+          }
