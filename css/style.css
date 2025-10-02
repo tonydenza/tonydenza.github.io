@@ -599,3 +599,88 @@ position: fixed;
     }
 
     .podcast-header-flex h2 {padding: 0 !important;}
+
+
+            .podcast-header-flex {
+          display: flex;
+          justify-content: space-between;
+          align-items: stretch;
+          margin-bottom: 0.5rem;
+        }
+        .podcast-header-flex h2 {
+          font-size: 2rem;
+          font-weight: bold;
+          align-self: flex-start;
+        }
+        .podcast-header-flex p {
+          font-size: 1rem;
+          text-align: right;
+          align-self: flex-end;
+        }
+        @media (max-width: 600px) {
+          .podcast-header-flex {
+            flex-direction: column;
+            align-items: flex-start;
+          }
+          .podcast-header-flex p {
+            text-align: left;
+            margin-top: 0.25rem;
+            align-self: flex-start;
+          }
+        }
+
+                .gallery-img-row {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 2vw;
+          justify-content: center;
+          margin-bottom: 2rem;
+        }
+        .gallery-img-large {
+          width: 215px;
+          height: 350px;
+          object-fit: cover;
+          border-radius: 12px;
+          box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+          cursor: pointer;
+          transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .gallery-img-large:hover {
+          transform: scale(1.04);
+          box-shadow: 0 6px 24px rgba(0,0,0,0.22);
+        }
+        .lightbox {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          background: rgba(0,0,0,0.85);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 9999;
+        }
+        .lightbox-img {
+          max-width: 90vw;
+          max-height: 80vh;
+          border-radius: 16px;
+          box-shadow: 0 2px 24px rgba(0,0,0,0.32);
+        }
+        .lightbox-close {
+          position: absolute;
+          top: 32px;
+          right: 48px;
+          font-size: 3rem;
+          color: #fff;
+          cursor: pointer;
+          z-index: 10000;
+          user-select: none;
+        }
+        @media (max-width: 600px) {
+          .gallery-img-large {
+            width: 96vw;
+            height: 36vw;
+            min-height: 120px;
+          }
+        }

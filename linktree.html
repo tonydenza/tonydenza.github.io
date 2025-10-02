@@ -21,36 +21,6 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="./css/style.css">
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-</head>
-
-<body>
-
-  <input id="image-selector-input" class="visually-hidden" type="file" aria-hidden="true">
-  <canvas id="background-canvas" aria-hidden="true"></canvas>
-
-  <!-- Social links styled as Linktree buttons above header -->
-
-
-  <div class="header">
-    <a href="https://bassweightprague.com"><h1 id="heading">Bass Weight Prague</h1></a>
-
-  </div>
-
-  <!-- Linktree-style section -->
-  <div class="container py-4" id="linktree-section">
-    <div class="row justify-content-center">
-      <div class="col-md-8">
-        <div class="d-grid gap-3">
-          <a href="https://soundcloud.com/bassweight-prague" target="_blank" class="btn btn-dark btn-lg linktree-btn sc-frame" style="animation: pondColors 5s infinite alternate;"><i class="fab fa-soundcloud me-2"></i>SoundCloud</a>
-          <a href="https://www.instagram.com/bassweight_prg" target="_blank" class="btn btn-dark btn-lg linktree-btn sc-frame" style="animation: pondColors 5s infinite alternate;"><i class="fab fa-instagram me-2"></i>Instagram</a>
-          <a href="https://www.facebook.com/bassweightprg" target="_blank" class="btn btn-dark btn-lg linktree-btn sc-frame" style="animation: pondColors 5s infinite alternate;"><i class="fab fa-facebook me-2"></i>Facebook</a>
-          <a href="mailto:bassweight.prg@gmail.com" class="btn btn-dark btn-lg linktree-btn sc-frame" style="animation: pondColors 5s infinite alternate;"><i class="fa fa-envelope me-2"></i>Email</a>
-          <a href="./archive.html" target="_blank" class="btn btn-dark btn-lg linktree-btn sc-frame" style="animation: pondColors 5s infinite alternate;"><i class="fa fa-folder-open me-2"></i>Archive</a>
-          <a href="./privacy-policy.md" target="_blank" class="btn btn-dark btn-lg linktree-btn sc-frame" style="animation: pondColors 5s infinite alternate;"><i class="fa fa-shield-alt me-2"></i>Privacy Policy</a>
-        </div>
-      </div>
-    </div>
-  </div>
   <style>
     .linktree-btn {
       border-radius: 2rem;
@@ -65,7 +35,34 @@
       background: #004b77;
       color: #fff;
     }
+    .linktree-animation {
+        animation: pondColors 5s infinite alternate;
+    }
   </style>
+</head>
+
+<body>
+  <input id="image-selector-input" class="visually-hidden" type="file" aria-hidden="true">
+  <canvas id="background-canvas" aria-hidden="true"></canvas>
+  <div class="header">
+    <a href="https://bassweightprague.com"><h1 id="heading">Bass Weight Prague</h1></a>
+  </div>
+
+  <!-- Linktree-style section -->
+  <div class="container py-4" id="linktree-section">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="d-grid gap-3">
+          <a href="https://soundcloud.com/bassweight-prague" target="_blank" class="btn btn-dark btn-lg linktree-btn sc-frame linktree-animation"><i class="fab fa-soundcloud me-2"></i>SoundCloud</a>
+          <a href="https://www.instagram.com/bassweight_prg" target="_blank" class="btn btn-dark btn-lg linktree-btn sc-frame" style="animation: pondColors 5s infinite alternate;"><i class="fab fa-instagram me-2"></i>Instagram</a>
+          <a href="https://www.facebook.com/bassweightprg" target="_blank" class="btn btn-dark btn-lg linktree-btn sc-frame" style="animation: pondColors 5s infinite alternate;"><i class="fab fa-facebook me-2"></i>Facebook</a>
+          <a href="mailto:bassweight.prg@gmail.com" class="btn btn-dark btn-lg linktree-btn sc-frame" style="animation: pondColors 5s infinite alternate;"><i class="fa fa-envelope me-2"></i>Email</a>
+          <a href="./archive.html" target="_blank" class="btn btn-dark btn-lg linktree-btn sc-frame" style="animation: pondColors 5s infinite alternate;"><i class="fa fa-folder-open me-2"></i>Archive</a>
+          <a href="./privacy-policy.md" target="_blank" class="btn btn-dark btn-lg linktree-btn sc-frame" style="animation: pondColors 5s infinite alternate;"><i class="fa fa-shield-alt me-2"></i>Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="fish-container">
     <model-viewer src="https://bassweightprague.com/assets/models/scene.gltf" auto-rotate
@@ -78,20 +75,10 @@
       camera-controls></model-viewer>
   </div>
 
-  <div class="container" id="modulation-container">
     <div>
-      <div>
-        <label style="display: none;">Modulation index:</label>
-        <input type="range" min="0.5" max="10" value="2" step="0.5" id="modulationIndex" style="display: none;">
-        <label style="display: none;">Modulation depth:</label>
-        <input type="range" min="1" max="200" value="5" step="1" id="modulationDepth" style="display: none;">
-        <label style="display: none;">Attack/release:</label>
-        <input type="range" min="100" max="1000" value="10" step="10" id="duration" style="display: none;">
-      </div>
       <div id="waveform"></div>
       <div id="pianoRoll" style="display: none;"></div>
     </div>
-
 
     <div class="footer pt-5">
       <p>🐟 <em>Bass Weight</em> [DLKTek, Halucinace, Hardware & <a href="./archive.html" target="_blank">Zeek</a>]<br>
