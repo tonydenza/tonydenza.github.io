@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Bass Weight Prague - Prague based DJs specializing in Broken Techno, Dubstep, Jungle, and UKG">
+  <meta name="theme-color" content="#000000">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Bass Weight Prague">
+  <meta name="application-name" content="Bass Weight Prague">
+  <meta property="og:title" content="BASS WEIGHT PRAGUE">
+  <meta property="og:description" content="Prague based DJs specializing in Broken Techno, Dubstep, Jungle, and UKG">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bassweightprague.com">
+  <link rel="icon" href="./assets/favicon/favicon.ico" type="image/x-icon">
+  <title>Bass Weight Prague</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <style>
+    /* Wave animation styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background: #0a0a0a;
+      overflow: hidden;
+    }
+
+    .wave-container {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      height: 600px;
+      z-index: -1;
+    }
+
+    #wave-canvas {
+      border-radius: 50%;
+      box-shadow: 0 0 60px rgba(0, 0, 0, 0.8);
+    }
+
+    /* Original linktree styles */
+    .linktree-btn {
+      border-radius: 2rem;
+      font-size: 1.25rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+      transition: transform 0.1s;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .linktree-btn:hover {
+      transform: scale(1.04);
+      background: #004b77;
+      color: #fff;
+    }
+
+    .linktree-animation {
+      animation: pondColors 5s infinite alternate;
+    }
+    .linktree-btn:nth-child(1) { animation-delay: 0s; }
+.linktree-btn:nth-child(2) { animation-delay: 0.6s; }
+.linktree-btn:nth-child(3) { animation-delay: 1.2s; }
+.linktree-btn:nth-child(4) { animation-delay: 1.8s; }
+.linktree-btn:nth-child(5) { animation-delay: 2.4s; }
+.linktree-btn:nth-child(6) { animation-delay: 3.0s; }
+.linktree-btn:nth-child(7) { animation-delay: 3.6s; }
+
+.linktree-btn:hover {
+      transform: translateY(-2px) scale(1.02);
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.3);
+      box-shadow: 0 8px 25px rgba(0, 212, 255, 0.2);
+      color: #fff;
+      animation: buttonPulse 0.6s ease-in-out;
+    }
+    .social-link:hover {
+      transform: translateY(-5px) scale(1.2);
+      border-color: rgba(255, 255, 255, 0.5);
+      box-shadow: 0 10px 30px rgba(255, 255, 255, 0.565);
+      animation: pulse 0.6s ease-in-out;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: translateY(-5px) scale(1.2); }
+      50% { transform: translateY(-7px) scale(1.25); }
+    }
+     model-viewer {
+      animation: fishFloat 4s ease-in-out infinite;
+    }
+    
+    @keyframes buttonPulse {
+      0%, 100% { transform: translateY(-2px) scale(1.02); }
+      50% { transform: translateY(-4px) scale(1.04); }
+    }
+
+    @keyframes fishFloat {
+      0%, 100% {
+        transform: translateY(0px) translateX(0px);
+      }
+      25% {
+        transform: translateY(-15px) translateX(10px);
+      }
+      50% {
+        transform: translateY(-5px) translateX(-5px);
+      }
+      75% {
+        transform: translateY(-20px) translateX(5px);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <input id="image-selector-input" class="visually-hidden" type="file" aria-hidden="true">
+  <div class="wave-container">
+    <canvas id="wave-canvas"></canvas>
+  </div>
+  <div class="header">
+    <a href="https://bassweightprague.com">
+      <h1 id="heading">Bass Weight Prague</h1>
+    </a>
+    <div class="social-container m-3">
+      <div class="social-links">
+        <a href="https://www.facebook.com/bassweightprg" target="_blank" class="social-link"><span><i
+              class="fab fa-facebook bass-link"></i></span></a>
+        <a href="https://www.instagram.com/bassweight_prg" target="_blank" class="social-link"><span><i
+              class="fab fa-instagram bass-link"></i></span></a>
+        <a href="https://soundcloud.com/bassweight-prague" target="_blank" class="social-link"><span><i
+              class="fab fa-soundcloud bass-link"></i></span></a>
+        <a href="mailto:bassweight.prg@gmail.com" class="social-link"><span><i
+              class="fa fa-envelope bass-link"></i></span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Linktree-style section -->
+  <div class="container py-4" id="linktree-section">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="d-grid gap-3">
+          <a href="https://soundcloud.com/labe_radio/bass-weight-6" target="_blank" class="btn btn-dark btn-lg linktree-btn sc-frame linktree-animation"> Bass Weight #6 - Lunchmeat Festival <i class="fa-solid fa-microphone-lines"></i> Radio Labe</a>
+          <a href="https://soundcloud.com/bassweight-prague/possible-bassweight" target="_blank" class="btn btn-dark btn-lg linktree-btn sc-frame linktree-animation"><i class="fa-solid fa-record-vinyl"></i> Bass Weight Mix Series vol. 3 by Fahell</a>
+          <a href="https://soundcloud.com/labe_radio/bass-weight-5" target="_blank" class="btn btn-dark btn-lg linktree-btn sc-frame linktree-animation"> Bass Weight #5 - Česká Freetekno scéna w/ Iob <i class="fa-solid fa-microphone-lines"></i> Radio Labe</a>
+          <a href="https://soundcloud.com/shella-radio/je-ne-sais-quoi-w-dlktek-shella-radio-19062025" target="_blank" class="btn btn-dark btn-lg linktree-btn sc-frame linktree-animation"> Je ne Sais Quoi w/ DLKTek <i class="fa-solid fa-radio"></i> Shella Radio 19.06.2025</a>
+          <a href="https://soundcloud.com/labe_radio/bass-weight-4" target="_blank" class="btn btn-dark btn-lg linktree-btn sc-frame linktree-animation"> Bass Weight #4 - Tectonic Recordings w/ Fahell <i class="fa-solid fa-microphone-lines"></i> Radio Labe</a>
+          <a href="https://soundcloud.com/shella-radio/23-zeek2025-04-20_15-10-25" target="_blank" class="btn btn-dark btn-lg linktree-btn sc-frame linktree-animation"> rainstopping w/ Zeek <i class="fa-solid fa-radio"></i> Shella Radio 20.04.2025</a>
+          <a href="https://soundcloud.com/shella-radio/hardware" target="_blank" class="btn btn-dark btn-lg linktree-btn sc-frame linktree-animation"> nūr w/ Hardware <i class="fa-solid fa-radio"></i> Shella Radio 29.08.2024</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fish-container">
+    <model-viewer src="https://bassweightprague.com/assets/models/scene.gltf" auto-rotate
+      camera-controls></model-viewer>
+    <model-viewer src="https://bassweightprague.com/assets/models/scene.gltf" auto-rotate
+      camera-controls></model-viewer>
+    <model-viewer src="https://bassweightprague.com/assets/models/scene.gltf" auto-rotate
+      camera-controls></model-viewer>
+    <model-viewer src="https://bassweightprague.com/assets/models/scene.gltf" auto-rotate
+      camera-controls></model-viewer>
+  </div>
+
+  <div>
+    <div id="waveform"></div>
+    <div id="pianoRoll" style="display: none;"></div>
+  </div>
+  <div class="row">
+<div class="col-2"></div>
+  <div class="footer pt-3 col-8">
+    <p>🐟<br> <em>Bass Weight</em><br> [DLKTek, Halucinace, Hardware & <a href="./archive.html" target="_blank">Zeek</a>]<br>
+      <br>
+      Prague based DJs and promoters. Never limiting ourselves to particular vibe but always diligently fishing
+      for the fattest bass!
+    </p>
+  </div>
+  <div class="col-2"></div>
+  </div>
+  
+
+  <script>
+    // Wave animation code
+    const canvas = document.getElementById('wave-canvas');
+    const ctx = canvas.getContext('2d');
+    
+    canvas.width = 600;
+    canvas.height = 600;
+    
+    let time = 0;
+    
+    // Wave Generator class
+    class WaveGenerator {
+        constructor() {
+            this.nodes = [];
+            for (let i = 0; i < 30; i++) {
+                this.nodes.push({
+                    x: Math.random() * 600,
+                    y: Math.random() * 600,
+                    phase: Math.random() * Math.PI * 2,
+                    speed: 0.3 + Math.random() * 1.2,
+                    radius: 20 + Math.random() * 60
+                });
+            }
+        }
+        
+        getValue(x, y, t) {
+            let sum = 0;
+            for (let node of this.nodes) {
+                const dx = x - node.x;
+                const dy = y - node.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                sum += Math.sin(dist * 0.03 + t * node.speed + node.phase) * (node.radius / dist);
+            }
+            return sum;
+        }
+    }
+    
+    const waveGen = new WaveGenerator();
+    
+    function drawWaterSurface(t) {
+        const centerX = 300;
+        const centerY = 300;
+        const speedMult = 2.5;
+        
+        // Base gradient
+        const baseGradient = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, 300);
+        baseGradient.addColorStop(0, '#2d3a2e');
+        baseGradient.addColorStop(0.3, '#1f2b20');
+        baseGradient.addColorStop(0.7, '#151d16');
+        baseGradient.addColorStop(1, '#0a0f0b');
+        ctx.fillStyle = baseGradient;
+        ctx.fillRect(0, 0, 600, 600);
+        
+        // Complex wave patterns
+        const imageData = ctx.getImageData(0, 0, 600, 600);
+        const data = imageData.data;
+        
+        for (let y = 0; y < 600; y += 4) {
+            for (let x = 0; x < 600; x += 4) {
+                const waveValue = waveGen.getValue(x, y, t * speedMult);
+                const normalized = (Math.sin(waveValue) + 1) * 0.5;
+                
+                const idx = (y * 600 + x) * 4;
+                
+                if (normalized > 0.6) {
+                    data[idx] = 100 + normalized * 80;
+                    data[idx + 1] = 90 + normalized * 70;
+                    data[idx + 2] = 50 + normalized * 40;
+                } else if (normalized > 0.4) {
+                    data[idx] = 60 + normalized * 50;
+                    data[idx + 1] = 70 + normalized * 60;
+                    data[idx + 2] = 40 + normalized * 30;
+                } else {
+                    data[idx] = 20 + normalized * 40;
+                    data[idx + 1] = 30 + normalized * 45;
+                    data[idx + 2] = 20 + normalized * 35;
+                }
+            }
+        }
+        
+        ctx.putImageData(imageData, 0, 0);
+        
+        // Caustic effects
+        ctx.globalCompositeOperation = 'screen';
+        ctx.globalAlpha = 0.15;
+        
+        for (let i = 0; i < 25; i++) {
+            const angle = (i / 25) * Math.PI * 2 + t * 0.2 * speedMult;
+            const angle2 = (i / 25) * Math.PI * 2 + t * 0.3 * speedMult;
+            const radius = 60 + Math.sin(t * 0.8 + i * 0.4) * 80;
+            const x = centerX + Math.cos(angle) * radius + Math.sin(angle2) * 40;
+            const y = centerY + Math.sin(angle) * radius + Math.cos(angle2) * 40;
+            
+            const size = 40 + Math.sin(t * speedMult + i) * 25;
+            const grd = ctx.createRadialGradient(x, y, 0, x, y, size);
+            grd.addColorStop(0, 'rgba(160, 140, 100, 0.6)');
+            grd.addColorStop(0.4, 'rgba(120, 110, 70, 0.3)');
+            grd.addColorStop(1, 'rgba(80, 75, 50, 0)');
+            
+            ctx.fillStyle = grd;
+            ctx.fillRect(x - size, y - size, size * 2, size * 2);
+        }
+        
+        ctx.globalAlpha = 1;
+        ctx.globalCompositeOperation = 'source-over';
+        
+        // Wave lines
+        ctx.globalAlpha = 0.2;
+        for (let i = 0; i < 15; i++) {
+            ctx.strokeStyle = `rgba(${140 + i * 5}, ${130 + i * 4}, ${80 + i * 3}, 0.4)`;
+            ctx.lineWidth = 1 + Math.sin(t + i) * 0.5;
+            ctx.beginPath();
+            
+            const yBase = 50 + i * 35;
+            for (let x = 0; x < 600; x += 3) {
+                const wave1 = Math.sin(x * 0.015 + t * speedMult + i * 0.3) * 25;
+                const wave2 = Math.sin(x * 0.025 - t * speedMult * 0.7 + i * 0.5) * 15;
+                const wave3 = Math.sin(x * 0.008 + t * speedMult * 0.5 + i) * 10;
+                const y = yBase + wave1 + wave2 + wave3;
+                
+                if (x === 0) {
+                    ctx.moveTo(x, y);
+                } else {
+                    ctx.lineTo(x, y);
+                }
+            }
+            ctx.stroke();
+        }
+        
+        // Sparkle effects
+        ctx.globalAlpha = 0.3;
+        for (let i = 0; i < 30; i++) {
+            const sparklePhase = (t * 3 * speedMult + i * 0.4) % (Math.PI * 2);
+            const alpha = Math.max(0, Math.sin(sparklePhase));
+            
+            if (alpha > 0.2) {
+                const x = 100 + (i * 47) % 400;
+                const y = 100 + ((i * 71) % 400);
+                
+                ctx.fillStyle = `rgba(180, 160, 110, ${alpha * 0.6})`;
+                ctx.beginPath();
+                ctx.arc(x, y, 2 + alpha * 2, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+        
+        ctx.globalAlpha = 1;
+    }
+    
+    function animate() {
+        const speed = 0.04;
+        time += speed;
+        
+        drawWaterSurface(time);
+        requestAnimationFrame(animate);
+    }
+    
+    animate();
+  </script>
+
+  <script src="https://unpkg.com/wavesurfer.js"></script>
+  <script>
+    const wavesurfer = WaveSurfer.create({
+      container: '#waveform',
+      waveColor: 'rgb(200, 0, 200)',
+      cursorColor: 'transparent',
+      barWidth: 2,
+      interact: false,
+    })
+
+    const audioContext = new AudioContext()
+
+    // Create an analyser node
+    const analyser = audioContext.createAnalyser()
+    analyser.fftSize = 512 * 2
+    analyser.connect(audioContext.destination)
+    const dataArray = new Float32Array(analyser.frequencyBinCount)
+
+    function createVoice() {
+      // Carrier oscillator
+      const carrierOsc = audioContext.createOscillator()
+      carrierOsc.type = 'sine'
+
+      // Modulator oscillator
+      const modulatorOsc = audioContext.createOscillator()
+      modulatorOsc.type = 'sine'
+
+      // Modulation depth
+      const modulationGain = audioContext.createGain()
+
+      // Connect the modulator to the carrier frequency
+      modulatorOsc.connect(modulationGain)
+      modulationGain.connect(carrierOsc.frequency)
+
+      // Create an output gain
+      const outputGain = audioContext.createGain()
+      outputGain.gain.value = 0
+
+      // Connect carrier oscillator to output
+      carrierOsc.connect(outputGain)
+
+      // Connect output to analyser
+      outputGain.connect(analyser)
+
+      // Start oscillators
+      carrierOsc.start()
+      modulatorOsc.start()
+
+      return {
+        carrierOsc,
+        modulatorOsc,
+        modulationGain,
+        outputGain,
+      }
+    }
+
+    function playNote(frequency, modulationFrequency, modulationDepth, duration) {
+      const voice = createVoice()
+      const { carrierOsc, modulatorOsc, modulationGain, outputGain } = voice
+
+      carrierOsc.frequency.value = frequency
+      modulatorOsc.frequency.value = modulationFrequency
+      modulationGain.gain.value = modulationDepth
+
+      outputGain.gain.setValueAtTime(0.00001, audioContext.currentTime)
+      outputGain.gain.exponentialRampToValueAtTime(1, audioContext.currentTime + duration / 1000)
+
+      return voice
+    }
+
+    function releaseNote(voice, duration) {
+      const { carrierOsc, modulatorOsc, modulationGain, outputGain } = voice
+      outputGain.gain.cancelScheduledValues(audioContext.currentTime)
+      outputGain.gain.setValueAtTime(1, audioContext.currentTime)
+      outputGain.gain.exponentialRampToValueAtTime(0.0001, audioContext.currentTime + duration / 1000)
+
+      setTimeout(() => {
+        carrierOsc.stop()
+        modulatorOsc.stop()
+        carrierOsc.disconnect()
+        modulatorOsc.disconnect()
+        modulationGain.disconnect()
+        outputGain.disconnect()
+        voice.carrierOsc = null
+        voice.modulatorOsc = null
+        voice.modulationGain = null
+        voice.outputGain = null
+      }, duration + 100)
+    }
+
+    function createPianoRoll() {
+      const baseFrequency = 110
+      const numRows = 4
+      const numCols = 10
+
+      const noteFrequency = (row, col) => {
+        // The top row is the bass
+        // The lower rows represent the notes of a major third chord
+        // Columns represent the notes of a C major scale (there are 10 columns and 4 rows)
+        const chord = [-8, 0, 4, 7]
+        const scale = [0, 2, 4, 5, 7, 9, 11, 12, 14, 16]
+        const note = chord[row] + scale[col]
+        return baseFrequency * Math.pow(2, note / 12)
+      }
+
+      const pianoRoll = document.getElementById('pianoRoll')
+      const qwerty = '1234567890qwertyuiopasdfghjkl;zxcvbnm,./'
+      const capsQwerty = '!@#$%^&*()QWERTYUIOPASDFGHJKL:ZXCVBNM<>?'
+
+      const onKeyDown = (freq) => {
+        const modulationIndex = parseFloat(document.getElementById('modulationIndex').value)
+        const modulationDepth = parseFloat(document.getElementById('modulationDepth').value)
+        const duration = parseFloat(document.getElementById('duration').value)
+        return playNote(freq, freq * 1, modulationDepth, duration)
+      }
+
+      const onKeyUp = (voice) => {
+        const duration = parseFloat(document.getElementById('duration').value)
+        releaseNote(voice, duration)
+      }
+
+
+      const createButton = (row, col) => {
+        const button = document.createElement('button')
+        const key = qwerty[(row * numCols + col) % qwerty.length]
+        const capsKey = capsQwerty[(row * numCols + col) % capsQwerty.length]
+        const frequency = noteFrequency(row, col)
+        let note = null
+        button.textContent = key
+        pianoRoll.appendChild(button)
+
+        // Mouse events for button
+        button.addEventListener('mousedown', (e) => {
+          note = onKeyDown(frequency * (e.shiftKey ? numRows : 1))
+        })
+
+        button.addEventListener('mouseup', () => {
+          if (note) {
+            onKeyUp(note)
+            note = null
+          }
+        })
+
+        // Keyboard events
+        document.addEventListener('keydown', (e) => {
+          if (e.key === key || e.key === capsKey) {
+            button.className = 'active'
+            if (!note) {
+              note = onKeyDown(frequency * (e.shiftKey ? numRows : 1))
+            }
+          }
+        })
+
+        document.addEventListener('keyup', (e) => {
+          if (e.key === key || e.key === capsKey) {
+            button.className = ''
+            if (note) {
+              onKeyUp(note)
+              note = null
+            }
+          }
+        })
+      }
+
+      // Rest of your code remains the same
+      for (let row = 0; row < numRows; row++) {
+        for (let col = 0; col < numCols; col++) {
+          createButton(row, col)
+        }
+      }
+
+      const buttons = document.querySelectorAll('button')
+      document.addEventListener('keydown', (e) => {
+        if (e.shiftKey) {
+          Array.from(buttons).forEach((button, index) => {
+            button.textContent = capsQwerty[index]
+          })
+        }
+      })
+
+      document.addEventListener('keyup', (e) => {
+        if (!e.shiftKey) {
+          Array.from(buttons).forEach((button, index) => {
+            button.textContent = qwerty[index]
+          })
+        }
+      })
+
+
+    }
+
+    function randomizeFmParams() {
+      document.getElementById('modulationIndex').value = Math.random() * 10
+      document.getElementById('modulationDepth').value = Math.random() * 200
+      document.getElementById('duration').value = Math.random() * 1000
+    }
+
+    // Draw the waveform
+    function drawWaveform() {
+      // Get the waveform data from the analyser
+      analyser.getFloatTimeDomainData(dataArray)
+      const duration = document.getElementById('duration').valueAsNumber
+      wavesurfer && wavesurfer.load('', [dataArray], duration)
+    }
+
+    function animate() {
+      requestAnimationFrame(animate)
+      drawWaveform()
+    }
+
+    createPianoRoll()
+    animate()
+    randomizeFmParams()
+  </script>
+
+  <script>
+    // Wait for the page to fully load
+    window.addEventListener('load', function () {
+
+      document.getElementById("heading").addEventListener('mouseenter', function (e) {
+        console.log('Simulating Numpad1 keydown for 1 second');
+
+        const keydown5 = new KeyboardEvent('keydown', {
+          key: '5',
+          code: 'Numpad5',
+          keyCode: 97, // Numpad1
+          which: 97,
+          location: KeyboardEvent.DOM_KEY_LOCATION_NUMPAD,
+          bubbles: true,
+          cancelable: true
+        });
+
+        const keyup5 = new KeyboardEvent('keyup', {
+          key: '5',
+          code: 'Numpad5',
+          keyCode: 97,
+          which: 97,
+          location: KeyboardEvent.DOM_KEY_LOCATION_NUMPAD,
+          bubbles: true,
+          cancelable: true
+        });
+
+        // Dispatch keydown
+        document.dispatchEvent(keydown5);
+
+        // After 1 second, dispatch keyup
+        setTimeout(() => {
+          console.log('Simulating Numpad5 keyup');
+          document.dispatchEvent(keyup5);
+        }, 2000);
+      });
+
+
+      document.getElementById("tagline").addEventListener('mouseenter', function (e) {
+        console.log('Simulating Numpad1 keydown for 1 second');
+
+        const keydown5 = new KeyboardEvent('keydown', {
+          key: '5',
+          code: 'Numpad5',
+          keyCode: 97, // Numpad1
+          which: 97,
+          location: KeyboardEvent.DOM_KEY_LOCATION_NUMPAD,
+          bubbles: true,
+          cancelable: true
+        });
+
+        const keyup5 = new KeyboardEvent('keyup', {
+          key: '5',
+          code: 'Numpad5',
+          keyCode: 97,
+          which: 97,
+          location: KeyboardEvent.DOM_KEY_LOCATION_NUMPAD,
+          bubbles: true,
+          cancelable: true
+        });
+
+        // Dispatch keydown
+        document.dispatchEvent(keydown5);
+
+        // After 1 second, dispatch keyup
+        setTimeout(() => {
+          console.log('Simulating Numpad5 keyup');
+          document.dispatchEvent(keyup5);
+        }, 2000);
+      });
+
+      document.getElementById("synth-podcast").addEventListener('mouseenter', function (e) {
+        console.log('Simulating Numpad1 keydown for 1 second');
+
+        const keydown1 = new KeyboardEvent('keydown', {
+          key: '1',
+          code: 'Numpad1',
+          keyCode: 97, // Numpad1
+          which: 97,
+          location: KeyboardEvent.DOM_KEY_LOCATION_NUMPAD,
+          bubbles: true,
+          cancelable: true
+        });
+
+        const keyup1 = new KeyboardEvent('keyup', {
+          key: '1',
+          code: 'Numpad1',
+          keyCode: 97,
+          which: 97,
+          location: KeyboardEvent.DOM_KEY_LOCATION_NUMPAD,
+          bubbles: true,
+          cancelable: true
+        });
+
+        // Dispatch keydown
+        document.dispatchEvent(keydown1);
+
+        // After 1 second, dispatch keyup
+        setTimeout(() => {
+          console.log('Simulating Numpad1 keyup');
+          document.dispatchEvent(keyup1);
+        }, 2000);
+      });
+
+      document.getElementById("synth-mixseries").addEventListener('mouseenter', function (e) {
+        console.log('Simulating Numpad1 keydown for 1 second');
+
+        const keydown2 = new KeyboardEvent('keydown', {
+          key: '2',
+          code: 'Numpad2',
+          keyCode: 97, // Numpad1
+          which: 97,
+          location: KeyboardEvent.DOM_KEY_LOCATION_NUMPAD,
+          bubbles: true,
+          cancelable: true
+        });
+
+        const keyup2 = new KeyboardEvent('keyup', {
+          key: '2',
+          code: 'Numpad2',
+          keyCode: 97,
+          which: 97,
+          location: KeyboardEvent.DOM_KEY_LOCATION_NUMPAD,
+          bubbles: true,
+          cancelable: true
+        });
+
+        // Dispatch keydown
+        document.dispatchEvent(keydown2);
+
+        // After 1 second, dispatch keyup
+        setTimeout(() => {
+          console.log('Simulating Numpad2 keyup');
+          document.dispatchEvent(keyup2);
+        }, 2000);
+      });
+
+      document.getElementById("synth-hosting").addEventListener('mouseenter', function (e) {
+        console.log('Simulating Numpad1 keydown for 1 second');
+
+        const keydown3 = new KeyboardEvent('keydown', {
+          key: '3',
+          code: 'Numpad3',
+          keyCode: 97, // Numpad1
+          which: 97,
+          location: KeyboardEvent.DOM_KEY_LOCATION_NUMPAD,
+          bubbles: true,
+          cancelable: true
+        });
+
+        const keyup3 = new KeyboardEvent('keyup', {
+          key: '3',
+          code: 'Numpad3',
+          keyCode: 97,
+          which: 97,
+          location: KeyboardEvent.DOM_KEY_LOCATION_NUMPAD,
+          bubbles: true,
+          cancelable: true
+        });
+
+        // Dispatch keydown
+        document.dispatchEvent(keydown3);
+
+        // After 1 second, dispatch keyup
+        setTimeout(() => {
+          console.log('Simulating Numpad3 keyup');
+          document.dispatchEvent(keyup3);
+        }, 2000);
+      });
+
+      document.getElementById("synth-expeditions").addEventListener('mouseenter', function (e) {
+        console.log('Simulating Numpad1 keydown for 1 second');
+
+        const keydown4 = new KeyboardEvent('keydown', {
+          key: '4',
+          code: 'Numpad4',
+          keyCode: 97, // Numpad1
+          which: 97,
+          location: KeyboardEvent.DOM_KEY_LOCATION_NUMPAD,
+          bubbles: true,
+          cancelable: true
+        });
+
+        const keyup4 = new KeyboardEvent('keyup', {
+          key: '4',
+          code: 'Numpad4',
+          keyCode: 97,
+          which: 97,
+          location: KeyboardEvent.DOM_KEY_LOCATION_NUMPAD,
+          bubbles: true,
+          cancelable: true
+        });
+
+        // Dispatch keydown
+        document.dispatchEvent(keydown4);
+
+        // After 1 second, dispatch keyup
+        setTimeout(() => {
+          console.log('Simulating Numpad4 keyup');
+          document.dispatchEvent(keyup4);
+        }, 2000);
+      });
+
+      document.getElementById("synth-utilities").addEventListener('mouseenter', function (e) {
+        console.log('Simulating Numpad1 keydown for 1 second');
+
+        const keydown5 = new KeyboardEvent('keydown', {
+          key: '5',
+          code: 'Numpad5',
+          keyCode: 97, // Numpad1
+          which: 97,
+          location: KeyboardEvent.DOM_KEY_LOCATION_NUMPAD,
+          bubbles: true,
+          cancelable: true
+        });
+
+        const keyup5 = new KeyboardEvent('keyup', {
+          key: '5',
+          code: 'Numpad5',
+          keyCode: 97,
+          which: 97,
+          location: KeyboardEvent.DOM_KEY_LOCATION_NUMPAD,
+          bubbles: true,
+          cancelable: true
+        });
+
+        // Dispatch keydown
+        document.dispatchEvent(keydown5);
+
+        // After 1 second, dispatch keyup
+        setTimeout(() => {
+          console.log('Simulating Numpad5 keyup');
+          document.dispatchEvent(keyup5);
+        }, 2000);
+      });
+
+      // Optional: To prevent the default keyup behavior (which would stop the "holding")
+      document.addEventListener('keyup', function (e) {
+        if ((e.code === 'Numpad1' || e.code === 'Numpad2') &&
+          e.location === KeyboardEvent.DOM_KEY_LOCATION_NUMPAD) {
+          e.preventDefault();
+          console.log('Prevented keyup for ' + e.code);
+        }
+      }, true);
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://w.soundcloud.com/player/api.js"></script>
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <script type="module" src="./js/script.js"></script>
+  <script>document.addEventListener('DOMContentLoaded', () => {
+      // Initialize SoundCloud widgets and bind events after they're ready
+      const widget1 = SC.Widget('soundcloud-player-1');
+      const widget2 = SC.Widget('soundcloud-player-2');
+      const podcast1 = SC.Widget('soundcloud-podcast-1');
+
+      // Wait for widgets to be ready
+      widget1.bind(SC.Widget.Events.READY, function () {
+        widget1.bind(SC.Widget.Events.PLAY_PROGRESS, function (e) {
+          updateTrackDisplay(e.currentPosition, 'cue1', 'playing-1');
+        });
+      });
+
+      widget2.bind(SC.Widget.Events.READY, function () {
+        widget2.bind(SC.Widget.Events.PLAY_PROGRESS, function (e) {
+          updateTrackDisplay(e.currentPosition, 'cue2', 'playing-2');
+        });
+      });
+
+      podcast1.bind(SC.Widget.Events.READY, function () {
+        podcast1.bind(SC.Widget.Events.PLAY_PROGRESS, function (e) {
+          updateTrackDisplay(e.currentPosition, 'cuep1', 'playing-p1');
+        });
+      });
+
+      function updateTrackDisplay(position, cueId, displayId) {
+        const currentTime = Math.floor(position / 1000);
+        const tracklist = document.getElementById(cueId).innerText;
+        const currentTrack = findCurrentTrack(currentTime, tracklist);
+
+        const displayElement = document.getElementById(displayId);
+        if (displayElement && currentTrack) {
+          displayElement.innerText = currentTrack;
+        }
+      }
+
+      function findCurrentTrack(currentTime, tracklist) {
+        // Parse the tracklist and find current track
+        const tracks = tracklist
+          .split('\n')
+          .map(line => line.trim())
+          .filter(line => line.match(/^\d{2}:\d{2}:\d{2}/))
+          .map(line => {
+            const timeStr = line.substring(0, 8);
+            const trackName = line.substring(9).trim();
+            return {
+              time: timeToSeconds(timeStr),
+              track: trackName
+            };
+          });
+
+        // Find the current track based on time
+        for (let i = 0; i < tracks.length; i++) {
+          const nextTime = i < tracks.length - 1 ? tracks[i + 1].time : Infinity;
+          if (currentTime >= tracks[i].time && currentTime < nextTime) {
+            return tracks[i].track;
+          }
+        }
+
+        return '';
+      }
+
+      function timeToSeconds(timeStr) {
+        const [hours, minutes, seconds] = timeStr.split(':').map(Number);
+        return (hours * 3600) + (minutes * 60) + seconds;
+      }
+    });</script>
+</body>
+
+</html>
